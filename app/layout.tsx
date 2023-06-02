@@ -29,7 +29,7 @@ export default async function RootLayout({
 			<body>
 				<Header routes={routes} contact={contactInfo} />
 
-				<main className="min-h-[150vh] bg-slate-50 text-red-700">
+				<main>
 					{children}
 				</main>
 

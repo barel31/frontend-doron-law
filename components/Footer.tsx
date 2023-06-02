@@ -44,14 +44,18 @@ function Footer({
 				<div className="flex flex-col">
 					<h4 className={footerHeaderStyle}>ניווט באתר</h4>
 
-                    {routes.map((route: Route) => (
-                        <Link href={route.slug.current} className='flex items-center justify-start hover:text-lime-200'>
-                            {route.name}
-                        </Link>
-                    ))}
+					{routes.map((route: Route) => (
+						<Link
+							key={route.slug.current}
+							href={route.slug.current}
+							className="flex items-center justify-start hover:text-lime-200"
+						>
+							{route.name}
+						</Link>
+					))}
 				</div>
 			</div>
-			<p className="text-center mt-10">
+			<p className="text-center p-10">
 				© All rights reserved to{' '}
 				<Link href="https://www.linkedin.com/in/barel-shraga/">
 					barel31

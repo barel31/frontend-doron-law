@@ -9,8 +9,13 @@ interface SanityData {
 
 interface Route extends SanityData {
 	slug: { current: string; _type: string };
-	bio: Topography[];
-	qAndA: QAndA[];
+	content: Topography[];
+	header?: Topography[];
+	qAndA?: QAndA[];
+	image?: {
+		name: string;
+		imageUrl: string;
+	};
 }
 
 interface ContactInfo extends SanityData {

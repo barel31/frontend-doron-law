@@ -22,8 +22,9 @@ function Header({
 	return (
 		<header
 			className={`fixed z-50 top-0 w-full transition-all delay-150 h-20 ${
-				!isTop ? 'bg-slate-200/50' : 'bg-transparent'
-			}`}>
+				!isTop ? 'bg-slate-200/60' : 'bg-transparent'
+			}`}
+		>
 			<div className="flex flex-row justify-between w-2/3 items-center m-auto mt-4">
 				<Link href="/" className="relative">
 					<Image
@@ -32,18 +33,17 @@ function Header({
 						priority
 						width={200}
 						height={200}
+						style={{ width: 'auto' }}
 					/>
 				</Link>
 
-				<Link href="/" className={headerBtnStyle}>
-					ראשי
-				</Link>
 				{routes.map((route: any) => {
 					return (
 						<Link
 							key={route.slug.current}
 							className={headerBtnStyle}
-							href={`/${route.slug.current}`}>
+							href={`/${route.slug.current}`}
+						>
 							{route.name}
 						</Link>
 					);
@@ -53,20 +53,23 @@ function Header({
 					<Link
 						href={`tel:${contact.phone}`}
 						target="_blank"
-						className="flex items-center justify-between w-2/5 text-stone-900">
+						className="flex items-center justify-between w-2/5 text-stone-900"
+					>
 						<Image src={IconPhone} alt="icon-phone" />
 						{contact.phone}
 					</Link>
 					<Link
 						href="https://www.facebook.com/"
 						className="rounded-full"
-						target="_blank">
+						target="_blank"
+					>
 						<BsFacebook size={50} />
 					</Link>
 					<Link
 						href="https://www.linkedin.com/"
 						className="rounded-full overflow-hidden"
-						target="_blank">
+						target="_blank"
+					>
 						<BsLinkedin size={50} />
 					</Link>
 				</div>

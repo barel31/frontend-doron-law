@@ -18,7 +18,8 @@ const components: PortableTextComponents = {
 				<a
 					href={value?.href}
 					target={target}
-					rel={target === '_blank' ? 'noindex nofollow' : ''}>
+					rel={target === '_blank' ? 'noindex nofollow' : ''}
+				>
 					{children}
 				</a>
 			);
@@ -26,24 +27,29 @@ const components: PortableTextComponents = {
 	},
 	block: {
 		// Ex. 1: customizing common block types
-		h1: ({ children }) => <h1 className="text-6xl">{children}</h1>,
-		h2: ({ children }) => <h2 className="text-5xl">{children}</h2>,
-		h3: ({ children }) => <h3 className="text-4xl">{children}</h3>,
-		h4: ({ children }) => <h4 className="text-3xl">{children}</h4>,
-		h5: ({ children }) => <h5 className="text-2xl">{children}</h5>,
+		h1: ({ children }) => (
+			<h1 className="text-4xl lg:text-6xl">{children}</h1>
+		),
+		h2: ({ children }) => (
+			<h2 className="text-3xl lg:text-5xl">{children}</h2>
+		),
+		h3: ({ children }) => (
+			<h3 className="text-2xl lg:text-4xl">{children}</h3>
+		),
+		h4: ({ children }) => (
+			<h4 className="text-1xl lg:text-3xl">{children}</h4>
+		),
+		h5: ({ children }) => (
+			<h5 className="text-1xl lg:text-2xl">{children}</h5>
+		),
 		blockquote: ({ children }) => (
 			<blockquote className="border-l-purple-500">{children}</blockquote>
-		),
-		listItem: ({ children }) => (
-			<ol>
-				<li>{children}</li>
-			</ol>
 		),
 	},
 	list: {
 		// Ex. 1: customizing common list types
-		bullet: ({ children }) => <ul className="mt-xl">{children}</ul>,
-		number: ({ children }) => <ol className="mt-lg">{children}</ol>,
+		bullet: ({ children }) => <ul className="lg:mt-xl">{children}</ul>,
+		number: ({ children }) => <ol className="lg:mt-lg">{children}</ol>,
 
 		// Ex. 2: rendering custom lists
 		checkmarks: ({ children }) => (
@@ -53,8 +59,6 @@ const components: PortableTextComponents = {
 };
 
 function UseRichText({ value }: { value: Topography[] }) {
-	console.log(value);
-
 	return <PortableText value={value} components={components} />;
 }
 
