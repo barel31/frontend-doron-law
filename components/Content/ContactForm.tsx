@@ -1,8 +1,33 @@
+'use client';
+
 import Link from 'next/link';
 
 const inputStyle = 'bg-slate-600 placeholder:text-white border-2 rounded';
 
 function ContactForm({ contactInfo }: { contactInfo: ContactInfo }) {
+	const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		const target = e.currentTarget as HTMLFormElement;
+
+		const formData: any = {};
+		Array.from(target.elements).forEach((field: Element) => {
+			const formField = field as HTMLFormElement;
+			if (!formField.name) return;
+			formData[formField.name] = formField.value;
+		});
+
+		const res = await fetch('/api/mail', {
+			method: 'POST',
+			body: JSON.stringify(formData),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		console.log(res);
+		if (!res.ok) console.log('res not ok');
+	};
+
 	return (
 		<div className="m-auto bg-slate-600 w-[100%] max-w-full mt-[18vh] flex flex-row text-lg justify-around px-36">
 			<Link
@@ -14,7 +39,11 @@ function ContactForm({ contactInfo }: { contactInfo: ContactInfo }) {
 				השאירו פרטים:
 			</Link>
 
-			<form action="#" className="p-3 flex gap-2 flex-1 items-baseline">
+			<form
+				action="#"
+				onSubmit={handleOnSubmit}
+				className="p-3 flex gap-2 flex-1 items-baseline"
+			>
 				<input
 					type="text"
 					placeholder="* שם:"
@@ -23,14 +52,14 @@ function ContactForm({ contactInfo }: { contactInfo: ContactInfo }) {
 					className={inputStyle}
 				/>
 				<input
-					type="text"
+					type="tel"
 					placeholder="* טלפון:"
 					name="tel"
 					required
 					className={inputStyle}
 				/>
 				<input
-					type="text"
+					type="email"
 					placeholder="* אימייל:"
 					name="email"
 					required

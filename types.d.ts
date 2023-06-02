@@ -49,3 +49,9 @@ interface QAndA {
 	answer: string;
 	_key: string;
 }
+
+interface EmailObj {
+	name: string;
+	tel: string;
+	email: string;
+}
