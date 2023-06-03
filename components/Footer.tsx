@@ -16,7 +16,7 @@ function Footer({
 }) {
 	return (
 		<footer className="bg-stone-800 w-full min-h-44 bottom-0 text-gray-300">
-			<div className="m-auto flex flex-row w-4/6 justify-between">
+			<div className="m-auto flex flex-row lg:w-4/6 justify-around">
 				<ul className="flex flex-col">
 					<h4 className={footerHeaderStyle}>יצירת קשר</h4>
 
@@ -41,7 +41,7 @@ function Footer({
 						<span className="mr-5">{contact.address}</span>
 					</li>
 				</ul>
-				<div className="flex flex-col">
+				<div className="flex flex-col items-center">
 					<h4 className={footerHeaderStyle}>ניווט באתר</h4>
 
 					{routes.map((route: Route) => (

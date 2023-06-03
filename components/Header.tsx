@@ -6,9 +6,7 @@ import Logo from '@/public/logo.webp';
 import IconPhone from '@/public/icon-phone.webp';
 import { BsFacebook, BsLinkedin } from 'react-icons/bs';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
-
-const headerBtnStyle =
-	'text-stone-900 text-xl font-bold hover:overline decoration-lime-500 decoration-[4px]';
+import ScrollLine from './ScrollLine';
 
 function Header({
 	routes,
@@ -21,11 +19,12 @@ function Header({
 
 	return (
 		<header
-			className={`fixed z-50 top-0 w-full transition-all delay-150 h-20 ${
+			className={`fixed z-50 top-0 w-full transition-all delay-150 h-24 ${
 				!isTop ? 'bg-slate-200/60' : 'bg-transparent'
 			}`}
 		>
-			<div className="flex flex-row justify-between w-2/3 items-center m-auto mt-4">
+			<ScrollLine />
+			<nav className="flex flex-row justify-between w-2/3 items-center m-auto mt-4">
 				<Link href="/" className="relative">
 					<Image
 						src={Logo}
@@ -34,6 +33,7 @@ function Header({
 						width={200}
 						height={200}
 						style={{ width: 'auto' }}
+						className='absolute bg-contain max-sm:min-h-[570px]'
 					/>
 				</Link>
 
@@ -41,7 +41,7 @@ function Header({
 					return (
 						<Link
 							key={route.slug.current}
-							className={headerBtnStyle}
+							className="text-stone-900 text-xl font-bold hover:overline decoration-lime-500 decoration-[4px]"
 							href={`/${route.slug.current}`}
 						>
 							{route.name}
@@ -73,7 +73,7 @@ function Header({
 						<BsLinkedin size={50} />
 					</Link>
 				</div>
-			</div>
+			</nav>
 		</header>
 	);
 }

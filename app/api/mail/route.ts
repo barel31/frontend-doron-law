@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 		dir="rtl"><h1>הודעה חדשה באתר</h1><h2>שם: ${data.name}</h2><h2>טלפון: ${data.tel}</h2><h2>אימייל: ${data.email}</h2></div>`,
 	};
 
-	transporter.sendMail(message, (err: any, info: any) => {
+	await transporter.sendMail(message, (err: any, info: any) => {
 		if (err) {
 			console.log('error accurred');
 			console.log({ err });

@@ -7,23 +7,12 @@ export default async function IndexPage({ params }: { params: any }) {
 
 	const route = await getRoute(slug);
 
+	// todo route [tag]/[slag]/page.tsx
+
 	return (
 		<div
 			className={`page-content page-content-${slug} text-slate-950 text-center`}
 		>
-			{route?.image && (
-				<div
-					className={`background-image background-image-${slug} min-h-full h-[35vh] w-full text-center -z-10 -top-20 absolute`}
-				>
-					<Image
-						src={urlFor(route.image).url()}
-						alt="Office image"
-						width={2000}
-						height={1000}
-					/>
-					<div className="background-image-overlay absolute top-0" />
-				</div>
-			)}
 			<Content route={route} />;
 		</div>
 	);
