@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-const nodemailer = require('nodemailer');
+import nodemailer, { SendMailOptions } from 'nodemailer';
+import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 const transporter = nodemailer.createTransport({
 	service: 'Gmail',
@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 export async function POST(req: NextRequest) {
 	const data: EmailObj = await req.json();
 
-	const message = {
+	const message: SendMailOptions = {
 		from: data.email,
 		to: process.env.GMAIL_EMAIL_ADDRESS,
 		subject: 'הודעה חדשה באתר דורון חדד',
@@ -25,20 +25,47 @@ export async function POST(req: NextRequest) {
 		dir="rtl"><h1>הודעה חדשה באתר</h1><h2>שם: ${data.name}</h2><h2>טלפון: ${data.tel}</h2><h2>אימייל: ${data.email}</h2></div>`,
 	};
 
-	await transporter.sendMail(message, (err: any, info: any) => {
-		if (err) {
+	const myPromise: Promise<SMTPTransport.SentMessageInfo> = new Promise((myResolve, myReject) => {
+		transporter.sendMail(message, (err, info) => {
+			if (err) {
+				myReject(err);
+			} else {
+				myResolve(info);
+			}
+		});
+	});
+
+	await myPromise.then(
+		(value: SMTPTransport.SentMessageInfo) => {
+			console.log('sent email successfully');
+
+			return new NextResponse(`Message delivered to ${value.accepted}`, {
+				status: 250,
+			});
+		},
+		(err: Error) => {
 			console.log('error accurred');
 			console.log({ err });
 
-			return new NextResponse(`Connection refused at ${err.address}`, {
+			return new NextResponse(`Connection refused at ${err.message}`, {
 				status: 404,
 			});
-		} else {
-			console.log('sent email successfully');
-
-			return new NextResponse(`Message delivered to ${info.accepted}`, {
-				status: 250,
-			});
 		}
-	});
+	);
+	// const info = await transporter.sendMail(message, (err, info) => {
+	// 	if (err) {
+	// 		console.log('error accurred');
+	// 		console.log({ err });
+
+	// 		return new NextResponse(`Connection refused at ${err.message}`, {
+	// 			status: 404,
+	// 		});
+	// 	} else {
+	// 		console.log('sent email successfully');
+
+	// 		return new NextResponse(`Message delivered to ${info.accepted}`, {
+	// 			status: 250,
+	// 		});
+	// 	}
+	// });
 }

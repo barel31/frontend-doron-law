@@ -1,6 +1,5 @@
-import { getRoute, getRoutes, urlFor } from '@/client';
+import { getRoute, getRoutes } from '@/client';
 import Content from '@/components/Content/Content';
-import Image from 'next/image';
 
 export default async function IndexPage({ params }: { params: any }) {
 	const { slug } = params;
@@ -21,7 +20,7 @@ export default async function IndexPage({ params }: { params: any }) {
 export async function generateStaticParams() {
 	const routes = await getRoutes;
 
-	return routes.map((route: any) => ({
+	return routes.map((route: Route) => ({
 		slug: route.slug.current,
 	}));
 }
