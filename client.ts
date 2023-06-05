@@ -8,7 +8,9 @@ export const Client = createClient({
 	useCdn: true,
 });
 
-export const getRoutes: Promise<Route[]> = Client.fetch(`*[_type == "routes"]`);
+export const getRoutes: Promise<Route[]> = Client.fetch(
+	`*[_type == "routes"] | order(_createdAt desc)`
+);
 
 export const getRoute = (slug: string): Promise<Route> =>
 	Client.fetch(`*[_type == "routes" && slug.current == "${slug}"][0]`);

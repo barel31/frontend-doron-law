@@ -1,14 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-
+// todo added message for sending an email
 function ContactForm({ contactInfo }: { contactInfo: ContactInfo }) {
 	const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		const target = e.currentTarget as HTMLFormElement;
 
-		const formData: any = {};
+		const formData: { [key: string]: string } = {};
 		Array.from(target.elements).forEach((field: Element) => {
 			const formField = field as HTMLFormElement;
 			if (!formField.name) return;

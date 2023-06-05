@@ -56,7 +56,7 @@ function Footer({
 				</div>
 			</div>
 			<p className="text-center p-10">
-				© All rights reserved to{' '}
+				All rights reserved to{' '}
 				<Link href="https://www.linkedin.com/in/barel-shraga/">
 					barel31
 				</Link>{' '}

@@ -48,6 +48,18 @@
 	height: 100%;
 }
 
-/* .background-image > img { 
-	z-index: -1 !important;
-} */
+@media screen and (max-width: 768px) {
+	.navbar > div > div > ul {
+		flex-direction: column-reverse;
+		align-items: flex-end;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.navbar {
+		background-color: rgb(226 232 240 / 0.6) !important;
+	}
+	.navbar > div > div {
+		flex: 1;
+	}
+}

@@ -1,7 +1,11 @@
 import { getRoute, getRoutes } from '@/client';
 import Content from '@/components/Content/Content';
 
-export default async function IndexPage({ params }: { params: any }) {
+export default async function IndexPage({
+	params,
+}: {
+	params: { slug: string };
+}) {
 	const { slug } = params;
 
 	const route = await getRoute(slug);

@@ -12,7 +12,7 @@ export default async function Home() {
 		<div
 			className={`page-content page-content-home text-slate-950 text-center`}
 		>
-			<Content route={route} contactInfo={contactInfo} />;
+			<Content route={route} contactInfo={contactInfo} />
 		</div>
 	);
 }
