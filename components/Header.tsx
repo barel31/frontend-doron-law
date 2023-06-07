@@ -28,13 +28,10 @@ function Header({
 
 	useEffect(() => {
 		if (!mobile) setShow(true);
-		else {
-			if (show)
-				ref.current!.style.height =
-					ref.current!.scrollHeight + 55 + 'px';
-			else ref.current!.style.height = '2.5rem';
-		}
-	}, [mobile, show, routes.length]);
+		else if (show)
+			ref.current!.style.height = ref.current!.scrollHeight + 55 + 'px';
+		else ref.current!.style.height = '2.5rem';
+	}, [mobile, show]);
 
 	useEffect(() => {
 		const clickListener = (e: MouseEvent) => {
