@@ -31,13 +31,10 @@ function Header({
 		else {
 			if (show)
 				ref.current!.style.height =
-					ref.current!.scrollHeight + 5 + 'px';
+					ref.current!.scrollHeight + 55 + 'px';
 			else ref.current!.style.height = '3rem';
 		}
 	}, [mobile, show, routes.length]);
-
-	const showNavBar = () => setShow(() => !show);
-	const onNavClick = () => setShow(() => false);
 
 	useEffect(() => {
 		const clickListener = (e: MouseEvent) => {
@@ -52,22 +49,25 @@ function Header({
 		return () => document.removeEventListener('click', clickListener);
 	}, [mobile, show]);
 
+	const showNavBar = () => setShow(() => !show);
+	const onNavClick = () => setShow(() => false);
+
 	return (
 		<header
 			className={`fixed z-50 top-0 w-full min-h-[4rem] ${
 				!isTop || (show && mobile)
-					? 'bg-slate-200/70'
+					? 'bg-slate-200/90'
 					: 'bg-transparent'
 			}`}
 		>
 			<ScrollLine />
 			<nav
 				ref={ref}
-				className={`flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-4 transition-all h-16`}
+				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto my-1 transition-all h-12"
 			>
 				<Link
 					href="/"
-					className={`relative min-w-[20%] ${
+					className={`relative min-w-[20%] self-start ${
 						mobile && show && 'hidden'
 					}`}
 				>
@@ -88,14 +88,14 @@ function Header({
 					<RxHamburgerMenu />
 				</button>
 				<div
-					className={`navbar-links flex flex-col md:flex-row self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 max-md:mb-10 ${
-						show ? 'visible' : 'invisible h-0'
+					className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 ${
+						show ? 'visible' : 'invisible'
 					}`}
 				>
 					{routes.map((route: Route) => (
 						<Link
 							key={route.slug.current}
-							className="text-stone-900 text-xl font-bold"
+							className="text-stone-900 text-base md:text-xl font-bold"
 							href={`/${route.slug.current}`}
 							onClick={onNavClick}
 						>
@@ -105,8 +105,8 @@ function Header({
 				</div>
 
 				<div
-					className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] mb-1 self-baseline ${
-						show ? 'visible' : 'invisible h-0'
+					className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] md:self-center ${
+						show ? 'visible' : 'invisible'
 					}`}
 				>
 					<Link
@@ -138,7 +138,7 @@ function Header({
 				<Link
 					href="/"
 					onClick={onNavClick}
-					className={`absolute bottom-1 ${
+					className={`absolute bottom-1 right-1 ${
 						show && mobile ? 'visible' : 'invisible'
 					}`}
 				>
