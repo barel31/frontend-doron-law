@@ -1,32 +1,29 @@
 'use client';
 
 import { PortableText, PortableTextComponents } from '@portabletext/react';
+import Link from 'next/link';
 
 const components: PortableTextComponents = {
 	marks: {
-		// Ex. 1: custom renderer for the em / italics decorator
 		em: ({ children }) => (
 			<em className="text-gray-600 font-semibold">{children}</em>
 		),
-
-		// Ex. 2: rendering a custom `link` annotation
 		link: ({ value, children }) => {
 			const target = (value?.href || '').startsWith('http')
 				? '_blank'
 				: undefined;
 			return (
-				<a
+				<Link
 					href={value?.href}
 					target={target}
 					rel={target === '_blank' ? 'noindex nofollow' : ''}
 				>
 					{children}
-				</a>
+				</Link>
 			);
 		},
 	},
 	block: {
-		// Ex. 1: customizing common block types
 		h1: ({ children }) => (
 			<h1 className="text-3xl md:text-6xl">{children}</h1>
 		),
@@ -47,11 +44,9 @@ const components: PortableTextComponents = {
 		),
 	},
 	list: {
-		// Ex. 1: customizing common list types
 		bullet: ({ children }) => <ul className="md:mt-xl">{children}</ul>,
 		number: ({ children }) => <ol className="md:mt-lg">{children}</ol>,
 
-		// Ex. 2: rendering custom lists
 		checkmarks: ({ children }) => (
 			<ol className="m-auto text-lg">{children}</ol>
 		),

@@ -31,6 +31,8 @@ function ContactForm({ contactInfo }: { contactInfo: ContactInfo }) {
 			<Link
 				href={`tel:${contactInfo.mobile}`}
 				className="w-1/2 m-auto text-lime-300 flex-1 flex-shrink"
+				target="_blank"
+				rel="noindex nofollow"
 			>
 				לייעוץ ראשוני התקשרו{' '}
 				<span className="text-white">{contactInfo.mobile}</span> או

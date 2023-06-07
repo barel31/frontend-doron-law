@@ -28,13 +28,10 @@ function Header({
 
 	useEffect(() => {
 		if (!mobile) setShow(true);
-		else {
-			if (show)
-				ref.current!.style.height =
-					ref.current!.scrollHeight + 55 + 'px';
-			else ref.current!.style.height = '2.5rem';
-		}
-	}, [mobile, show, routes.length]);
+		else if (show)
+			ref.current!.style.height = ref.current!.scrollHeight + 80 + 'px';
+		else ref.current!.style.height = '2.5rem';
+	}, [mobile, show]);
 
 	useEffect(() => {
 		const clickListener = (e: MouseEvent) => {
@@ -95,7 +92,7 @@ function Header({
 					{routes.map((route: Route) => (
 						<Link
 							key={route.slug.current}
-							className="text-stone-900 text-base md:text-xl font-bold"
+							className="text-stone-900 text-xl font-bold"
 							href={`/${route.slug.current}`}
 							onClick={onNavClick}
 						>
@@ -105,7 +102,7 @@ function Header({
 				</div>
 
 				<div
-					className={`header-contacts flex flex-row gap-2 m-2 justify-between md:min-w-[20%] self-end md:self-center ${
+					className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] ${
 						show ? 'visible' : 'invisible'
 					}`}
 				>
@@ -113,23 +110,25 @@ function Header({
 						href={contact.facebook}
 						className="rounded-full"
 						target="_blank"
+						rel="noindex nofollow"
 					>
 						<BsFacebook size={45} />
 					</Link>
 					<Link
 						href={contact.linkedin}
 						className="rounded-full overflow-hidden"
-						target="_blank"
+						rel="noindex nofollow"
 					>
 						<BsLinkedin size={45} />
 					</Link>
 					<Link
 						href={`tel:${contact.phone}`}
 						target="_blank"
+						rel="noindex nofollow"
 						className="flex flex-row items-center justify-around text-stone-900 whitespace-nowrap"
 					>
 						<Image src={IconPhone} alt="icon-phone" sizes="45" />
-						<span className="font-bold max-lg:hidden m-1">
+						<span className={`font-bold m-1 ${!mobile && show && 'max-lg:hidden'}`}>
 							{contact.phone}
 						</span>
 					</Link>
