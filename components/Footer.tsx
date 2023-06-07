@@ -4,9 +4,6 @@ import { AiFillPhone, AiOutlineMail } from 'react-icons/ai';
 import { BsFillPersonVcardFill } from 'react-icons/bs';
 import Link from 'next/link';
 
-const footerHeaderStyle =
-	'underline underline-offset-8 m-10 decoration-lime-500 justify-start';
-
 function Footer({
 	routes,
 	contact,
@@ -16,10 +13,11 @@ function Footer({
 }) {
 	return (
 		<footer className="bg-stone-800 w-full min-h-44 bottom-0 text-gray-300">
-			<div className="m-auto flex flex-row lg:w-4/6 justify-around">
-				<ul className="flex flex-col">
-					<h4 className={footerHeaderStyle}>יצירת קשר</h4>
-
+			<div className="m-10 flex flex-col md:flex-row lg:w-4/6 justify-around text-lg">
+				<ul className="flex flex-col max-md:items-start">
+					<h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
+						יצירת קשר
+					</h4>
 					<li className="flex items-center justify-start">
 						<FaMobileAlt />
 						<span className="mr-5">נייד: {contact.mobile}</span>
@@ -41,9 +39,18 @@ function Footer({
 						<span className="mr-5">{contact.address}</span>
 					</li>
 				</ul>
-				<div className="flex flex-col items-center">
-					<h4 className={footerHeaderStyle}>ניווט באתר</h4>
+				<div className='flex'>
+					<Link href={contact.facebook}>
 
+					</Link>
+					<Link href={contact.linkedin}>
+
+					</Link>
+				</div>
+				<div className="flex flex-col items-start md:items-center">
+					<h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
+						ניווט באתר
+					</h4>
 					{routes.map((route: Route) => (
 						<Link
 							key={route.slug.current}
@@ -55,13 +62,16 @@ function Footer({
 					))}
 				</div>
 			</div>
-			<p className="text-center p-10">
-				All rights reserved to{' '}
-				<Link href="https://www.linkedin.com/in/barel-shraga/">
-					barel31
-				</Link>{' '}
-				©
-			</p>
+
+			<div className="text-center p-10">
+				<p>
+					Build by{' '}
+					<Link href="https://www.linkedin.com/in/barel-shraga/">
+						barel31
+					</Link>
+				</p>
+				<p>All rights reserved Doron Hadad ©</p>
+			</div>
 		</footer>
 	);
 }

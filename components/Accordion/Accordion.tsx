@@ -3,7 +3,9 @@
 import './accordion.css';
 
 function Accordion({ qa }: { qa: QAndA[] }) {
-	const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const handleClick = (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
 		e.currentTarget.classList.toggle('active');
 		const panel = e.currentTarget.nextElementSibling! as HTMLElement;
 
@@ -15,10 +17,15 @@ function Accordion({ qa }: { qa: QAndA[] }) {
 	};
 
 	return (
-		<>
-			{qa.map((qa: QAndA, i: number) => (
-				<div key={i}>
-					<button className="accordion" onClick={handleClick}>
+		<div>
+			{qa.map((qa: QAndA) => (
+				<div key={qa._key}>
+					<button
+						className="accordion"
+						onClick={handleClick}
+						type='button'
+						title={qa.question}
+					>
 						{qa.question}
 					</button>
 					<div className="panel">
@@ -26,7 +33,7 @@ function Accordion({ qa }: { qa: QAndA[] }) {
 					</div>
 				</div>
 			))}
-		</>
+		</div>
 	);
 }
 

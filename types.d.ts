@@ -30,9 +30,10 @@ interface ContactInfo extends SanityData {
 		};
 	};
 	mobile: string;
-	email: string;
 	fax: string;
 	address: string;
+	facebook: string;
+	linkedin: string;
 	bio: Topography[];
 }
 

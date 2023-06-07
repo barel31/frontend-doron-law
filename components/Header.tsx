@@ -32,7 +32,7 @@ function Header({
 			if (show)
 				ref.current!.style.height =
 					ref.current!.scrollHeight + 55 + 'px';
-			else ref.current!.style.height = '3rem';
+			else ref.current!.style.height = '2.5rem';
 		}
 	}, [mobile, show, routes.length]);
 
@@ -54,7 +54,7 @@ function Header({
 
 	return (
 		<header
-			className={`fixed z-50 top-0 w-full min-h-[4rem] ${
+			className={`fixed z-50 top-0 w-full min-h-[2.5rem] ${
 				!isTop || (show && mobile)
 					? 'bg-slate-200/90'
 					: 'bg-transparent'
@@ -63,7 +63,7 @@ function Header({
 			<ScrollLine />
 			<nav
 				ref={ref}
-				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto my-1 transition-all h-12"
+				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-3 md:my-3 transition-all h-[2.5rem]"
 			>
 				<Link
 					href="/"
@@ -105,19 +105,19 @@ function Header({
 				</div>
 
 				<div
-					className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] md:self-center ${
+					className={`header-contacts flex flex-row gap-2 m-2 justify-between md:min-w-[20%] self-end md:self-center ${
 						show ? 'visible' : 'invisible'
 					}`}
 				>
 					<Link
-						href="https://www.facebook.com/"
+						href={contact.facebook}
 						className="rounded-full"
 						target="_blank"
 					>
 						<BsFacebook size={45} />
 					</Link>
 					<Link
-						href="https://www.linkedin.com/"
+						href={contact.linkedin}
 						className="rounded-full overflow-hidden"
 						target="_blank"
 					>
@@ -138,7 +138,7 @@ function Header({
 				<Link
 					href="/"
 					onClick={onNavClick}
-					className={`absolute bottom-1 right-1 ${
+					className={`absolute bottom-1 right-1 md:self-center ${
 						show && mobile ? 'visible' : 'invisible'
 					}`}
 				>
