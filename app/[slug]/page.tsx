@@ -16,7 +16,7 @@ export default async function IndexPage({
 		<div
 			className={`page-content page-content-${slug} text-slate-950 text-center`}
 		>
-			<Content route={route} />;
+			<Content route={route} />
 		</div>
 	);
 }

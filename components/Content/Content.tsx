@@ -1,6 +1,6 @@
 import UsePortableText from './UseRichText';
-import ContactForm from './ContactForm';
-import AccordionQA from './AccordionQA';
+import ContactForm from '../ContactForm';
+import AccordionQA from '../Accordion/Accordion';
 import Image from 'next/image';
 import { urlFor } from '@/client';
 

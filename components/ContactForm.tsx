@@ -46,21 +46,21 @@ function ContactForm({ contactInfo }: { contactInfo: ContactInfo }) {
 					type="text"
 					placeholder="* שם:"
 					name="name"
-					className="bg-slate-600 placeholder:text-white border-2 rounded max-md:w-full"
+					className="focus:outline-none bg-slate-600 placeholder:text-white border-2 max-md:w-full border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					required
 				/>
 				<input
 					type="tel"
 					placeholder="* טלפון:"
 					name="tel"
-					className="bg-slate-600 placeholder:text-white border-2 rounded max-md:w-full"
+					className="focus:outline-none bg-slate-600 placeholder:text-white border-2 max-md:w-full border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					required
 				/>
 				<input
 					type="email"
 					placeholder="* אימייל:"
 					name="email"
-					className="bg-slate-600 placeholder:text-white border-2 rounded max-md:w-full"
+					className="focus:outline-none bg-slate-600 placeholder:text-white border-2 max-md:w-full border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					required
 				/>
 				<button

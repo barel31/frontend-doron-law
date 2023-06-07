@@ -62,4 +62,8 @@
 	.navbar > div > div {
 		flex: 1;
 	}
+	.navbar > div > div > ul {
+		/* flex-direction: row-reverse; */
+		/* flex-flow: row; */
+	}
 }
