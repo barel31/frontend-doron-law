@@ -108,18 +108,13 @@ function Header({
 				>
 					<Link
 						href={contact.facebook}
-						className="rounded-full"
 						target="_blank"
 						rel="noindex nofollow"
 					>
-						<BsFacebook size={45} />
+						<BsFacebook size={45} className="rounded-full" />
 					</Link>
-					<Link
-						href={contact.linkedin}
-						className="rounded-full overflow-hidden"
-						rel="noindex nofollow"
-					>
-						<BsLinkedin size={45} />
+					<Link href={contact.linkedin} rel="noindex nofollow">
+						<BsLinkedin size={45} className="rounded-full" />
 					</Link>
 					<Link
 						href={`tel:${contact.phone}`}
@@ -128,7 +123,7 @@ function Header({
 						className="flex flex-row items-center justify-around text-stone-900 whitespace-nowrap"
 					>
 						<Image src={IconPhone} alt="icon-phone" sizes="45" />
-						<span className={`font-bold m-1 ${!mobile && show && 'max-lg:hidden'}`}>
+						<span className="font-bold m-1 max-lg:hidden">
 							{contact.phone}
 						</span>
 					</Link>
