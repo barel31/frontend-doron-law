@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-// todo added message for sending an email
+// todo added modal message for sending an email
+// todo added message input
 function ContactForm({ contactInfo }: { contactInfo: ContactInfo }) {
 	const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();

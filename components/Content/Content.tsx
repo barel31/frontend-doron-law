@@ -27,7 +27,11 @@ function Content({
 					/>
 				</div>
 			)}
-			<div className="content-header text-center font-sans md:backdrop-blur-sm max-w-full my-20 mx-2 md:mt-28 text-slate-50 m-auto">
+			<div
+				className={`content-header text-center font-sans md:backdrop-blur-sm max-w-full my-20 mx-2 md:mt-28 text-slate-${
+					route.slug.current === '/' ? '50' : '800'
+				} m-auto`}
+			>
 				{route?.header && <UsePortableText value={route.header!} />}
 			</div>
 

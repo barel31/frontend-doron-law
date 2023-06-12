@@ -9,7 +9,7 @@ export const Client = createClient({
 });
 
 export const getRoutes: Promise<Route[]> = Client.fetch(
-	`*[_type == "routes"] | order(_createdAt desc)`
+	`*[_type == "routes"] | order(_createdAt asc)`
 );
 
 export const getRoute = (slug: string): Promise<Route> =>

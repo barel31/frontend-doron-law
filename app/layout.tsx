@@ -24,6 +24,13 @@ export default async function RootLayout({
 	const routes = await getRoutes;
 	const contactInfo = await getContactInfo;
 
+	if (routes[0].name !== 'בית') { // todo: let sanity handle order
+		const homeIndex = routes.findIndex((route) => route.name === 'בית');
+		const tmp = routes[0];
+		routes[0] = routes[homeIndex];
+		routes[homeIndex] = tmp;
+	}
+
 	return (
 		<html lang="he" className={assistFont.className} dir="rtl">
 			<body>

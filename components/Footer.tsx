@@ -79,6 +79,7 @@ function Footer({
 			</div>
 
 			<div className="text-center p-10">
+				<p>All rights reserved Doron Hadad ©</p>
 				<p>
 					Build by{' '}
 					<Link
@@ -89,7 +90,6 @@ function Footer({
 						barel31
 					</Link>
 				</p>
-				<p>All rights reserved Doron Hadad ©</p>
 			</div>
 		</footer>
 	);

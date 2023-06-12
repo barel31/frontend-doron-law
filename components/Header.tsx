@@ -27,18 +27,18 @@ function Header({
 	const ref = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		if (!mobile) setShow(true);
-		else if (show)
+		if (!mobile) setShow(() => true);
+		else if (show) {
+			document.body.style.overflow = 'hidden';
 			ref.current!.style.height = ref.current!.scrollHeight + 80 + 'px';
-		else ref.current!.style.height = '2.5rem';
-	}, [mobile, show]);
+		} else {
+			document.body.style.overflow = 'visible';
+			ref.current!.style.height = '2.5rem';
+		}
 
-	useEffect(() => {
 		const clickListener = (e: MouseEvent) => {
-			if (mobile && show) {
-				if (!ref.current?.contains(e.target as Node)) {
-					onNavClick();
-				}
+			if (mobile && show && ref.current?.contains(e.target as Node)) {
+				onNavClick();
 			}
 		};
 
@@ -113,7 +113,11 @@ function Header({
 					>
 						<BsFacebook size={45} className="rounded-full" />
 					</Link>
-					<Link href={contact.linkedin} rel="noindex nofollow">
+					<Link
+						href={contact.linkedin}
+						target="_blank"
+						rel="noindex nofollow"
+					>
 						<BsLinkedin size={45} className="rounded-full" />
 					</Link>
 					<Link
