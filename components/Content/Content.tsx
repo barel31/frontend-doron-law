@@ -39,6 +39,9 @@ function Content({
 				{route?.slug?.current === '/' && (
 					<ContactForm contactInfo={contactInfo!} />
 				)}
+				{route?.slug?.current === 'contact-me' && (
+					<ContactForm contactInfo={contactInfo!} message={true} />
+				)}
 				<div className="text-right m-5 md:m-36 text-slate-900">
 					<UsePortableText value={route?.content} />
 				</div>

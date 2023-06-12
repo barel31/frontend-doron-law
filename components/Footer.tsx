@@ -46,20 +46,25 @@ function Footer({
 						</li>
 					</ul>
 					<div className="flex gap-2 items-baseline mt-5">
-						<Link
-							href={contact.facebook}
-							target="_blank"
-							rel="noindex nofollow"
-						>
-							<FaFacebookSquare size={35} />
-						</Link>
-						<Link
-							href={contact.linkedin}
-							target="_blank"
-							rel="noindex nofollow"
-						>
-							<FaLinkedin size={35} />
-						</Link>
+						{contact.facebook && (
+							<Link
+								href={contact.facebook}
+								target="_blank"
+								rel="noindex nofollow"
+							>
+								<FaFacebookSquare size={35} />
+							</Link>
+						)}
+
+						{contact.linkedin && (
+							<Link
+								href={contact.linkedin}
+								target="_blank"
+								rel="noindex nofollow"
+							>
+								<FaLinkedin size={35} />
+							</Link>
+						)}
 					</div>
 				</div>
 				<div className="flex flex-col items-start md:items-center">

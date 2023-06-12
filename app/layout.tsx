@@ -23,7 +23,7 @@ export default async function RootLayout({
 }) {
 	const routes = await getRoutes;
 	const contactInfo = await getContactInfo;
-
+	
 	if (routes[0].name !== 'בית') { // todo: let sanity handle order
 		const homeIndex = routes.findIndex((route) => route.name === 'בית');
 		const tmp = routes[0];

@@ -27,8 +27,10 @@ function Header({
 	const ref = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		if (!mobile) setShow(() => true);
-		else if (show) {
+		if (!mobile) {
+			setShow(() => true);
+			ref.current!.style.height = '2.5rem';
+		} else if (show) {
 			document.body.style.overflow = 'hidden';
 			ref.current!.style.height = ref.current!.scrollHeight + 80 + 'px';
 		} else {
@@ -37,7 +39,7 @@ function Header({
 		}
 
 		const clickListener = (e: MouseEvent) => {
-			if (mobile && show && ref.current?.contains(e.target as Node)) {
+			if (mobile && show && !ref.current?.contains(e.target as Node)) {
 				onNavClick();
 			}
 		};
