@@ -9,31 +9,43 @@ export default defineType({
 			name: 'name',
 			title: 'שם',
 			type: 'string',
+			validation: (Rule) => Rule.required(),
+		}),
+		defineField({
+			name: 'nameEnglish',
+			title: 'שם באנגלית',
+			type: 'string',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'phone',
-			title: 'מספר טלפון',
+			title: 'טלפון',
 			type: 'string',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'mobile',
-			title: 'מספר טלפון נייד',
+			title: 'טלפון נייד',
 			type: 'string',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'email',
 			title: 'דואר אלקטרוני',
 			type: 'string',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'fax',
 			title: 'פקס',
 			type: 'string',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'address',
 			title: 'כתובת',
 			type: 'string',
+			validation: (Rule) => Rule.required(),
 		}),
 		defineField({
 			name: 'facebook',
@@ -75,10 +87,4 @@ export default defineType({
 			],
 		}),
 	],
-	preview: {
-		select: {
-			title: 'name',
-			media: 'image',
-		},
-	},
 });
