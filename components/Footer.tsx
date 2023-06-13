@@ -83,7 +83,7 @@ function Footer({
 			</div>
 
 			<div className="text-center p-10">
-				<p>All rights reserved Doron Hadad ©</p>
+				<p>All rights reserved {contact.nameEnglish} ©</p>
 				<p>
 					Build by{' '}
 					<Link
