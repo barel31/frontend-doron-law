@@ -18,13 +18,16 @@ export const metadata = {
 
 export default async function RootLayout({
 	children,
+	tyModal,
 }: {
 	children: React.ReactNode;
+	tyModal: React.ReactNode;
 }) {
 	const routes = await getRoutes;
 	const contactInfo = await getContactInfo;
-	
-	if (routes[0].name !== 'בית') { // todo: let sanity handle order
+
+	if (routes[0].name !== 'בית') {
+		// todo: let sanity handle order
 		const homeIndex = routes.findIndex((route) => route.name === 'בית');
 		const tmp = routes[0];
 		routes[0] = routes[homeIndex];
@@ -36,7 +39,10 @@ export default async function RootLayout({
 			<body>
 				<Header routes={routes} contact={contactInfo} />
 
-				<main>{children}</main>
+				<main>
+					{children}
+					{tyModal}
+				</main>
 
 				<Footer routes={routes} contact={contactInfo} />
 			</body>

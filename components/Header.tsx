@@ -1,15 +1,15 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '@/public/logo.webp';
-import IconPhone from '@/public/icon-phone.webp';
 import { BsFacebook, BsLinkedin } from 'react-icons/bs';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import useIsScrollTop from '@/hooks/useIsScrollTop';
 import ScrollLine from './ScrollLine';
+import Logo from '@/public/logo.webp';
+import IconPhone from '@/public/assets/icon-phone.webp';
 import useGetWidth from '@/hooks/useGetWidth';
-import { useEffect, useRef, useState } from 'react';
+import useIsScrollTop from '@/hooks/useIsScrollTop';
 
 function Header({
 	routes,
@@ -145,9 +145,7 @@ function Header({
 					<Image
 						src={Logo}
 						alt="logo"
-						priority
-						width={200}
-						height={200}
+						style={{ width: 'auto' }}
 					/>
 				</Link>
 			</nav>

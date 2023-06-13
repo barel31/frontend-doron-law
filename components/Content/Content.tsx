@@ -23,12 +23,13 @@ function Content({
 						alt="Office image"
 						width={2000}
 						height={2000}
+						loading="lazy"
 						className="w-full scale-[4] sm:scale-[3] md:scale-[2.5] lg:scale-[2]"
 					/>
 				</div>
 			)}
 			<div
-				className={`content-header text-center font-sans md:backdrop-blur-sm max-w-full my-20 mx-2 md:mt-28 text-slate-${
+				className={`content-header normal-line-height text-center font-sans md:backdrop-blur-sm max-w-full my-20 mx-2 md:mt-28 text-slate-${
 					route?.slug?.current === '/' ? '50' : '800'
 				} m-auto`}
 			>
@@ -42,7 +43,7 @@ function Content({
 				{route?.slug?.current === 'contact-me' && (
 					<ContactForm contactInfo={contactInfo!} message={true} />
 				)}
-				<div className="text-right m-5 md:m-36 text-slate-900">
+				<div className="text-right m-5 md:m-36 text-slate-900 normal-line-height">
 					<UsePortableText value={route?.content} />
 				</div>
 			</div>

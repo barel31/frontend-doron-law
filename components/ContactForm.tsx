@@ -1,8 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-// todo added modal diaglog message for sending an email
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+
+// todo added modal dialog message for sending an email
 // todo added message input
+
 function ContactForm({
 	contactInfo,
 	message = false,
@@ -10,27 +14,38 @@ function ContactForm({
 	contactInfo: ContactInfo;
 	message?: boolean;
 }) {
+	const router = useRouter();
+
+	const [disableSbtBtn, setDisableSbtBtn] = useState(false);
+
 	const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setDisableSbtBtn(() => true);
 
 		const target = e.currentTarget as HTMLFormElement;
 
 		const formData: { [key: string]: string } = {};
 		Array.from(target.elements).forEach((field: Element) => {
 			const formField = field as HTMLFormElement;
-			if (!formField.name) return;
+			if (!formField.name) {
+				return;
+			}
 			formData[formField.name] = formField.value;
 		});
 
 		const res = await fetch('/api/mail', {
 			method: 'POST',
 			body: JSON.stringify(formData),
-			headers: {
-				'Content-Type': 'application/json',
-			},
+			// headers: {
+			// 	'Content-Type': 'application/json',
+			// },
 		});
 		console.log(res);
 		if (!res.ok) console.log('res not ok');
+
+		// redirect to /thank-you anyways because res is broken. wait for fix by next.js team
+		if (!message) router.push('/thank-you');
+		else router.push('/contact-me/thank-you');
 	};
 
 	return (
@@ -80,15 +95,15 @@ function ContactForm({
 				/>
 				{message && (
 					<textarea
-						placeholder="* הודעה:"
-						name="email"
+						placeholder="הודעה:"
+						name="message"
 						className="focus:outline-none bg-slate-600 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-						required
 					/>
 				)}
 				<button
+					disabled={disableSbtBtn}
 					type="submit"
-					className={`focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-8 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 ${
+					className={`focus:outline-none text-white bg-green-700 hover:bg-green-800 disabled:bg-green-200 hover:disabled:bg-green-200 disabled:cursor-not-allowed focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-8 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 ${
 						message ? 'w-full' : 'max-md:w-full'
 					}`}
 				>

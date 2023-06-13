@@ -25,22 +25,22 @@ const components: PortableTextComponents = {
 	},
 	block: {
 		h1: ({ children }) => (
-			<h1 className="text-3xl md:text-6xl">{children}</h1>
+			<h1 className="text-4xl md:text-7xl">{children}</h1>
 		),
 		h2: ({ children }) => (
-			<h2 className="text-2xl md:text-5xl">{children}</h2>
+			<h2 className="text-3xl md:text-6xl">{children}</h2>
 		),
 		h3: ({ children }) => (
-			<h3 className="text-xl md:text-4xl">{children}</h3>
+			<h3 className="text-2xl md:text-5xl">{children}</h3>
 		),
 		h4: ({ children }) => (
-			<h4 className="text-1xl md:text-3xl">{children}</h4>
+			<h4 className="text-xl md:text-4xl">{children}</h4>
 		),
 		h5: ({ children }) => (
-			<h5 className="text-1xl md:text-2xl">{children}</h5>
+			<h5 className="text-base md:text-3xl">{children}</h5>
 		),
 		blockquote: ({ children }) => (
-			<blockquote className="border-l-purple-500">{children}</blockquote>
+			<blockquote className="border-l-yellow-500">{children}</blockquote>
 		),
 	},
 	list: {

@@ -19,21 +19,31 @@ export async function POST(req: NextRequest) {
 		from: data.email,
 		to: process.env.GMAIL_EMAIL_ADDRESS,
 		subject: 'הודעה חדשה באתר דורון חדד',
-		text: `שם: ${data.name}\yטלפון: ${data.tel}\nאימייל: ${data.email}`,
+		text: `שם: ${data.name}\yטלפון: ${data.tel}\nאימייל: ${data.email}${
+			data.message ? `\nהודעה: ${data.message}` : ''
+		}`,
 		html: `<div style="background: linear-gradient(0deg, rgba(78, 78, 78, 1) 0%, rgba(32, 32, 32, 1) 100%);
 		text-align:center;color:#cec6c6;font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;"
-		dir="rtl"><h1>הודעה חדשה באתר</h1><h2>שם: ${data.name}</h2><h2>טלפון: ${data.tel}</h2><h2>אימייל: ${data.email}</h2></div>`,
+		dir="rtl"><h1>הודעה חדשה באתר</h1><h2>שם: ${data.name}</h2><h2>טלפון: ${
+			data.tel
+		}</h2><h2>אימייל: ${data.email}</h2>${
+			data.message ? `<h2>הודעה: ${data.message}</h2>` : ''
+		}</div>`,
 	};
 
-	const myPromise: Promise<SMTPTransport.SentMessageInfo> = new Promise((myResolve, myReject) => {
-		transporter.sendMail(message, (err, info) => {
-			if (err) {
-				myReject(err);
-			} else {
-				myResolve(info);
-			}
-		});
-	});
+	const myPromise: Promise<SMTPTransport.SentMessageInfo> = new Promise(
+		(resolve, reject) => {
+			transporter.sendMail(message, (err, info) => {
+				if (err) {
+					console.log('rejected. api/mail/route line 37');
+					reject(err);
+				} else {
+					console.log('resolved. api/mail/route line 40');
+					resolve(info);
+				}
+			});
+		}
+	);
 
 	await myPromise.then(
 		(value: SMTPTransport.SentMessageInfo) => {
@@ -45,7 +55,7 @@ export async function POST(req: NextRequest) {
 		},
 		(err: Error) => {
 			console.log('error accurred');
-			console.log({ err });
+			console.log(err);
 
 			return new NextResponse(`Connection refused at ${err.message}`, {
 				status: 404,

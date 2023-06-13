@@ -55,4 +55,5 @@ interface EmailObj {
 	name: string;
 	tel: string;
 	email: string;
+	message?: string;
 }
