@@ -47,20 +47,24 @@ function ContactForm({
 
 	return (
 		<div
-			className={`m-auto bg-slate-600 flex flex-col ${
-				!message && 'lg:flex-row'
+			className={`m-auto flex flex-col ${
+				!message && 'bg-slate-300 dark:bg-slate-600 lg:flex-row'
 			} text-lg justify-around w-full h-full`}
 		>
-			<Link
-				href={`tel:${contact?.mobile}`}
-				className="w-1/2 m-auto text-lime-300"
-				target="_blank"
-				rel="noindex nofollow"
-			>
-				לייעוץ ראשוני התקשרו{' '}
-				<span className="text-white">{contact?.mobile}</span> או
-				השאירו פרטים:
-			</Link>
+			{!message && (
+				<Link
+					href={`tel:${contact?.mobile}`}
+					className="w-1/2 m-auto text-lime-950 dark:text-lime-400"
+					target="_blank"
+					rel="noindex nofollow"
+				>
+					לייעוץ ראשוני התקשרו{' '}
+					<span className="text-cyan-800 dark:text-gray-200 font-bold">
+						{contact?.mobile}
+					</span>{' '}
+					או השאירו פרטים:
+				</Link>
+			)}
 
 			<form
 				action="#"
@@ -73,28 +77,28 @@ function ContactForm({
 					type="text"
 					placeholder="* שם:"
 					name="name"
-					className="focus:outline-none bg-slate-600 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					className="focus:outline-none bg-slate-300 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					required
 				/>
 				<input
 					type="tel"
 					placeholder="* טלפון:"
 					name="tel"
-					className="focus:outline-none bg-slate-600 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					className="focus:outline-none bg-slate-300 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					required
 				/>
 				<input
 					type="email"
 					placeholder="* אימייל:"
 					name="email"
-					className="focus:outline-none bg-slate-600 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+					className="focus:outline-none bg-slate-300 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					required
 				/>
 				{message && (
 					<textarea
 						placeholder="הודעה:"
 						name="message"
-						className="focus:outline-none bg-slate-600 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+						className="focus:outline-none bg-slate-300 placeholder:text-white border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 					/>
 				)}
 				<button

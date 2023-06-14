@@ -1,18 +1,22 @@
 'use client';
 
 export default function GoogleMapsEmbed({
-// 	center,
-// 	zoom = 11,
-// }: {
-// 	center: { lat: number; lng: number };
-// 	zoom?: number;
+	address,
+	width,
+	height,
+}: {
+	address: string;
+	width: number;
+	height: number;
 }) {
 	return (
 		<iframe
-			width="600"
-			height="450"
+			className="m-auto"
+			width={width}
+			height={height}
 			loading="lazy"
-			src="https://www.google.com/maps/embed/v1/place?q=סוקולוב+20,+בני+ברק,+ישראל&key=AIzaSyCQfqPtZh41AuUmZ1HVGKwXHDaeAevUnK8"
+			allowFullScreen
+			src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=AIzaSyCQfqPtZh41AuUmZ1HVGKwXHDaeAevUnK8`}
 		></iframe>
 	);
 }

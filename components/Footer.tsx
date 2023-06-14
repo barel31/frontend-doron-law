@@ -16,8 +16,8 @@ function Footer({
 	contact: ContactInfo;
 }) {
 	return (
-		<footer className="bg-stone-800 w-full min-h-44 bottom-0 text-gray-300">
-			<div className="m-10 flex flex-col md:flex-row lg:w-4/6 justify-around text-lg">
+		<footer className="bg-stone-300 dark:bg-stone-800 w-full min-h-44 bottom-0 text-gray-800 dark:text-gray-300">
+			<div className="m-10 flex flex-col md:flex-row justify-around text-lg">
 				<div>
 					<ul className="flex flex-col max-md:items-start">
 						<h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
@@ -66,6 +66,7 @@ function Footer({
 						)}
 					</div>
 				</div>
+
 				<div className="flex flex-col items-start md:items-center">
 					<h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
 						ניווט באתר

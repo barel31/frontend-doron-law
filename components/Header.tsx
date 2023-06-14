@@ -27,8 +27,10 @@ function Header({
 	const ref = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		if (!mobile) {
+		if (!mobile && !show) {
 			setShow(() => true);
+		}
+		else if (!mobile) {
 			ref.current!.style.height = '2.5rem';
 		} else if (show) {
 			document.body.style.overflow = 'hidden';
@@ -55,7 +57,7 @@ function Header({
 		<header
 			className={`fixed z-50 top-0 w-full min-h-[2.5rem] ${
 				!isTop || (show && mobile)
-					? 'bg-slate-200/90'
+					? 'bg-slate-200/90 dark:bg-slate-600/90'
 					: 'bg-transparent'
 			}`}
 		>
@@ -94,7 +96,7 @@ function Header({
 					{routes.map((route: Route) => (
 						<Link
 							key={route.slug.current}
-							className="text-stone-900 text-xl font-bold"
+							className="dark:text-slate-300 text-xl font-bold"
 							href={`/${route.slug.current}`}
 							onClick={onNavClick}
 						>
@@ -142,11 +144,7 @@ function Header({
 						show && mobile ? 'visible' : 'invisible'
 					}`}
 				>
-					<Image
-						src={Logo}
-						alt="logo"
-						style={{ width: 'auto' }}
-					/>
+					<Image src={Logo} alt="logo" style={{ width: 'auto' }} />
 				</Link>
 			</nav>
 		</header>

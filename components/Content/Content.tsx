@@ -27,23 +27,21 @@ function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
 				</div>
 			)}
 			<div
-				className={`content-header normal-line-height text-center font-sans md:backdrop-blur-sm max-w-full my-20 mx-2 md:mt-28 text-slate-${
+				className={`text-slate-800 dark:text-slate-300 content-header normal-line-height text-center font-sans md:backdrop-blur-sm max-w-full my-20 mx-2 md:mt-28 text-slate-${
 					slug === '/' ? '50' : '800'
 				} m-auto`}
 			>
 				{route?.header && <UsePortableText value={route.header!} />}
 			</div>
 
-			<div className="m-auto bg-slate-50 md:mt-32">
+			<div className="m-auto bg-slate-50 dark:bg-slate-700 md:mt-32">
 				{slug === '/' && (
 					<div className="w-full">
 						<ContactForm contact={contact!} />
 					</div>
 				)}
-				{slug === 'contact-me' && (
-					<ContactMePage contact={contact!} />
-				)}
-				<div className="text-right m-5 md:m-36 text-slate-900 normal-line-height">
+				{slug === 'contact-me' && <ContactMePage contact={contact!} />}
+				<div className="text-right m-5 md:m-36 text-slate-900 dark:text-slate-300 normal-line-height">
 					<UsePortableText value={route?.content} />
 				</div>
 			</div>

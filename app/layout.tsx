@@ -36,7 +36,7 @@ export default async function RootLayout({
 
 	return (
 		<html lang="he" className={assistFont.className} dir="rtl">
-			<body>
+			<body className="bg-slate-50 dark:bg-slate-800">
 				<Header routes={routes} contact={contactInfo} />
 
 				<main>
