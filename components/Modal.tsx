@@ -20,7 +20,7 @@ function Modal({ children }: { children: React.ReactNode }) {
 			id="dialogModal"
 			// open={open}
 			// open
-			className="absolute top-0 mt-32 m-auto p-2 md:p-10 w-[75vw] md:w-[50vw] bg-slate-500 rounded-md text-center transition-all"
+			className="absolute top-0 mt-32 m-auto p-2 md:p-10 w-[75vw] md:w-[50vw] dark:bg-slate-500 rounded-md text-center transition-all"
 		>
 			{children}
 		</dialog>
