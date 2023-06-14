@@ -27,12 +27,7 @@ function Header({
 	const ref = useRef<HTMLElement>(null);
 
 	useEffect(() => {
-		if (!mobile && !show) {
-			setShow(() => true);
-		}
-		else if (!mobile) {
-			ref.current!.style.height = '2.5rem';
-		} else if (show) {
+		if (show && mobile) {
 			document.body.style.overflow = 'hidden';
 			ref.current!.style.height = ref.current!.scrollHeight + 80 + 'px';
 		} else {
@@ -90,7 +85,7 @@ function Header({
 				</button>
 				<div
 					className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 ${
-						show ? 'visible' : 'invisible'
+						(mobile && show) || !mobile ? 'visible' : 'invisible'
 					}`}
 				>
 					{routes.map((route: Route) => (
@@ -107,7 +102,7 @@ function Header({
 
 				<div
 					className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] ${
-						show ? 'visible' : 'invisible'
+						(mobile && show) || !mobile ? 'visible' : 'invisible'
 					}`}
 				>
 					<Link
