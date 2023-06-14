@@ -1,16 +1,14 @@
+import Image from 'next/image';
 import UsePortableText from './UseRichText';
 import ContactForm from '../ContactForm';
 import AccordionQA from '../Accordion/Accordion';
-import Image from 'next/image';
 import { urlFor } from '@/client';
+import ContactMePage from '../ContactMePage';
 
-function Content({
-	route,
-	contactInfo,
-}: {
-	route: Route;
-	contactInfo?: ContactInfo;
-}) {
+
+function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
+	const slug = route?.slug?.current;
+
 	return (
 		<div className="content m-auto text-center z-10">
 			{route?.image && (
@@ -30,18 +28,20 @@ function Content({
 			)}
 			<div
 				className={`content-header normal-line-height text-center font-sans md:backdrop-blur-sm max-w-full my-20 mx-2 md:mt-28 text-slate-${
-					route?.slug?.current === '/' ? '50' : '800'
+					slug === '/' ? '50' : '800'
 				} m-auto`}
 			>
 				{route?.header && <UsePortableText value={route.header!} />}
 			</div>
 
 			<div className="m-auto bg-slate-50 md:mt-32">
-				{route?.slug?.current === '/' && (
-					<ContactForm contactInfo={contactInfo!} />
+				{slug === '/' && (
+					<div className="w-full">
+						<ContactForm contact={contact!} />
+					</div>
 				)}
-				{route?.slug?.current === 'contact-me' && (
-					<ContactForm contactInfo={contactInfo!} message={true} />
+				{slug === 'contact-me' && (
+					<ContactMePage contact={contact!} />
 				)}
 				<div className="text-right m-5 md:m-36 text-slate-900 normal-line-height">
 					<UsePortableText value={route?.content} />

@@ -4,14 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-// todo added modal dialog message for sending an email
-// todo added message input
-
 function ContactForm({
-	contactInfo,
+	contact,
 	message = false,
 }: {
-	contactInfo: ContactInfo;
+	contact: ContactInfo;
 	message?: boolean;
 }) {
 	const router = useRouter();
@@ -51,17 +48,17 @@ function ContactForm({
 	return (
 		<div
 			className={`m-auto bg-slate-600 flex flex-col ${
-				message ? 'w-[50%]' : 'lg:flex-row'
-			} text-lg justify-around`}
+				!message && 'lg:flex-row'
+			} text-lg justify-around w-full h-full`}
 		>
 			<Link
-				href={`tel:${contactInfo.mobile}`}
+				href={`tel:${contact?.mobile}`}
 				className="w-1/2 m-auto text-lime-300"
 				target="_blank"
 				rel="noindex nofollow"
 			>
 				לייעוץ ראשוני התקשרו{' '}
-				<span className="text-white">{contactInfo.mobile}</span> או
+				<span className="text-white">{contact?.mobile}</span> או
 				השאירו פרטים:
 			</Link>
 

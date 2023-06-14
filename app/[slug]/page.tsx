@@ -13,13 +13,13 @@ export default async function IndexPage({
 	const { slug } = params;
 
 	const route = await getRoute(slug);
-	const contactInfo = await getContactInfo;
+	const contact = await getContactInfo;
 
 	return (
 		<div
 			className={`page-content page-content-${slug} text-slate-950 text-center`}
 		>
-			<Content route={route} contactInfo={contactInfo} />
+			<Content route={route} contact={contact} />
 		</div>
 	);
 }
