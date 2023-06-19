@@ -10,7 +10,7 @@ function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
 	const slug = route?.slug?.current;
 
 	return (
-		<div className="content m-auto text-center z-10">
+		<div className="content m-auto text-center">
 			{route?.image && (
 				<div
 					className={`background-image background-image-home w-full text-center -z-10 top-0 absolute

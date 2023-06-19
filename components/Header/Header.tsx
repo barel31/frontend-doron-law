@@ -11,7 +11,6 @@ import { BsFacebook, BsLinkedin } from 'react-icons/bs';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { FaPhoneSquareAlt, FaMoon, FaSun } from 'react-icons/fa';
 
-import ScrollLine from './ScrollLine';
 import useGetWidth from '@/hooks/useGetWidth';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 
@@ -38,7 +37,7 @@ function Header({
 			ref.current!.style.height = ref.current!.scrollHeight + 80 + 'px';
 		} else {
 			document.body.style.overflow = 'visible';
-			ref.current!.style.height = '2.5rem';
+			ref.current!.style.height = '3rem';
 		}
 
 		const clickListener = (e: MouseEvent) => {
@@ -60,20 +59,19 @@ function Header({
 
 	return (
 		<header
-			className={`fixed z-50 top-0 w-full min-h-[2.5rem] ${
+			className={`fixed z-10 top-0 w-full min-h-[3rem] ${
 				!isTop || (show && mobile)
 					? 'bg-slate-200/90 dark:bg-slate-600/90'
 					: 'bg-transparent'
 			}`}
 		>
-			<ScrollLine />
 			<nav
 				ref={ref}
-				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-3 md:my-3 transition-[height] h-[2.5rem]"
+				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-3 md:my-3 transition-[height] h-[3rem]"
 			>
 				<Link
 					href="/"
-					className={`relative min-w-[20%] self-start ${
+					className={`relative min-w-[20%] self-center ${
 						mobile && show && 'hidden'
 					}`}
 				>

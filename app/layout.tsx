@@ -2,9 +2,10 @@ import './globals.css';
 import { Assistant } from 'next/font/google';
 
 import { getContactInfo, getRoutes } from '@/client';
-import Header from '@/components/Header';
+import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer';
-import  ThemeProvider  from '@/components/ThemeProvider';
+import ThemeProvider from '@/components/ThemeProvider';
+import ScrollLine from '@/components/ScrollLine';
 
 const assistFont = Assistant({
 	subsets: ['latin'],
@@ -44,6 +45,7 @@ export default async function RootLayout({
 		>
 			<body className="bg-slate-50 dark:bg-slate-800">
 				<ThemeProvider>
+					<ScrollLine />
 					<Header routes={routes} contact={contactInfo} />
 
 					<main>

@@ -14,7 +14,7 @@ function ScrollLine() {
 
 	return (
 		<div
-			className="w-10 h-2 bg-slate-800 transition-all duration-0"
+			className="bg-slate-400 dark:bg-slate-800 fixed top-0 h-2 transition-all duration-0 z-20"
 			ref={ref}
 		/>
 	);
