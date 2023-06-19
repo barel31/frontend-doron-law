@@ -1,9 +1,10 @@
 import './globals.css';
-import { getContactInfo, getRoutes } from '@/client';
+import { Assistant } from 'next/font/google';
 
+import { getContactInfo, getRoutes } from '@/client';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Assistant } from 'next/font/google';
+import  ThemeProvider  from '@/components/ThemeProvider';
 
 const assistFont = Assistant({
 	subsets: ['latin'],
@@ -35,16 +36,23 @@ export default async function RootLayout({
 	}
 
 	return (
-		<html lang="he" className={assistFont.className} dir="rtl">
+		<html
+			lang="he"
+			className={assistFont.className}
+			dir="rtl"
+			suppressHydrationWarning
+		>
 			<body className="bg-slate-50 dark:bg-slate-800">
-				<Header routes={routes} contact={contactInfo} />
+				<ThemeProvider>
+					<Header routes={routes} contact={contactInfo} />
 
-				<main>
-					{children}
-					{tyModal}
-				</main>
+					<main>
+						{children}
+						{tyModal}
+					</main>
 
-				<Footer routes={routes} contact={contactInfo} />
+					<Footer routes={routes} contact={contactInfo} />
+				</ThemeProvider>
 			</body>
 		</html>
 	);

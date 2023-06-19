@@ -1,13 +1,17 @@
 'use client';
 
+import './Header.css';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
+
+import Logo from '@/public/logo.webp';
 import { BsFacebook, BsLinkedin } from 'react-icons/bs';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { FaPhoneSquareAlt, FaMoon, FaSun } from 'react-icons/fa';
+
 import ScrollLine from './ScrollLine';
-import Logo from '@/public/logo.webp';
-import IconPhone from '@/public/assets/icon-phone.webp';
 import useGetWidth from '@/hooks/useGetWidth';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 
@@ -18,6 +22,8 @@ function Header({
 	routes: Route[];
 	contact: ContactInfo;
 }) {
+	const { theme, setTheme } = useTheme();
+
 	const isTop = useIsScrollTop();
 	const width = useGetWidth();
 	const mobile = width <= 768;
@@ -48,6 +54,10 @@ function Header({
 	const showNavBar = () => setShow(() => !show);
 	const onNavClick = () => setShow(() => false);
 
+	const handleTheme = () => {
+		setTheme(theme === 'dark' ? 'light' : 'dark');
+	};
+
 	return (
 		<header
 			className={`fixed z-50 top-0 w-full min-h-[2.5rem] ${
@@ -59,7 +69,7 @@ function Header({
 			<ScrollLine />
 			<nav
 				ref={ref}
-				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-3 md:my-3 transition-all h-[2.5rem]"
+				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-3 md:my-3 transition-[height] h-[2.5rem]"
 			>
 				<Link
 					href="/"
@@ -123,13 +133,31 @@ function Header({
 						href={`tel:${contact.phone}`}
 						target="_blank"
 						rel="noindex nofollow"
-						className="flex flex-row items-center justify-around text-stone-900 whitespace-nowrap"
+						className="flex flex-row items-center justify-around whitespace-nowrap"
 					>
-						<Image src={IconPhone} alt="icon-phone" sizes="45" />
+						<FaPhoneSquareAlt size="45" className="rounded-full" />
 						<span className="font-bold m-1 max-lg:hidden">
 							{contact.phone}
 						</span>
 					</Link>
+
+					<div
+						className={`theme-toggle self-center ${
+							show || !mobile ? 'visible' : 'invisible'
+						}`}
+					>
+						<input
+							type="checkbox"
+							className="checkbox"
+							id="checkbox"
+							onClick={handleTheme}
+						/>
+						<label htmlFor="checkbox" className="checkbox-label">
+							<FaMoon className="fas fa-moon" />
+							<FaSun className="fas fa-sun" />
+							<span className="ball" />
+						</label>
+					</div>
 				</div>
 
 				<Link
@@ -139,7 +167,7 @@ function Header({
 						show && mobile ? 'visible' : 'invisible'
 					}`}
 				>
-					<Image src={Logo} alt="logo" style={{ width: 'auto' }} />
+					<Image src={Logo} alt="logo" className="w-2/3" />
 				</Link>
 			</nav>
 		</header>
