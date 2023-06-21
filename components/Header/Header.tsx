@@ -1,15 +1,14 @@
 'use client';
 
-import './Header.css';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
+import Theme from './Theme';
 
 import Logo from '@/public/logo.webp';
 import { BsFacebook, BsLinkedin } from 'react-icons/bs';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { FaPhoneSquareAlt, FaMoon, FaSun } from 'react-icons/fa';
+import { FaPhoneSquareAlt } from 'react-icons/fa';
 
 import useGetWidth from '@/hooks/useGetWidth';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
@@ -21,8 +20,6 @@ function Header({
 	routes: Route[];
 	contact: ContactInfo;
 }) {
-	const { theme, setTheme } = useTheme();
-
 	const isTop = useIsScrollTop();
 	const width = useGetWidth();
 	const mobile = width <= 768;
@@ -52,10 +49,6 @@ function Header({
 
 	const showNavBar = () => setShow(() => !show);
 	const onNavClick = () => setShow(() => false);
-
-	const handleTheme = () => {
-		setTheme(theme === 'dark' ? 'light' : 'dark');
-	};
 
 	return (
 		<header
@@ -139,23 +132,7 @@ function Header({
 						</span>
 					</Link>
 
-					<div
-						className={`theme-toggle self-center ${
-							show || !mobile ? 'visible' : 'invisible'
-						}`}
-					>
-						<input
-							type="checkbox"
-							className="checkbox"
-							id="checkbox"
-							onClick={handleTheme}
-						/>
-						<label htmlFor="checkbox" className="checkbox-label">
-							<FaMoon className="fas fa-moon" />
-							<FaSun className="fas fa-sun" />
-							<span className="ball" />
-						</label>
-					</div>
+					<Theme show={show} mobile={mobile} />
 				</div>
 
 				<Link
