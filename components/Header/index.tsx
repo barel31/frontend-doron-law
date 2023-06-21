@@ -112,20 +112,20 @@ function Header({
 						(mobile && show) || !mobile ? 'visible' : 'invisible'
 					}`}
 				>
-					<a
+					<Link
 						href={contact.facebook}
 						target="_blank"
 						rel="noindex nofollow"
 					>
 						<BsFacebook size={45} className="rounded-full" />
-					</a>
-					<a
+					</Link>
+					<Link
 						href={contact.linkedin}
 						target="_blank"
 						rel="noindex nofollow"
 					>
 						<BsLinkedin size={45} className="rounded-full" />
-					</a>
+					</Link>
 					<a
 						href={`tel:${contact.phone}`}
 						target="_blank"
