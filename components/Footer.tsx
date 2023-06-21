@@ -48,23 +48,23 @@ function Footer({
 					</ul>
 					<div className="flex gap-2 items-baseline mt-5">
 						{contact.facebook && (
-							<Link
+							<a
 								href={contact.facebook}
 								target="_blank"
 								rel="noindex nofollow"
 							>
 								<FaFacebookSquare size={35} />
-							</Link>
+							</a>
 						)}
 
 						{contact.linkedin && (
-							<Link
+							<a
 								href={contact.linkedin}
 								target="_blank"
 								rel="noindex nofollow"
 							>
 								<FaLinkedin size={35} />
-							</Link>
+							</a>
 						)}
 					</div>
 				</div>
