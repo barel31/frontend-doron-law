@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import ContactForm from './ContactForm';
-import GoogleMapsEmbed from './GoogleMapsEmbed';
+import ContactForm from '../ContactForm';
+import GoogleMapsEmbed from '../GoogleMapsEmbed';
 import MapLocation from '@/public/assets/map-location.webp';
 import Email from '@/public/assets/email.webp';
 import Phone from '@/public/assets/phone.webp';

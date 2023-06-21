@@ -2,7 +2,7 @@ import './globals.css';
 import { Assistant } from 'next/font/google';
 
 import { getContactInfo, getRoutes } from '@/client';
-import Header from '@/components/Header/Header';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
 import ScrollLine from '@/components/ScrollLine';

@@ -24,7 +24,7 @@ function Theme({ show, mobile }: { show: boolean; mobile: boolean }) {
 			>
 				<FaSun className="text-[#f39c12]" />
 				<FaMoon className="text-[#f1c40f]" />
-				<span className="bg-slate-500 dark:bg-slate-300 w-[22px] h-[22px] absolute left-[2px] top-[2px] rounded-full transition-transform duration-200 ease-linear dark:translate-x-[24px]" />
+				<span className="dark:bg-slate-600 bg-slate-300 w-[22px] h-[22px] absolute left-[2px] top-[2px] rounded-full transition-transform duration-200 ease-linear dark:translate-x-[24px]" />
 			</label>
 		</div>
 	);

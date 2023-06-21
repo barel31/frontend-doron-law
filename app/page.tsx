@@ -1,5 +1,5 @@
 import { getContactInfo, getRoute } from '@/client';
-import Content from '@/components/Content/Content';
+import Content from '@/components/Content';
 
 export default async function Home() {
 	const contact = await getContactInfo;

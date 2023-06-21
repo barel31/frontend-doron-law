@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import UsePortableText from './UseRichText';
 import ContactForm from '../ContactForm';
-import AccordionQA from '../Accordion/Accordion';
+import AccordionQA from '../Accordion';
 import { urlFor } from '@/client';
-import ContactMePage from '../ContactMePage';
+import ContactMePage from './ContactMePage';
 
 
 function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {

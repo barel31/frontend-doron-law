@@ -1,5 +1,5 @@
 import { getContactInfo, getRoute, getRoutes } from '@/client';
-import Content from '@/components/Content/Content';
+import Content from '@/components/Content';
 
 // todo route [tag]/[slag]/page.tsx
 
