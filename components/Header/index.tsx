@@ -65,7 +65,7 @@ function Header({
 			>
 				<Link
 					href="/"
-					className={`relative min-w-[20%] self-center ${
+					className={`relative min-w-[20%] ${
 						mobile && show && 'hidden'
 					}`}
 				>
@@ -78,7 +78,7 @@ function Header({
 					/>
 				</Link>
 				<button
-					className="flex self-start show-navbar md:hidden order-1"
+					className="relative top-3 flex self-start show-navbar md:hidden order-1"
 					onClick={showNavBar}
 					title="Navigation"
 					type="button"
