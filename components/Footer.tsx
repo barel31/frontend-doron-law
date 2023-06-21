@@ -15,6 +15,8 @@ function Footer({
 	routes: Route[];
 	contact: ContactInfo;
 }) {
+	const year = new Date().getFullYear();
+
 	return (
 		<footer className="bg-stone-300 dark:bg-stone-800 w-full min-h-44 bottom-0 text-gray-800 dark:text-gray-300">
 			<div className="m-10 flex flex-col md:flex-row justify-around text-lg">
@@ -84,7 +86,10 @@ function Footer({
 			</div>
 
 			<div className="text-center p-10">
-				<p>All rights reserved {contact.nameEnglish} ©</p>
+				<p>
+					Copyright © {year} - All right reserved by{' '}
+					{contact.nameEnglish}
+				</p>
 				<p>
 					Build by{' '}
 					<Link
