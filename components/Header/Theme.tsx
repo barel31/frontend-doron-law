@@ -20,11 +20,11 @@ function Theme({ show, mobile }: { show: boolean; mobile: boolean }) {
 			/>
 			<label
 				htmlFor="checkbox"
-				className="relative bg-slate-400 dark:bg-slate-800 w-[50px] h-[26px] rounded-full p-[5px] cursor-pointer flex justify-between items-center"
+				className="relative bg-slate-300 dark:bg-slate-700 w-[50px] h-[26px] rounded-full p-[5px] cursor-pointer flex justify-between items-center"
 			>
 				<FaSun className="text-[#f39c12]" />
 				<FaMoon className="text-[#f1c40f]" />
-				<span className="dark:bg-slate-600 bg-slate-300 w-[22px] h-[22px] absolute left-[2px] top-[2px] rounded-full transition-transform duration-200 ease-linear dark:translate-x-[24px]" />
+				<span className="bg-slate-200 dark:bg-slate-600 w-[22px] h-[22px] absolute left-[2px] top-[2px] rounded-full transition-transform duration-200 ease-linear dark:translate-x-[24px]" />
 			</label>
 		</div>
 	);

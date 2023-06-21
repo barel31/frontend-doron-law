@@ -12,6 +12,7 @@ import { FaPhoneSquareAlt } from 'react-icons/fa';
 
 import useGetWidth from '@/hooks/useGetWidth';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
+import { useParams } from 'next/navigation';
 
 function Header({
 	routes,
@@ -25,8 +26,8 @@ function Header({
 	const mobile = width <= 768;
 
 	const [show, setShow] = useState(false);
-
 	const ref = useRef<HTMLElement>(null);
+	const params = useParams();
 
 	useEffect(() => {
 		if (show && mobile) {
@@ -92,7 +93,12 @@ function Header({
 					{routes.map((route: Route) => (
 						<Link
 							key={route.slug.current}
-							className="dark:text-slate-300 text-xl font-bold"
+							className={`text-slate-800 dark:text-slate-200 text-xl font-bold transition-all px-2 py-1 rounded-md ${
+								params.slug === route.slug.current ||
+								(!params.slug && route.slug.current === '/')
+									? 'bg-slate-300 dark:bg-slate-500 shadow-md'
+									: 'hover:overline hover:scale-105'
+							}`}
 							href={`/${route.slug.current}`}
 							onClick={onNavClick}
 						>
