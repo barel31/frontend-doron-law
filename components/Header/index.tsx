@@ -93,7 +93,7 @@ function Header({
 					{routes.map((route: Route) => (
 						<Link
 							key={route.slug.current}
-							className={`text-slate-800 dark:text-slate-200 text-xl font-bold transition-all px-2 py-1 rounded-md ${
+							className={`text-slate-800 dark:text-slate-200 text-xl font-bold transition-colors px-2 py-1 rounded-md ${
 								params.slug === route.slug.current ||
 								(!params.slug && route.slug.current === '/')
 									? 'bg-slate-300 dark:bg-slate-500 shadow-md'
