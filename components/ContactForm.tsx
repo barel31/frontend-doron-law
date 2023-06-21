@@ -52,18 +52,16 @@ function ContactForm({
 			}  placeholder:text-slate-950text-lg 5ustify-around w-full h-full`}
 		>
 			{!message && (
-				<Link
+				<a
 					href={`tel:${contact?.mobile}`}
 					className="w-1/2 m-auto text-gray-950 dark:text-lime-400 font-bold text-xl"
-					target="_blank"
-					rel="noindex nofollow"
 				>
 					לייעוץ ראשוני התקשרו{' '}
 					<span className="text-cyan-800 dark:text-gray-200 font-bold">
 						{contact?.mobile}
 					</span>{' '}
 					או השאירו פרטים:
-				</Link>
+				</a>
 			)}
 
 			<form

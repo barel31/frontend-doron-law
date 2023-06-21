@@ -38,7 +38,7 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 							<span>{contact?.address}</span>
 						</div>
 
-						<Link
+						<a
 							href={`tel:${contact?.mobile}`}
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
 						>
@@ -49,21 +49,21 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 								color="white"
 							/>
 							<span>{contact?.mobile}</span>
-						</Link>
-						<Link
+						</a>
+						<a
 							href={`mailto:${contact?.email}`}
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
 						>
 							<Image src={Email} alt="email" width={50} />
 							<span>{contact?.email}</span>
-						</Link>
-						<Link
+						</a>
+						<a
 							href={`tel:${contact?.phone}`}
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
 						>
 							<Image src={Telephone} alt="telephone" width={50} />
 							<span>{contact?.phone}</span>
-						</Link>
+						</a>
 					</div>
 				</div>
 			</div>
