@@ -1,11 +1,12 @@
 import {
-	FaMobileAlt,
-	FaPrint,
-	FaFacebookSquare,
-	FaLinkedin,
-} from 'react-icons/fa';
-import { AiFillPhone, AiOutlineMail } from 'react-icons/ai';
-import { BsFillPersonVcardFill } from 'react-icons/bs';
+	BiLinkedin,
+	Fa6SolidAddressCard,
+	IcBaselinePhoneEnabled,
+	IcOutlineLocalPrintshop,
+	MaterialSymbolsMailOutline,
+	OcticonDeviceMobile,
+	UiwFacebook,
+} from '@/utils/icons';
 import Link from 'next/link';
 
 function Footer({
@@ -26,23 +27,23 @@ function Footer({
 							יצירת קשר
 						</h4>
 						<li className="flex items-center justify-start">
-							<FaMobileAlt />
+							<OcticonDeviceMobile className="w-4" />
 							<span className="mr-5">נייד: {contact.mobile}</span>
 						</li>
 						<li className="flex items-center justify-start">
-							<AiFillPhone />
+							<IcBaselinePhoneEnabled className="w-4" />
 							<span className="mr-5">טל: {contact.phone}</span>
 						</li>
 						<li className="flex items-center justify-start">
-							<FaPrint />
+							<IcOutlineLocalPrintshop className="w-4" />
 							<span className="mr-5">פקס: {contact.fax}</span>
 						</li>
 						<li className="flex items-center justify-start">
-							<AiOutlineMail />
+							<MaterialSymbolsMailOutline className="w-4" />
 							<span className="mr-5">{contact.email}</span>
 						</li>
 						<li className="flex items-center justify-start">
-							<BsFillPersonVcardFill />
+							<Fa6SolidAddressCard className="w-4" />
 							<span className="mr-5">{contact.address}</span>
 						</li>
 					</ul>
@@ -53,7 +54,7 @@ function Footer({
 								target="_blank"
 								rel="noindex nofollow"
 							>
-								<FaFacebookSquare size={35} />
+								<UiwFacebook className="w-[35px]" />
 							</a>
 						)}
 
@@ -63,7 +64,7 @@ function Footer({
 								target="_blank"
 								rel="noindex nofollow"
 							>
-								<FaLinkedin size={35} />
+								<BiLinkedin className="w-[35px]" />
 							</a>
 						)}
 					</div>

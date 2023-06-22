@@ -6,13 +6,16 @@ import Link from 'next/link';
 import Theme from './Theme';
 
 import Logo from '@/public/logo.webp';
-import { BsFacebook, BsLinkedin } from 'react-icons/bs';
-import { RxHamburgerMenu } from 'react-icons/rx';
-import { FaPhoneSquareAlt } from 'react-icons/fa';
 
 import useGetWidth from '@/hooks/useGetWidth';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 import { useParams } from 'next/navigation';
+import {
+	BiLinkedin,
+	ElPhoneAlt,
+	BiFacebook,
+	SolarHamburgerMenuBold,
+} from '@/utils/icons';
 
 function Header({
 	routes,
@@ -78,12 +81,12 @@ function Header({
 					/>
 				</Link>
 				<button
-					className="relative top-3 flex self-start show-navbar md:hidden order-1"
+					className="flex self-start show-navbar md:hidden order-1"
 					onClick={showNavBar}
 					title="Navigation"
 					type="button"
 				>
-					<RxHamburgerMenu />
+					<SolarHamburgerMenuBold className="w-10" />
 				</button>
 				<div
 					className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 ${
@@ -117,14 +120,14 @@ function Header({
 						target="_blank"
 						rel="noindex nofollow"
 					>
-						<BsFacebook size={45} className="rounded-full" />
+						<BiFacebook className="w-[45px] rounded-full" />
 					</Link>
 					<Link
 						href={contact.linkedin}
 						target="_blank"
 						rel="noindex nofollow"
 					>
-						<BsLinkedin size={45} className="rounded-full" />
+						<BiLinkedin className="w-[45px] rounded-full" />
 					</Link>
 					<a
 						href={`tel:${contact.phone}`}
@@ -132,7 +135,7 @@ function Header({
 						rel="noindex nofollow"
 						className="flex flex-row items-center justify-around whitespace-nowrap"
 					>
-						<FaPhoneSquareAlt size="45" className="rounded-full" />
+						<ElPhoneAlt className="w-[45px]" />
 						<span className="font-bold m-1 max-lg:hidden">
 							{contact.phone}
 						</span>

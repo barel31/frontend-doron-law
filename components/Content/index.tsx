@@ -5,17 +5,13 @@ import AccordionQA from '../Accordion';
 import { urlFor } from '@/client';
 import ContactMePage from './ContactMePage';
 
-
 function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
 	const slug = route?.slug?.current;
 
 	return (
 		<div className="content m-auto text-center">
 			{route?.image && (
-				<div
-					className={`background-image background-image-home w-full text-center -z-10 top-0 absolute
-					 overflow-hidden min-h-[900px]`}
-				>
+				<div className="background-image background-image-home w-full text-center -z-10 top-0 absolute overflow-hidden min-h-[900px]">
 					<Image
 						src={urlFor(route.image).url()}
 						alt="Office image"
@@ -35,12 +31,16 @@ function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
 			</div>
 
 			<div className="m-auto bg-slate-50 dark:bg-slate-700 md:mt-32">
-				{slug === '/' && (
+				{slug === '/' ? (
 					<div className="w-full">
 						<ContactForm contact={contact!} />
 					</div>
+				) : (
+					slug === 'contact-me' && (
+						<ContactMePage contact={contact!} />
+					)
 				)}
-				{slug === 'contact-me' && <ContactMePage contact={contact!} />}
+
 				<div className="text-right m-5 md:m-36 text-slate-900 dark:text-slate-300 normal-line-height">
 					<UsePortableText value={route?.content} />
 				</div>
