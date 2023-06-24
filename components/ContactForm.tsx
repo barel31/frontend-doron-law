@@ -55,6 +55,7 @@ function ContactForm({
 				<a
 					href={`tel:${contact?.mobile}`}
 					className="w-1/2 m-auto text-gray-950 dark:text-lime-400 font-bold text-xl"
+					title='צור קשר'
 				>
 					לייעוץ ראשוני התקשרו{' '}
 					<span className="text-cyan-800 dark:text-gray-200 font-bold">

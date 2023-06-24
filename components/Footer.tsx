@@ -9,6 +9,8 @@ import {
 } from '@/utils/icons';
 import Link from 'next/link';
 
+const year = new Date().getFullYear();
+
 function Footer({
 	routes,
 	contact,
@@ -16,8 +18,6 @@ function Footer({
 	routes: Route[];
 	contact: ContactInfo;
 }) {
-	const year = new Date().getFullYear();
-
 	return (
 		<footer className="bg-stone-300 dark:bg-stone-800 w-full min-h-44 bottom-0 text-gray-800 dark:text-gray-300">
 			<div className="m-10 flex flex-col md:flex-row justify-around text-lg">
@@ -49,23 +49,25 @@ function Footer({
 					</ul>
 					<div className="flex gap-2 items-baseline mt-5">
 						{contact.facebook && (
-							<a
+							<Link
 								href={contact.facebook}
 								target="_blank"
 								rel="noindex nofollow"
+								title="Facebook"
 							>
 								<UiwFacebook className="w-[35px]" />
-							</a>
+							</Link>
 						)}
 
 						{contact.linkedin && (
-							<a
+							<Link
 								href={contact.linkedin}
 								target="_blank"
 								rel="noindex nofollow"
+								title="Linkedin"
 							>
 								<BiLinkedin className="w-[35px]" />
-							</a>
+							</Link>
 						)}
 					</div>
 				</div>
@@ -78,7 +80,8 @@ function Footer({
 						<Link
 							key={route.slug.current}
 							href={route.slug.current}
-							className="flex items-center justify-start hover:text-lime-200"
+							className="flex items-center justify-start hover:font-bold"
+							title={route.name}
 						>
 							{route.name}
 						</Link>
@@ -97,6 +100,7 @@ function Footer({
 						href="https://www.linkedin.com/in/barel-shraga/"
 						target="_blank"
 						rel="noindex nofollow"
+						title="barel31 linkedin"
 					>
 						barel31
 					</Link>

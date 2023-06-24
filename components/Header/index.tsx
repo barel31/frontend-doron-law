@@ -71,6 +71,7 @@ function Header({
 					className={`relative min-w-[20%] ${
 						mobile && show && 'hidden'
 					}`}
+					title="בית"
 				>
 					<Image
 						src={Logo}
@@ -104,6 +105,7 @@ function Header({
 							}`}
 							href={`/${route.slug.current}`}
 							onClick={onNavClick}
+							title={route.name}
 						>
 							{route.name}
 						</Link>
@@ -119,6 +121,7 @@ function Header({
 						href={contact.facebook}
 						target="_blank"
 						rel="noindex nofollow"
+						title="Facebook"
 					>
 						<BiFacebook className="w-[45px] rounded-full" />
 					</Link>
@@ -126,6 +129,7 @@ function Header({
 						href={contact.linkedin}
 						target="_blank"
 						rel="noindex nofollow"
+						title="Linkedin"
 					>
 						<BiLinkedin className="w-[45px] rounded-full" />
 					</Link>
@@ -134,6 +138,7 @@ function Header({
 						target="_blank"
 						rel="noindex nofollow"
 						className="flex flex-row items-center justify-around whitespace-nowrap"
+						title="טלפון"
 					>
 						<ElPhoneAlt className="w-[45px]" />
 						<span className="font-bold m-1 max-lg:hidden">
@@ -150,6 +155,7 @@ function Header({
 					className={`absolute bottom-1 right-1 md:self-center ${
 						show && mobile ? 'visible' : 'invisible'
 					}`}
+					title="תפריט"
 				>
 					<Image src={Logo} alt="logo" className="w-2/3" />
 				</Link>

@@ -7,6 +7,7 @@ export default function NotFound() {
 			<Link
 				className="m-2 bg-neutral-500 hover:bg-neutral-700 text-white font-bold py-2 px-4 border border-neutral-700 rounded"
 				href={'/'}
+				title='בית'
 			>
 				חזור לדף הבית
 			</Link>

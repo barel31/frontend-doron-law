@@ -8,7 +8,6 @@ import Email from '@/public/assets/email.webp';
 import Phone from '@/public/assets/phone.webp';
 import Telephone from '@/public/assets/telephone.webp';
 import useGetWidth from '@/hooks/useGetWidth';
-import Link from 'next/link';
 
 function ContactMePage({ contact }: { contact: ContactInfo }) {
 	const width = useGetWidth();
@@ -41,6 +40,7 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 						<a
 							href={`tel:${contact?.mobile}`}
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
+							title="טלפון נייד"
 						>
 							<Image
 								src={Phone}
@@ -53,6 +53,7 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 						<a
 							href={`mailto:${contact?.email}`}
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
+							title="אימייל"
 						>
 							<Image src={Email} alt="email" width={50} />
 							<span>{contact?.email}</span>
@@ -60,6 +61,7 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 						<a
 							href={`tel:${contact?.phone}`}
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
+							title="טלפון"
 						>
 							<Image src={Telephone} alt="telephone" width={50} />
 							<span>{contact?.phone}</span>

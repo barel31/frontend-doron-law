@@ -12,11 +12,13 @@ const components: PortableTextComponents = {
 			const target = (value?.href || '').startsWith('http')
 				? '_blank'
 				: undefined;
+
 			return (
 				<Link
 					href={value?.href}
 					target={target}
 					rel={target === '_blank' ? 'noindex nofollow' : ''}
+					title={children as string}
 				>
 					{children}
 				</Link>
