@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Theme from './Theme';
 
-import Logo from '@/public/logo.webp';
+import Logo from '@/public/assets/logo.webp';
 
 import useGetWidth from '@/hooks/useGetWidth';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
@@ -77,8 +77,9 @@ function Header({
 						src={Logo}
 						alt="logo"
 						priority
-						width={200}
-						height={200}
+						width={150}
+						height={150}
+						className="bg-slate-100 bg-opacity-40"
 					/>
 				</Link>
 				<button
@@ -157,7 +158,11 @@ function Header({
 					}`}
 					title="תפריט"
 				>
-					<Image src={Logo} alt="logo" className="w-2/3" />
+					<Image
+						src={Logo}
+						alt="logo"
+						className="w-2/3 bg-slate-100 bg-opacity-40"
+					/>
 				</Link>
 			</nav>
 		</header>
