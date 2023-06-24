@@ -1,13 +1,14 @@
 'use client';
 
-import Image from 'next/image';
 import ContactForm from '../ContactForm';
 import GoogleMapsEmbed from '../GoogleMapsEmbed';
-import MapLocation from '@/public/assets/map-location.webp';
-import Email from '@/public/assets/email.webp';
-import Phone from '@/public/assets/phone.webp';
-import Telephone from '@/public/assets/telephone.webp';
 import useGetWidth from '@/hooks/useGetWidth';
+import {
+	Fa6SolidAddressCard,
+	IcBaselinePhoneEnabled,
+	MaterialSymbolsMailOutline,
+	OcticonDeviceMobile,
+} from '@/utils/icons';
 
 function ContactMePage({ contact }: { contact: ContactInfo }) {
 	const width = useGetWidth();
@@ -29,25 +30,15 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 				<div className="bg-slate-300">
 					<div className="grid grid-cols-2 grid-rows-2 gap-[1px]">
 						<div className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52">
-							<Image
-								src={MapLocation}
-								alt="location"
-								width={50}
-							/>
+							<Fa6SolidAddressCard className="w-12" />
 							<span>{contact?.address}</span>
 						</div>
-
 						<a
 							href={`tel:${contact?.mobile}`}
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
 							title="טלפון נייד"
 						>
-							<Image
-								src={Phone}
-								alt="phone"
-								width={50}
-								color="white"
-							/>
+							<OcticonDeviceMobile className="w-10" />
 							<span>{contact?.mobile}</span>
 						</a>
 						<a
@@ -55,7 +46,7 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
 							title="אימייל"
 						>
-							<Image src={Email} alt="email" width={50} />
+							<MaterialSymbolsMailOutline className="w-12" />
 							<span>{contact?.email}</span>
 						</a>
 						<a
@@ -63,7 +54,7 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 							className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-10 flex flex-col items-center justify-center min-w-52 min-h-52"
 							title="טלפון"
 						>
-							<Image src={Telephone} alt="telephone" width={50} />
+							<IcBaselinePhoneEnabled className="w-12" />
 							<span>{contact?.phone}</span>
 						</a>
 					</div>

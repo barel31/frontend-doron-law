@@ -27,7 +27,7 @@ function Footer({
 							יצירת קשר
 						</h4>
 						<li className="flex items-center justify-start">
-							<OcticonDeviceMobile className="w-4" />
+							<OcticonDeviceMobile className="w-3" />
 							<span className="mr-5">נייד: {contact.mobile}</span>
 						</li>
 						<li className="flex items-center justify-start">
