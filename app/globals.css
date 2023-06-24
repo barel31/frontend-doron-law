@@ -35,22 +35,13 @@
 	line-height: 1.6 !important;
 }
 
-.background-image-overlay {
-	background: linear-gradient(
-		180deg,
-		#fff 15%,
-		rgba(255, 255, 255, 0.38) 50%
-	);
-	width: 100%;
-	height: 100%;
-}
-
 dialog::backdrop {
 	backdrop-filter: blur(10px);
 }
 
 * {
-	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 100ms;
+	transition-property: color, background-color, border-color,
+		text-decoration-color, fill, stroke;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 100ms;
 }
