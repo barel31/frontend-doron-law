@@ -41,8 +41,7 @@ function ContactForm({
 		if (!res.ok) console.log('res not ok');
 
 		// redirect to /thank-you anyways because res is broken. wait for fix by next.js team
-		if (!message) router.push('/thank-you');
-		else router.push('/contact-me/thank-you');
+		router.push('thank-you');
 	};
 
 	return (
