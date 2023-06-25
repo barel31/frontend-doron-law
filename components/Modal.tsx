@@ -1,28 +1,36 @@
 'use client';
 
-import { useEffect } from 'react';
-// import { usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 function Modal({ children }: { children: React.ReactNode }) {
-	// const pathname = usePathname();
-	// const open = pathname.includes('/thank-you');
+	const ref = useRef<HTMLDivElement>(null);
+	const router = useRouter();
 
 	useEffect(() => {
 		const el = document.getElementById('dialogModal') as HTMLDialogElement;
 		if (el) {
-			// open modal via showModal method because only in this way backdrop filter applied.
 			el.showModal();
 		}
 	}, []);
 
+	useEffect(() => {
+		const clickListener = (e: MouseEvent) => {
+			if (!ref.current?.contains(e.target as Node)) {
+				router.back();
+			}
+		};
+
+		addEventListener('click', clickListener);
+		return () => removeEventListener('click', clickListener);
+	}, [ref, router]);
+
 	return (
 		<dialog
 			id="dialogModal"
-			// open={open}
-			// open
-			className="absolute top-0 mt-32 m-auto p-2 md:p-10 w-[75vw] md:w-[50vw] dark:bg-slate-500 rounded-md text-center transition-all"
+			className="absolute top-0 mt-32 m-auto p-2 md:p-10 w-[75vw] md:w-[50vw] dark:bg-slate-500 rounded-md text-center transition-all shadow-md border-2"
 		>
-			{children}
+			<div ref={ref}>{children}</div>
 		</dialog>
 	);
 }

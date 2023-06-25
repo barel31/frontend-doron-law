@@ -1,16 +1,15 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import Modal from '@/components/Modal';
-import Correct from '@/public/assets/correct.webp';
+import { IconParkSolidCorrect } from '@/utils/icons';
 
 function TyModal() {
 	const router = useRouter();
 
 	return (
 		<Modal>
-			<Image src={Correct} alt="" className="m-auto" />
+			<IconParkSolidCorrect className="m-auto w-1/4" />
 			<h1 className="text-3xl/10">תודה על פנייתך</h1>
 
 			<h2 className="font-bold text-lime-500 text-lg">
