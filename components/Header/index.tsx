@@ -38,7 +38,7 @@ function Header({
 			ref.current!.style.height = ref.current!.scrollHeight + 80 + 'px';
 		} else {
 			document.body.style.overflow = 'visible';
-			ref.current!.style.height = '3rem';
+			ref.current!.style.height = isTop || mobile ? '3.5rem' : '2.5rem';
 		}
 
 		const clickListener = (e: MouseEvent) => {
@@ -49,22 +49,22 @@ function Header({
 
 		document.addEventListener('click', clickListener);
 		return () => document.removeEventListener('click', clickListener);
-	}, [mobile, show]);
+	}, [mobile, show, isTop]);
 
 	const showNavBar = () => setShow(() => !show);
 	const onNavClick = () => setShow(() => false);
 
 	return (
 		<header
-			className={`fixed z-10 top-0 w-full min-h-[3rem] ${
-				!isTop || (show && mobile)
-					? 'bg-slate-200/90 dark:bg-slate-600/90'
-					: 'bg-transparent'
+			className={`fixed z-10 top-0 w-full min-h-[3.5rem] md:min-h-[2.5rem] ${
+				mobile && !show && !isTop
+					? 'bg-transparent'
+					: 'bg-slate-200/90 dark:bg-slate-600/90'
 			}`}
 		>
 			<nav
 				ref={ref}
-				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-3 md:my-3 transition-[height] h-[3rem]"
+				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-3 md:my-3 transition-[height]"
 			>
 				<Link
 					href="/"
@@ -161,7 +161,7 @@ function Header({
 					<Image
 						src={Logo}
 						alt="logo"
-						className="w-2/3 bg-slate-100 bg-opacity-40"
+						className="w-full bg-slate-100 bg-opacity-40"
 					/>
 				</Link>
 			</nav>
