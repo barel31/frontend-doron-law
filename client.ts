@@ -21,6 +21,4 @@ export const getContactInfo: Promise<ContactInfo> = Client.fetch(
 
 const builder = imageUrlBuilder(Client);
 
-export function urlFor(source: Route['image']) {
-	return builder.image(source!);
-}
+export const urlFor = (source: Route['image']) => builder.image(source!);

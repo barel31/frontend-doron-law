@@ -1,9 +1,8 @@
-import Image from 'next/image';
 import UsePortableText from './UseRichText';
 import ContactMePage from './ContactMePage';
 import ContactForm from '../ContactForm';
 import AccordionQA from '../Accordion';
-import { urlFor } from '@/client';
+import BgImage from './BgImage';
 
 function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
 	const slug = route?.slug?.current;
@@ -16,15 +15,7 @@ function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
 						route.slug.current === '/' ? 'home' : route.slug.current
 					}`}
 				>
-					<Image
-						src={urlFor(route.image).url()}
-						alt="Office image"
-						width={2000}
-						height={2000}
-						loading="lazy"
-						// className="w-full scale-[4] sm:scale-[3] md:scale-[2.5] lg:scale-[2] background-image"
-						className="w-full background-image"
-					/>
+					<BgImage url={route.image!} />
 				</div>
 			)}
 			<div className="text-slate-800 backdrop-brightness-150 dark:backdrop-saturate-0 dark:backdrop-brightness-50 dark:text-slate-300 content-header normal-line-height text-center font-sans max-w-full my-20 mx-2 md:mt-28">
