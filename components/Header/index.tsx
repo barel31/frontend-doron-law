@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Theme from './Theme';
-import ScrollLine from '../ScrollLine';
 
+import Logo from '@/public/assets/logo.webp';
 import useGetWidth from '@/hooks/useGetWidth';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 import { useParams } from 'next/navigation';
@@ -15,7 +15,7 @@ import {
 	BiFacebook,
 	SolarHamburgerMenuBold,
 } from '@/utils/icons';
-import Logo from '@/public/assets/logo.webp';
+import ScrollLine from '../ScrollLine';
 
 function Header({
 	routes,
@@ -27,7 +27,6 @@ function Header({
 	const isTop = useIsScrollTop();
 	const width = useGetWidth();
 	const mobile = width <= 768;
-
 	const [show, setShow] = useState(false);
 	const ref = useRef<HTMLElement>(null);
 	const params = useParams();
@@ -38,7 +37,7 @@ function Header({
 			ref.current!.style.height = ref.current!.scrollHeight + 80 + 'px';
 		} else {
 			document.body.style.overflow = 'visible';
-			ref.current!.style.height = '3rem';
+			ref.current!.style.height = isTop ? '4rem' : '2.5rem';
 		}
 
 		const clickListener = (e: MouseEvent) => {
@@ -55,36 +54,31 @@ function Header({
 	const onNavClick = () => setShow(() => false);
 
 	return (
-		<header
-			className={`fixed z-10 top-0 w-full min-h-[3rem] ${
-				!isTop || (show && mobile)
-					? 'bg-slate-200/90 dark:bg-slate-600/90'
-					: 'bg-transparent'
-			}`}
-		>
+		<header className="fixed z-10 top-0 w-full min-h-[2.5rem] bg-slate-200/90 dark:bg-slate-600/90">
 			<ScrollLine />
 
 			<nav
 				ref={ref}
-				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto mt-3 md:my-3 transition-[height]"
+				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto my-1 md:my-3 transition-[height]"
 			>
 				<Link
 					href="/"
-					className={`relative min-w-[20%] ${
+					className={`min-w-[20%] self-center ${
 						mobile && show && 'hidden'
 					}`}
 					title="בית"
 				>
 					<Image
 						src={Logo}
-						alt="logo"
+						alt="Logo"
 						priority
-						width={150}
-						height={150}
+						width={mobile ? 120 : 150}
+						height={mobile ? 120 : 150}
+						className="self-start bg-slate-50/70"
 					/>
 				</Link>
 				<button
-					className="flex self-start show-navbar md:hidden order-1"
+					className="self-start md:hidden order-1"
 					onClick={showNavBar}
 					title="Navigation"
 					type="button"
@@ -113,7 +107,6 @@ function Header({
 						</Link>
 					))}
 				</div>
-
 				<div
 					className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] ${
 						(mobile && show) || !mobile ? 'visible' : 'invisible'
@@ -147,10 +140,8 @@ function Header({
 							{contact.phone}
 						</span>
 					</a>
-
 					<Theme show={show} mobile={mobile} />
 				</div>
-
 				<Link
 					href="/"
 					onClick={onNavClick}
@@ -159,11 +150,14 @@ function Header({
 					}`}
 					title="תפריט"
 				>
-					<Image src={Logo} alt="logo" className="w-full" />
+					<Image
+						src={Logo}
+						alt="Logo"
+						className="w-full bg-slate-50/70"
+					/>
 				</Link>
 			</nav>
 		</header>
 	);
 }
-
 export default Header;
