@@ -38,7 +38,7 @@ function Header({
 			ref.current!.style.height = ref.current!.scrollHeight + 80 + 'px';
 		} else {
 			document.body.style.overflow = 'visible';
-			ref.current!.style.height = isTop ? '3.5rem' : '2rem';
+			ref.current!.style.height = '3rem';
 		}
 
 		const clickListener = (e: MouseEvent) => {
@@ -56,10 +56,10 @@ function Header({
 
 	return (
 		<header
-			className={`fixed z-10 top-0 w-full min-h-[3.5rem] ${
-				mobile && !show && !isTop
-					? 'bg-transparent'
-					: 'bg-slate-200/90 dark:bg-slate-600/90'
+			className={`fixed z-10 top-0 w-full min-h-[3rem] ${
+				!isTop || (show && mobile)
+					? 'bg-slate-200/90 dark:bg-slate-600/90'
+					: 'bg-transparent'
 			}`}
 		>
 			<ScrollLine />
