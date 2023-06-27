@@ -59,7 +59,7 @@ function Header({
 
 			<nav
 				ref={ref}
-				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto my-1 md:my-3 transition-[height]"
+				className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto my-1 md:my-3 h-[2.5rem] transition-[height]"
 			>
 				<Link
 					href="/"
