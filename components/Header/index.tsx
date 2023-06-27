@@ -74,7 +74,7 @@ function Header({
 						priority
 						width={mobile ? 120 : 150}
 						height={mobile ? 120 : 150}
-						className="self-start bg-slate-50/70"
+						className="self-start bg-slate-50/70 rounded-sm"
 					/>
 				</Link>
 				<button
