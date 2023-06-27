@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-function useIsScrollTop() {
-	const [isTop, setIsTop] = useState(true);
+function useIsScrollTop(defValue = true) {
+	const [isTop, setIsTop] = useState(defValue);
 
 	useEffect(() => {
 		const scrollEvent = () => {
@@ -11,7 +11,7 @@ function useIsScrollTop() {
 				setIsTop(false);
 			}
 		};
-		
+
 		addEventListener('scroll', scrollEvent, { passive: true });
 		scrollEvent();
 
