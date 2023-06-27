@@ -8,7 +8,7 @@ function BgImage({ url }: { url: { name: string; imageUrl: string } }) {
 			alt="Office image"
 			width={2000}
 			height={2000}
-			loading="lazy"
+			priority
 			className="w-full h-[90vh] background-image object-cover"
 		/>
 	);
