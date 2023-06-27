@@ -88,7 +88,7 @@ function Header({
 					<SolarHamburgerMenuBold className="w-10 m-auto" />
 				</button>
 				<div
-					className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 ${
+					className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 max-md:mt-3 ${
 						(mobile && show) || !mobile ? 'visible' : 'invisible'
 					}`}
 				>
