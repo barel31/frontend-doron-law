@@ -24,7 +24,7 @@ function Header({
 	routes: Route[];
 	contact: ContactInfo;
 }) {
-	const isTop = useIsScrollTop(false);
+	const isTop = useIsScrollTop();
 	const width = useGetWidth();
 	const mobile = width <= 768;
 	const [show, setShow] = useState(false);
@@ -78,12 +78,14 @@ function Header({
 					/>
 				</Link>
 				<button
-					className="self-start md:hidden order-1"
+					className={`self-start md:hidden order-1 transition-all ${
+						isTop && 'mt-3'
+					}`}
 					onClick={showNavBar}
 					title="Navigation"
 					type="button"
 				>
-					<SolarHamburgerMenuBold className="w-10" />
+					<SolarHamburgerMenuBold className="w-10 m-auto" />
 				</button>
 				<div
 					className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 ${
@@ -93,7 +95,7 @@ function Header({
 					{routes.map((route: Route) => (
 						<Link
 							key={route.slug.current}
-							className={`text-slate-800 dark:text-slate-200 text-xl font-bold transition-colors px-2 py-1 rounded-md ${
+							className={`text-slate-800 dark:text-slate-200 text-xl font-bold transition-colors px-2 py-1 rounded-md w-max ${
 								params.slug === route.slug.current ||
 								(!params.slug && route.slug.current === '/')
 									? 'bg-slate-300 dark:bg-slate-500 shadow-md'
@@ -153,7 +155,7 @@ function Header({
 					<Image
 						src={Logo}
 						alt="Logo"
-						className="w-full bg-slate-50/70"
+						className="w-full bg-slate-50/70 rounded-sm"
 					/>
 				</Link>
 			</nav>
