@@ -53,6 +53,8 @@ function Header({
 	const showNavBar = () => setShow(() => !show);
 	const onNavClick = () => setShow(() => false);
 
+	const logoWidth = isTop ? (mobile ? '185' : '220') : mobile ? '120' : '150';
+
 	return (
 		<header className="fixed z-10 top-0 w-full min-h-[2.5rem] bg-slate-200/90 dark:bg-slate-600/90">
 			<ScrollLine />
@@ -72,9 +74,9 @@ function Header({
 						src={Logo}
 						alt="Logo"
 						priority
-						width={mobile ? 120 : 150}
-						height={mobile ? 120 : 150}
-						className="self-start bg-slate-50/70 rounded-sm"
+						width={logoWidth}
+						height={logoWidth}
+						className={`self-start bg-slate-50/70 rounded-sm transition-all w-[${logoWidth}px]`}
 					/>
 				</Link>
 				<button
