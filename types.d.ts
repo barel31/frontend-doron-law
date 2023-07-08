@@ -19,7 +19,6 @@ interface Route extends SanityData {
 }
 
 interface ContactInfo extends SanityData {
-	name: string;
 	nameEnglish: string;
 	email: string;
 	phone: string;

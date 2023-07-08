@@ -2,7 +2,7 @@ import UsePortableText from './UseRichText';
 import ContactMePage from './ContactMePage';
 import BgImage from './BgImage';
 import ContactForm from '../ContactForm';
-import AccordionQA from '../Accordion';
+import AccordionQA from './Accordion';
 
 function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
 	const slug = route?.slug?.current;
