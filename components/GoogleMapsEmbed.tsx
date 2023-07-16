@@ -44,7 +44,7 @@ export default function GoogleMapsEmbed({
 			return (_width / 1.05) * tabletDynamicRatio;
 		} else return (_width / 3) * dynamicRatio;
 	};
-
+	
 	return (
 		<iframe
 			className="m-auto"
