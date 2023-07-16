@@ -65,11 +65,7 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
 					מפה
 				</h1>
 				<div>
-					<GoogleMapsEmbed
-						address={contact?.address}
-						width={width < 1024 ? width / 1.05 : width / 3}
-						height={width < 1024 ? width / 1.5 : 350}
-					/>
+					<GoogleMapsEmbed address={contact?.address} />
 				</div>
 			</div>
 		</div>

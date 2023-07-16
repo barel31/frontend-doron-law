@@ -8,6 +8,7 @@ import {
 	UiwFacebook,
 } from '@/utils/icons';
 import Link from 'next/link';
+import GoogleMapsEmbed from './GoogleMapsEmbed';
 
 const year = new Date().getFullYear();
 
@@ -86,6 +87,22 @@ function Footer({
 							{route.name}
 						</Link>
 					))}
+				</div>
+
+				<div className="flex flex-col items-start md:items-center">
+					<h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
+						מפה
+					</h4>
+					<div className='m-auto'>
+
+					<GoogleMapsEmbed
+						address={contact?.address}
+						mobileDynamicRatio={0.7}
+						tabletDynamicRatio={0.4}
+						dynamicRatio={0.8}
+						even
+						/>
+						</div>
 				</div>
 			</div>
 
