@@ -24,27 +24,32 @@ export default function GoogleMapsEmbed({
 	const { theme } = useTheme();
 	const darkTheme = theme === 'dark';
 
-	const setHeight = height
-		? height
-		: _width < 768
-		? (_width / 1.5) * mobileDynamicRatio
-		: _width < 1024
-		? (_width / 1.5) * tabletDynamicRatio
-		: 350 * dynamicRatio;
+	const calcHeight = () => {
+		if (height) {
+			return height;
+		} else if (_width < 768) {
+			return (_width / 1.5) * mobileDynamicRatio;
+		} else if (_width < 1024) {
+			return (_width / 1.5) * tabletDynamicRatio;
+		} else return 350 * dynamicRatio;
+	};
 
-	const SetWidth = width
-		? width
-		: _width < 768
-		? (_width / 1.05) * mobileDynamicRatio
-		: _width < 1024
-		? (_width / 1.05) * tabletDynamicRatio
-		: (_width / 3) * dynamicRatio;
+	const calcWidth = () => {
+		if (width) {
+			if (width > _width) return _width;
+			else return width;
+		} else if (_width < 768) {
+			return (_width / 1.05) * mobileDynamicRatio;
+		} else if (_width < 1024) {
+			return (_width / 1.05) * tabletDynamicRatio;
+		} else return (_width / 3) * dynamicRatio;
+	};
 
 	return (
 		<iframe
 			className="m-auto"
-			width={SetWidth}
-			height={even ? SetWidth : setHeight}
+			width={calcWidth()}
+			height={even ? calcWidth() : calcHeight()}
 			loading="lazy"
 			allowFullScreen
 			src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=AIzaSyCQfqPtZh41AuUmZ1HVGKwXHDaeAevUnK8`}

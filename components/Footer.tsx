@@ -21,8 +21,8 @@ function Footer({
 }) {
 	return (
 		<footer className="bg-stone-300 dark:bg-stone-800 w-full min-h-44 bottom-0 text-gray-800 dark:text-gray-300">
-			<div className="m-10 flex flex-col md:flex-row justify-around text-lg">
-				<div>
+			<div className="flex flex-col md:flex-row justify-around text-lg">
+				<div className="m-10">
 					<ul className="flex flex-col max-md:items-start">
 						<h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
 							יצירת קשר
@@ -51,6 +51,7 @@ function Footer({
 					<div className="flex gap-2 items-baseline mt-5">
 						{contact.facebook && (
 							<Link
+								className="hover:grayscale hover:sepia"
 								href={contact.facebook}
 								target="_blank"
 								rel="noindex nofollow"
@@ -62,6 +63,7 @@ function Footer({
 
 						{contact.linkedin && (
 							<Link
+								className="hover:grayscale hover:sepia"
 								href={contact.linkedin}
 								target="_blank"
 								rel="noindex nofollow"
@@ -73,7 +75,7 @@ function Footer({
 					</div>
 				</div>
 
-				<div className="flex flex-col items-start md:items-center">
+				<div className="m-10 flex flex-col items-start md:items-center">
 					<h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
 						ניווט באתר
 					</h4>
@@ -89,20 +91,21 @@ function Footer({
 					))}
 				</div>
 
-				<div className="flex flex-col items-start md:items-center">
+				<div className="min-[400px]:m-10 flex flex-col items-start md:items-center">
 					<h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
 						מפה
 					</h4>
-					<div className='m-auto'>
-
-					<GoogleMapsEmbed
-						address={contact?.address}
-						mobileDynamicRatio={0.7}
-						tabletDynamicRatio={0.4}
-						dynamicRatio={0.8}
-						even
+					<div>
+						<GoogleMapsEmbed
+							address={contact?.address}
+							width={350}
+							height={250}
+							// mobileDynamicRatio={0.5}
+							// tabletDynamicRatio={0.4}
+							// dynamicRatio={0.7}
+							// even
 						/>
-						</div>
+					</div>
 				</div>
 			</div>
 
