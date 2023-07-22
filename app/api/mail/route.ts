@@ -49,7 +49,11 @@ export async function POST(req: NextRequest) {
 		(value: SMTPTransport.SentMessageInfo) => {
 			console.log('sent email successfully');
 
-			return new NextResponse(`Message delivered to ${value.accepted}`, {
+			// return new NextResponse(`Message delivered to ${value.accepted}`, {
+			// 	status: 250,
+			// });
+			return NextResponse.json({
+				message: `Message delivered to ${value.accepted}`,
 				status: 250,
 			});
 		},
@@ -57,8 +61,12 @@ export async function POST(req: NextRequest) {
 			console.log('error accurred');
 			console.log(err);
 
-			return new NextResponse(`Connection refused at ${err.message}`, {
-				status: 404,
+			// return new NextResponse(`Connection refused at ${err.message}`, {
+			// 	status: 404,
+			// });
+			return NextResponse.json({
+				message: `Connection refused at ${err.message}`,
+				status: 444,
 			});
 		}
 	);
