@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -13,15 +12,15 @@ function ContactForm({
 }) {
 	const router = useRouter();
 
-	const [disableSbtBtn, setDisableSbtBtn] = useState(false);
+	const [disableBtn, setDisableBtn] = useState(false);
 
 	const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setDisableSbtBtn(() => true);
+		setDisableBtn(() => true);
 
 		const target = e.currentTarget as HTMLFormElement;
-
 		const formData: { [key: string]: string } = {};
+
 		Array.from(target.elements).forEach((field: Element) => {
 			const formField = field as HTMLFormElement;
 			if (!formField.name) {
@@ -33,15 +32,14 @@ function ContactForm({
 		const res = await fetch('/api/mail', {
 			method: 'POST',
 			body: JSON.stringify(formData),
-			// headers: {
-			// 	'Content-Type': 'application/json',
-			// },
 		});
-		console.log(res);
-		if (!res.ok) console.log('res not ok');
 
-		// redirect to /thank-you anyways because res is broken. wait for fix by next.js team
-		router.push('thank-you');
+		if (res.ok) {
+			router.push('thank-you');
+		} else {
+			console.error('Unable to send contact info.');
+			console.log(res);
+		}
 	};
 
 	return (
@@ -54,7 +52,7 @@ function ContactForm({
 				<a
 					href={`tel:${contact?.mobile}`}
 					className="w-1/2 m-auto text-gray-950 dark:text-lime-400 font-bold text-xl"
-					title='צור קשר'
+					title="צור קשר"
 				>
 					לייעוץ ראשוני התקשרו{' '}
 					<span className="text-cyan-800 dark:text-gray-200 font-bold">
@@ -100,7 +98,7 @@ function ContactForm({
 					/>
 				)}
 				<button
-					disabled={disableSbtBtn}
+					disabled={disableBtn}
 					type="submit"
 					className={`focus:outline-none text-white bg-green-700 hover:bg-green-800 disabled:bg-green-200 hover:disabled:bg-green-200 disabled:cursor-not-allowed focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-8 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 ${
 						message ? 'w-full' : 'max-md:w-full'
