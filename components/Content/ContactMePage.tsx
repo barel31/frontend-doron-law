@@ -1,8 +1,5 @@
-'use client';
-
 import ContactForm from '../ContactForm';
 import GoogleMapsEmbed from '../GoogleMapsEmbed';
-import useGetWidth from '@/hooks/useGetWidth';
 import {
 	Fa6SolidAddressCard,
 	IcBaselinePhoneEnabled,
@@ -11,8 +8,6 @@ import {
 } from '@/utils/icons';
 
 function ContactMePage({ contact }: { contact: ContactInfo }) {
-	const width = useGetWidth();
-
 	return (
 		<div className="m-auto flex flex-col lg:flex-row justify-between gap-5 xl:w-3/4 lg:m-5 xl:m-auto">
 			<div className="lg:w-1/3">
