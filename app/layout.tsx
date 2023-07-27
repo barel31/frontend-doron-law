@@ -18,10 +18,10 @@ export const metadata = {
 
 export default async function RootLayout({
 	children,
-	tyModal,
+	Modal,
 }: {
 	children: React.ReactNode;
-	tyModal: React.ReactNode;
+	Modal: React.ReactNode;
 }) {
 	const routes = await getRoutes;
 	const contactInfo = await getContactInfo;
@@ -47,7 +47,7 @@ export default async function RootLayout({
 
 					<main>
 						{children}
-						{tyModal}
+						{Modal}
 					</main>
 
 					<Footer routes={routes} contact={contactInfo} />

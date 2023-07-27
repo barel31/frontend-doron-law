@@ -40,7 +40,9 @@ function ContactForm({
 		if (res.ok) {
 			router.push('thank-you');
 		} else {
-			console.error('Unable to send contact info.');
+			router.push('error');
+
+			console.error('Unable to send Mail.');
 			console.log(res);
 		}
 	};
