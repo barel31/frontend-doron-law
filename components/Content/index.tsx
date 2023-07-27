@@ -22,7 +22,7 @@ function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
 				{route?.header && <UsePortableText value={route.header!} />}
 			</div>
 
-			<div className="m-auto bg-slate-50 dark:bg-slate-700 md:mt-32">
+			<div className="m-auto bg-slate-50 dark:bg-slate-700 md:mt-32 pb-20">
 				{slug === '/' ? (
 					<div className="w-full">
 						<ContactForm contact={contact!} />
