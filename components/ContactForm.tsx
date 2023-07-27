@@ -32,6 +32,9 @@ function ContactForm({
 		const res = await fetch('/api/mail', {
 			method: 'POST',
 			body: JSON.stringify(formData),
+			headers: {
+				'Content-Type': 'application/json',
+			},
 		});
 
 		if (res.ok) {
@@ -63,7 +66,6 @@ function ContactForm({
 			)}
 
 			<form
-				action="#"
 				onSubmit={handleOnSubmit}
 				className={`m-auto flex flex-col ${
 					message ? 'w-full' : 'md:flex-row max-md:w-full'

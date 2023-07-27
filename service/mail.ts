@@ -1,12 +1,6 @@
 import nodemailer, { SendMailOptions } from 'nodemailer';
 import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 
-export interface sendMailRes {
-	success: boolean;
-	info?: SMTPTransport.SentMessageInfo;
-	err?: Error;
-}
-
 const transporter = nodemailer.createTransport({
 	service: 'Gmail',
 	port: 465,
@@ -17,7 +11,7 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
-export default async function sendMail(data: EmailObj): Promise<sendMailRes> {
+export default async function sendMail(data: EmailObj): Promise<sendMail> {
 	const message: SendMailOptions = {
 		from: data.email,
 		to: process.env.GMAIL_EMAIL_ADDRESS,

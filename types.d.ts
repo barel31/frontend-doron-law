@@ -57,3 +57,9 @@ interface EmailObj {
 	email: string;
 	message?: string;
 }
+
+interface sendMail {
+	success: boolean;
+	info?: SMTPTransport.SentMessageInfo;
+	err?: Error;
+}
