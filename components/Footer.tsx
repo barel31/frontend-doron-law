@@ -117,10 +117,11 @@ function Footer({
 				<p>
 					Build by{' '}
 					<Link
+						className="hover:font-bold"
 						href="https://www.linkedin.com/in/barel-shraga/"
 						target="_blank"
 						rel="noindex nofollow"
-						title="barel31 linkedin"
+						title="barel31 Linkedin"
 					>
 						barel31
 					</Link>
