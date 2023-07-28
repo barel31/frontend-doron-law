@@ -2,6 +2,7 @@
 
 import useGetWidth from '@/hooks/useGetWidth';
 import { useTheme } from 'next-themes';
+import { useEffect, useRef } from 'react';
 
 export default function GoogleMapsEmbed({
 	address,
@@ -22,7 +23,7 @@ export default function GoogleMapsEmbed({
 }) {
 	const _width = useGetWidth();
 	const { theme } = useTheme();
-	const darkTheme = theme === 'dark';
+	const ref = useRef<HTMLIFrameElement>(null);
 
 	const calcHeight = () => {
 		if (height) {
@@ -44,16 +45,23 @@ export default function GoogleMapsEmbed({
 			return (_width / 1.05) * tabletDynamicRatio;
 		} else return (_width / 3) * dynamicRatio;
 	};
-	
+
+	useEffect(() => {
+		if (ref?.current) {
+			const darkTheme = theme === 'dark';
+			ref.current.style.filter = darkTheme ? 'invert(90%)' : 'invert(0%)';
+		}
+	}, [theme]);
+
 	return (
 		<iframe
+			ref={ref}
 			className="m-auto"
 			width={calcWidth()}
 			height={even ? calcWidth() : calcHeight()}
 			loading="lazy"
 			allowFullScreen
 			src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=AIzaSyCQfqPtZh41AuUmZ1HVGKwXHDaeAevUnK8`}
-			style={{ filter: darkTheme ? 'invert(90%)' : 'invert(0%)' }}
 		></iframe>
 	);
 }

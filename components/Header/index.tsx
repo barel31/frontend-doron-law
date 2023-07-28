@@ -76,7 +76,7 @@ function Header({
 						priority
 						width={logoWidth}
 						height={logoWidth}
-						className={`self-start bg-slate-50/70 rounded-sm transition-all w-[${logoWidth}px]`}
+						className={`self-start bg-slate-50/70 rounded-sm transition-all w-[${logoWidth}px] h-auto`}
 					/>
 				</Link>
 				<button
@@ -100,7 +100,7 @@ function Header({
 							className={`text-slate-800 dark:text-slate-200 text-xl font-bold transition-colors px-2 py-1 rounded-md w-max ${
 								params.slug === route.slug.current ||
 								(!params.slug && route.slug.current === '/')
-									? 'bg-slate-300 dark:bg-slate-500 shadow-md'
+									? 'bg-slate-300 dark:bg-slate-500 shadow-md overline scale-105'
 									: 'hover:overline hover:scale-105'
 							}`}
 							href={`/${route.slug.current}`}
@@ -121,6 +121,7 @@ function Header({
 						target="_blank"
 						rel="noindex nofollow"
 						title="Facebook"
+						className="hover:text-blue-800 !duration-0"
 					>
 						<BiFacebook className="w-[45px] rounded-full" />
 					</Link>
@@ -129,6 +130,7 @@ function Header({
 						target="_blank"
 						rel="noindex nofollow"
 						title="Linkedin"
+						className="hover:text-blue-800"
 					>
 						<BiLinkedin className="w-[45px] rounded-full" />
 					</Link>
@@ -136,7 +138,7 @@ function Header({
 						href={`tel:${contact.phone}`}
 						target="_blank"
 						rel="noindex nofollow"
-						className="flex flex-row items-center justify-around whitespace-nowrap"
+						className="flex flex-row items-center justify-around whitespace-nowrap hover:text-white dark:hover:text-zinc-900"
 						title="טלפון"
 					>
 						<ElPhoneAlt className="w-[45px]" />
