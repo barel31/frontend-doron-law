@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
-export default async function sendMail(data: EmailObj): Promise<sendMail> {
+export default async function sendMail(data: MailData): Promise<MailResponse> {
 	const message: SendMailOptions = {
 		from: data.email,
 		to: process.env.GMAIL_EMAIL_ADDRESS,
@@ -44,7 +44,7 @@ export default async function sendMail(data: EmailObj): Promise<sendMail> {
 			return { success: false, err };
 		}
 	);
-	
+
 	return result;
 
 	// transporter.sendMail(message, (err, info) => {

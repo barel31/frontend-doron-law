@@ -51,14 +51,14 @@ interface QAndA {
 	_key: string;
 }
 
-interface EmailObj {
+interface MailData {
 	name: string;
 	tel: string;
 	email: string;
 	message?: string;
 }
 
-interface sendMail {
+interface MailResponse {
 	success: boolean;
 	info?: SMTPTransport.SentMessageInfo;
 	err?: Error;

@@ -1,5 +1,6 @@
 'use client';
 
+import { sendContactForm } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -14,36 +15,18 @@ function ContactForm({
 
 	const [disableBtn, setDisableBtn] = useState(false);
 
-	const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const handleOnSubmit = async (e: FormData) => {
 		setDisableBtn(() => true);
+		const res = await sendContactForm(e);
 
-		const target = e.currentTarget as HTMLFormElement;
-		const formData: { [key: string]: string } = {};
-
-		Array.from(target.elements).forEach((field: Element) => {
-			const formField = field as HTMLFormElement;
-			if (!formField.name) {
-				return;
-			}
-			formData[formField.name] = formField.value;
-		});
-
-		const res = await fetch('/api/mail', {
-			method: 'POST',
-			body: JSON.stringify(formData),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		});
-
-		if (res.ok) {
+		if (res.success) {
 			router.push('thank-you');
 		} else {
-			router.push('error');
-
 			console.error('Unable to send Mail.');
 			console.log(res);
+			
+			router.push('error');
+			setDisableBtn(() => false);
 		}
 	};
 
@@ -68,7 +51,7 @@ function ContactForm({
 			)}
 
 			<form
-				onSubmit={handleOnSubmit}
+				action={handleOnSubmit}
 				className={`m-auto flex flex-col ${
 					message ? 'w-full' : 'md:flex-row max-md:w-full'
 				} gap-2 items-baseline p-2`}

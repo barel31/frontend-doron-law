@@ -5,7 +5,7 @@ import Content from '@/components/Content';
 
 export const revalidate = 3600; // revalidate every hour
 
-export default async function IndexPage({
+export default async function Page({
 	params,
 }: {
 	params: { slug: string };
