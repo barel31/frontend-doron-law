@@ -1,14 +1,9 @@
 import './globals.css';
-import { Assistant } from 'next/font/google';
 
 import { getContactInfo, getRoutes } from '@/client';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
-const assistFont = Assistant({
-	subsets: ['latin'],
-	display: 'swap',
-});
 
 export const metadata = {
 	title: 'עורך דין דורון חדד',
@@ -35,12 +30,7 @@ export default async function RootLayout({
 	}
 
 	return (
-		<html
-			lang="he"
-			className={assistFont.className}
-			dir="rtl"
-			suppressHydrationWarning
-		>
+		<html lang="he" dir="rtl" suppressHydrationWarning>
 			<body className="bg-slate-50 dark:bg-slate-800">
 				<ThemeProvider>
 					<Header routes={routes} contact={contactInfo} />

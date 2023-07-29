@@ -6,8 +6,8 @@ export async function POST(req: NextRequest) {
 	const result = await sendMail(data);
 
 	if (result?.success) {
-		return NextResponse.json(result.info);
+		return NextResponse.json(result);
 	}
 	
-	return NextResponse.json(result.err, { status: 500 });
+	return NextResponse.json(result, { status: 500 });
 }

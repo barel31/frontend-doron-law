@@ -1,8 +1,8 @@
 'use server';
 
-import sendMail from "@/service/sendMail";
+import sendMail from '@/service/sendMail';
 
-export const sendContactForm = async (e: FormData): Promise<MailResponse> => {
+export const ContactFormAction = async (e: FormData): Promise<MailResponse> => {
 	const formData: MailData = {
 		name: e.get('name')!.toString(),
 		tel: e.get('tel')!.toString(),
@@ -10,14 +10,5 @@ export const sendContactForm = async (e: FormData): Promise<MailResponse> => {
 		message: e.get('message')?.toString(),
 	};
 
-	// const res = await fetch('/api/mail', {
-	// 	method: 'POST',
-	// 	body: JSON.stringify(formData),
-	// 	headers: {
-	// 		'Content-Type': 'application/json',
-	// 	},
-	// });
-	const res = await sendMail(formData);
-
-	return res;
+	return await sendMail(formData);
 };

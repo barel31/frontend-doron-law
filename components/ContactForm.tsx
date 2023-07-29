@@ -1,6 +1,6 @@
 'use client';
 
-import { sendContactForm } from '@/app/actions';
+import { ContactFormAction } from '@/app/actions';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -15,16 +15,19 @@ function ContactForm({
 
 	const [disableBtn, setDisableBtn] = useState(false);
 
-	const handleOnSubmit = async (e: FormData) => {
+	const HandleForm = async (e: FormData) => {
 		setDisableBtn(() => true);
-		const res = await sendContactForm(e);
 
-		if (res.success) {
+		const res = await ContactFormAction(e);
+
+		// server-action don't work in including generateStaticParams in page (experimental)
+		// optional chaining required.
+		if (res?.success) {
 			router.push('thank-you');
 		} else {
 			console.error('Unable to send Mail.');
-			console.log(res);
-			
+			console.log(res.info);
+
 			router.push('error');
 			setDisableBtn(() => false);
 		}
@@ -51,7 +54,7 @@ function ContactForm({
 			)}
 
 			<form
-				action={handleOnSubmit}
+				action={HandleForm}
 				className={`m-auto flex flex-col ${
 					message ? 'w-full' : 'md:flex-row max-md:w-full'
 				} gap-2 items-baseline p-2`}

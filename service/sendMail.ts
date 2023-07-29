@@ -46,17 +46,4 @@ export default async function sendMail(data: MailData): Promise<MailResponse> {
 	);
 
 	return result;
-
-	// transporter.sendMail(message, (err, info) => {
-	// 	if (err) {
-	// 		console.log('error accurred');
-	// 		console.log({ err });
-
-	// 		return { success: false, err };
-	// 	} else {
-	// 		console.log('sent email successfully');
-
-	// 		return { success: true, info };
-	// 	}
-	// });
 }
