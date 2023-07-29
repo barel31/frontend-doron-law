@@ -1,6 +1,6 @@
 'use server';
 
-import sendMail from "@/service/mail";
+import sendMail from "@/service/sendMail";
 
 export const sendContactForm = async (e: FormData): Promise<MailResponse> => {
 	const formData: MailData = {
