@@ -15,7 +15,7 @@ const components: PortableTextComponents = {
 
 			return (
 				<Link
-					href={value?.href}
+					href={value?.href || ''}
 					target={target}
 					rel={target === '_blank' ? 'noindex nofollow' : ''}
 					title={children as string}

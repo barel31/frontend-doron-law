@@ -52,7 +52,7 @@ function Footer({
 						{contact.facebook && (
 							<Link
 								className="hover:grayscale hover:sepia"
-								href={contact.facebook}
+								href={contact.facebook || ''}
 								target="_blank"
 								rel="noindex nofollow"
 								title="Facebook"
@@ -64,7 +64,7 @@ function Footer({
 						{contact.linkedin && (
 							<Link
 								className="hover:grayscale hover:sepia"
-								href={contact.linkedin}
+								href={contact.linkedin || ''}
 								target="_blank"
 								rel="noindex nofollow"
 								title="Linkedin"
@@ -82,7 +82,7 @@ function Footer({
 					{routes.map((route: Route) => (
 						<Link
 							key={route.slug.current}
-							href={route.slug.current}
+							href={route.slug.current || ''}
 							className="flex items-center justify-start hover:font-bold"
 							title={route.name}
 						>

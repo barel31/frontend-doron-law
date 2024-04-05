@@ -117,7 +117,7 @@ function Header({
 					}`}
 				>
 					<Link
-						href={contact.facebook}
+						href={contact.facebook ||''}
 						target="_blank"
 						rel="noindex nofollow"
 						title="Facebook"
@@ -126,7 +126,7 @@ function Header({
 						<BiFacebook className="w-[45px] rounded-full" />
 					</Link>
 					<Link
-						href={contact.linkedin}
+						href={contact.linkedin || ''}
 						target="_blank"
 						rel="noindex nofollow"
 						title="Linkedin"
