@@ -23,7 +23,7 @@ export default defineType({
     }),
     defineField({
       name: 'isChild',
-      title: "האם דף הוא זה תת-דף?",
+      title: 'האם דף הוא זה תת-דף?',
       type: 'boolean',
     }),
     defineField({
@@ -36,25 +36,7 @@ export default defineType({
     defineField({
       name: 'qAndA',
       title: 'שאלות ותשובות',
-      type: 'array',
-      of: [
-        {
-          title: 'שאלה תשובה',
-          type: 'object',
-          fields: [
-            {
-              title: 'שאלה',
-              name: 'question',
-              type: 'string',
-            },
-            {
-              title: 'תשובה',
-              name: 'answer',
-              type: 'string',
-            },
-          ],
-        },
-      ],
+      type: 'qAndAItem',
     }),
     defineField({
       name: 'image',

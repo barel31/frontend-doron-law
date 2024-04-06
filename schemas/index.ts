@@ -1,5 +1,6 @@
 import routes from './routes';
 import contactInfo from './contactInfo';
+import qAndAItem from './qAndAItem';
 
 export const schemaTypes = [
 	// post,
@@ -8,4 +9,5 @@ export const schemaTypes = [
 	// blockContent,
 	routes,
 	contactInfo,
+	qAndAItem,
 ];
