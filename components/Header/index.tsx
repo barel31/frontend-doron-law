@@ -3,19 +3,15 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Theme from './Theme';
 
 import Logo from '@/public/assets/logo.webp';
 import useGetWidth from '@/hooks/useGetWidth';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 import { useParams } from 'next/navigation';
-import {
-  BiLinkedin,
-  ElPhoneAlt,
-  BiFacebook,
-  SolarHamburgerMenuBold,
-} from '@/utils/icons';
+import { SolarHamburgerMenuBold } from '@/utils/icons';
 import ScrollLine from '../ScrollLine';
+import HeaderContact from './HeaderContact';
+import RouteLink from './RouteLink';
 
 function Header({
   routes,
@@ -88,53 +84,22 @@ function Header({
           className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 max-md:mt-3 ${
             (mobile && show) || !mobile ? 'visible' : 'invisible'
           }`}>
-          {routes.map((route: Route) => (
-            <Link
-              key={route.slug.current}
-              className={`text-slate-800 dark:text-slate-200 text-xl font-bold transition-colors px-2 py-1 rounded-md w-max ${
-                params.slug === route.slug.current ||
-                (!params.slug && route.slug.current === '/')
-                  ? 'bg-slate-300 dark:bg-slate-500 shadow-md overline scale-105'
-                  : 'hover:overline hover:scale-105'
-              }`}
-              href={`/${route.slug.current}`}
-              onClick={onNavClick}
-              title={route.name}>
-              {route.name}
-            </Link>
-          ))}
+          {routes.map((route: Route) => {
+            if (route.isChild) {
+              return null;
+            }
+
+            return (
+              <RouteLink
+                route={route}
+                onNavClick={onNavClick}
+                params={params}
+                key={route._id}
+              />
+            );
+          })}
         </div>
-        <div
-          className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] ${
-            (mobile && show) || !mobile ? 'visible' : 'invisible'
-          }`}>
-          <Link
-            href={contact.facebook || ''}
-            target="_blank"
-            rel="noindex nofollow"
-            title="Facebook"
-            className="hover:text-blue-800 !duration-0">
-            <BiFacebook className="w-[45px] rounded-full" />
-          </Link>
-          <Link
-            href={contact.linkedin || ''}
-            target="_blank"
-            rel="noindex nofollow"
-            title="Linkedin"
-            className="hover:text-blue-800">
-            <BiLinkedin className="w-[45px] rounded-full" />
-          </Link>
-          <a
-            href={`tel:${contact.phone}`}
-            target="_blank"
-            rel="noindex nofollow"
-            className="flex flex-row items-center justify-around whitespace-nowrap hover:text-white dark:hover:text-zinc-900"
-            title="טלפון">
-            <ElPhoneAlt className="w-[45px]" />
-            <span className="font-bold m-1 max-lg:hidden">{contact.phone}</span>
-          </a>
-          <Theme show={show} mobile={mobile} />
-        </div>
+        <HeaderContact contact={contact} mobile={mobile} show={show} />
         <Link
           href="/"
           onClick={onNavClick}
@@ -152,4 +117,5 @@ function Header({
     </header>
   );
 }
+
 export default Header;

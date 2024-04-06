@@ -17,6 +17,7 @@ interface Route extends SanityData {
 		imageUrl: string;
 	};
 	children?: Route[];
+	isChild?: boolean;
 }
 
 interface ContactInfo extends SanityData {

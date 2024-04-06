@@ -6,9 +6,9 @@ export const revalidate = 3600; // revalidate every hour
 export default async function ChildPage({
   params,
 }: {
-  params: { slug: string; childSlug: string };
+  params: { slug: string; childslug: string };
 }) {
-  const { slug, childSlug } = params;
+  const { slug, childslug: childSlug } = params;
 
   const route = await getRoute(slug);
   let childRoute;
