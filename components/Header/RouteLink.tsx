@@ -1,17 +1,19 @@
 import useHover from '@/hooks/useHover';
-import {
-  RouteDropdownLink,
-  renderDropdownContent,
-} from '@/components/Header/DropDown';
+import useRouteState from '@/hooks/useRouteState';
+import useWindowWidth from '@/hooks/useWindowWidth';
+import RouteDropdownLink from './RouteDropDownLink';
+import renderDropdownContent from './renderDropdownContent';
 
 const RouteLink = ({ route, onNavClick, params }: RouteLinkProps) => {
   const [isDropdownOpen, hoverEvents]: [
     boolean,
-    {
-      onMouseEnter: () => void;
-      onMouseLeave: () => void;
-    }
+    { onMouseEnter: () => void; onMouseLeave: () => void }
   ] = useHover();
+
+  const { isActive } = useRouteState(params, route);
+  const isMobile = useWindowWidth(768) <= 768;
+
+  const isOpen = isMobile ? isActive || isDropdownOpen : isDropdownOpen;
 
   return (
     <div className="dropdown relative" {...hoverEvents}>
@@ -19,9 +21,9 @@ const RouteLink = ({ route, onNavClick, params }: RouteLinkProps) => {
         route={route}
         onNavClick={onNavClick}
         params={params}
-        isDropdownOpen={isDropdownOpen}
+        isDropdownOpen={isOpen}
       />
-      {renderDropdownContent(route, onNavClick, params, isDropdownOpen)}
+      {renderDropdownContent(route, onNavClick, params, isOpen)}
     </div>
   );
 };

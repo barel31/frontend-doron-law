@@ -1,3 +1,8 @@
+/**
+ * A custom React hook that calculates the scroll percentage of the page.
+ *
+ * @returns The scroll percentage as a number between 0 and 100.
+ */
 import { useEffect, useState } from 'react';
 
 function useScrollPercent() {

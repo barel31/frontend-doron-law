@@ -11,15 +11,15 @@ interface Contact {
 
 interface HeaderContactProps {
   contact: Contact;
-  mobile: boolean;
+  isMobile: boolean;
   show: boolean;
 }
 
-const HeaderContact = ({ contact, mobile, show }: HeaderContactProps) => {
+const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
   return (
     <div
       className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] ${
-        (mobile && show) || !mobile ? 'visible' : 'invisible'
+        (isMobile && show) || !isMobile ? 'visible' : 'invisible'
       }`}>
       <Link
         href={contact.facebook || ''}
@@ -46,7 +46,7 @@ const HeaderContact = ({ contact, mobile, show }: HeaderContactProps) => {
         <ElPhoneAlt className="w-[45px]" />
         <span className="font-bold m-1 max-lg:hidden">{contact.phone}</span>
       </a>
-      <Theme show={show} mobile={mobile} />
+      <Theme show={show} isMobile={isMobile} />
     </div>
   );
 };

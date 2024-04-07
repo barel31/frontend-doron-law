@@ -1,64 +1,18 @@
 'use client';
 
-import useGetWidth from '@/hooks/useGetWidth';
-import { useTheme } from 'next-themes';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
-export default function GoogleMapsEmbed({
-  address,
-  width = 0,
-  height = 0,
-  mobileDynamicRatio = 1,
-  tabletDynamicRatio = 1,
-  dynamicRatio = 1,
-  even = false,
-}: {
+interface GoogleMapsEmbedProps {
   address: string;
-  width?: number;
-  height?: number;
-  mobileDynamicRatio?: number;
-  tabletDynamicRatio?: number;
-  dynamicRatio?: number;
-  even?: boolean;
-}) {
-  const _width = useGetWidth();
-  const { theme } = useTheme();
+}
+
+export default function GoogleMapsEmbed({ address }: GoogleMapsEmbedProps) {
   const ref = useRef<HTMLIFrameElement>(null);
-
-  const calcHeight = () => {
-    if (height) {
-      return height;
-    } else if (_width < 768) {
-      return (_width / 1.5) * mobileDynamicRatio;
-    } else if (_width < 1024) {
-      return (_width / 1.5) * tabletDynamicRatio;
-    } else return 350 * dynamicRatio;
-  };
-
-  const calcWidth = () => {
-    if (width) {
-      if (width > _width) return _width;
-      else return width;
-    } else if (_width < 768) {
-      return (_width / 1.05) * mobileDynamicRatio;
-    } else if (_width < 1024) {
-      return (_width / 1.05) * tabletDynamicRatio;
-    } else return (_width / 3) * dynamicRatio;
-  };
-
-  useEffect(() => {
-    if (ref?.current) {
-      const darkTheme = theme === 'dark';
-      ref.current.style.filter = darkTheme ? 'invert(90%)' : 'invert(0%)';
-    }
-  }, [theme]);
 
   return (
     <iframe
       ref={ref}
-      className="m-auto"
-      width={calcWidth()}
-      height={even ? calcWidth() : calcHeight()}
+      className="m-auto w-full h-full"
       loading="lazy"
       allowFullScreen
       src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=AIzaSyCQfqPtZh41AuUmZ1HVGKwXHDaeAevUnK8`}></iframe>

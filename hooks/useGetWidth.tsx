@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * Custom hook that returns the current width of the window.
+ * @returns The current width of the window.
+ */
 function useGetWidth() {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 0
+  );
 
   useEffect(() => {
     const resizeEvent = () => setWidth(window.innerWidth);
 
-    addEventListener('resize', resizeEvent, { passive: true });
-    resizeEvent();
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', resizeEvent, { passive: true });
 
-    return () => removeEventListener('resize', resizeEvent);
+      return () => window.removeEventListener('resize', resizeEvent);
+    }
   }, []);
 
   return width;

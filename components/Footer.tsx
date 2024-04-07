@@ -95,8 +95,8 @@ function Footer({
           <div>
             <GoogleMapsEmbed
               address={contact?.address}
-              width={350}
-              height={250}
+              // width={350}
+              // height={250}
               // mobileDynamicRatio={0.5}
               // tabletDynamicRatio={0.4}
               // dynamicRatio={0.7}

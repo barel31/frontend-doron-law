@@ -59,8 +59,8 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
         <div>
           <GoogleMapsEmbed
             address={contact?.address}
-            tabletDynamicRatio={0.9}
-            mobileDynamicRatio={0.9}
+            // tabletDynamicRatio={0.9}
+            // mobileDynamicRatio={0.9}
           />
         </div>
       </div>

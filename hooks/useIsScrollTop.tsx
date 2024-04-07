@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * Custom hook that returns a boolean indicating whether the user has scrolled to the top of the page.
+ *
+ * @param defValue - The default value for the isTop state. Defaults to true.
+ * @returns A boolean value indicating whether the user has scrolled to the top of the page.
+ */
 function useIsScrollTop(defValue = true) {
   const [isTop, setIsTop] = useState(defValue);
 
   useEffect(() => {
     const scrollEvent = () => {
-      if (window.scrollY <= 10) {
-        setIsTop(true);
-      } else if (window.scrollY) {
-        setIsTop(false);
-      }
+      setIsTop(window.scrollY <= 10);
     };
 
-    addEventListener('scroll', scrollEvent, { passive: true });
+    window.addEventListener('scroll', scrollEvent, { passive: true });
     scrollEvent();
 
-    return () => removeEventListener('scroll', scrollEvent);
+    return () => window.removeEventListener('scroll', scrollEvent);
   }, []);
 
   return isTop;

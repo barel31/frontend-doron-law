@@ -1,17 +1,18 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 import Logo from '@/public/assets/logo.webp';
-import useGetWidth from '@/hooks/useGetWidth';
-import useIsScrollTop from '@/hooks/useIsScrollTop';
-import { useParams } from 'next/navigation';
 import { SolarHamburgerMenuBold } from '@/utils/icons';
-import ScrollLine from '../ScrollLine';
+
 import HeaderContact from './HeaderContact';
 import RouteLink from './RouteLink';
+import ScrollLine from '../ScrollLine';
+import useIsScrollTop from '@/hooks/useIsScrollTop';
+import useWindowWidth from '@/hooks/useWindowWidth';
 
 function Header({
   routes,
@@ -20,49 +21,51 @@ function Header({
   routes: Route[];
   contact: ContactInfo;
 }) {
-  const isTop = useIsScrollTop();
-  const width = useGetWidth();
-  const mobile = width <= 768;
   const [show, setShow] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const isTop = useIsScrollTop();
+  const isMobile = useWindowWidth(768) <= 768;
   const params = useParams();
 
   const toggleNavBar = () => setShow((prevShow) => !prevShow);
   const hideNavBar = () => setShow(false);
   const getLogoWidth = () =>
-    isTop ? (mobile ? '185' : '220') : mobile ? '120' : '150';
+    isTop ? (isMobile ? '185' : '220') : isMobile ? '120' : '150';
 
-  useEffect(() => {
-    const adjustStyles = () => {
-      if (show && mobile) {
-        document.body.style.overflow = 'hidden';
-        ref.current!.style.height = `${ref.current!.scrollHeight + 80}px`;
-      } else {
-        document.body.style.overflow = 'visible';
-        ref.current!.style.height = isTop ? '4rem' : '2.5rem';
-      }
-    };
+  const adjustStyles = useCallback(() => {
+    if (show && isMobile) {
+      document.body.style.overflow = 'hidden';
+      ref.current!.style.height = `${ref.current!.scrollHeight + 100}px`;
+    } else {
+      document.body.style.overflow = 'visible';
+      ref.current!.style.height = isTop ? '4rem' : '2.5rem';
+    }
+  }, [isMobile, show, isTop, ref]);
 
-    const clickListener = (e: MouseEvent) => {
-      if (mobile && show && !ref.current?.contains(e.target as Node)) {
+  const clickListener = useCallback(
+    (e: MouseEvent) => {
+      if (isMobile && show && !ref.current?.contains(e.target as Node)) {
         hideNavBar();
       }
-    };
+    },
+    [isMobile, show, ref]
+  );
 
+  useEffect(() => {
     adjustStyles();
     document.addEventListener('click', clickListener);
     return () => document.removeEventListener('click', clickListener);
-  }, [mobile, show, isTop]);
+  }, [adjustStyles, clickListener]);
 
   return (
     <header className="fixed z-10 top-0 w-full min-h-[2.5rem] bg-slate-200/90 dark:bg-slate-600/90">
       <ScrollLine />
       <nav
         ref={ref}
-        className="flex justify-between w-[90%] lg:w-4/5 items-center m-auto my-1 md:my-3 h-[2.5rem] transition-[height]">
+        className="flex justify-between lg:w-4/5 items-center m-auto my-1 md:my-3 h-[2.5rem] transition-[height]">
         <Link
           href="/"
-          className={`min-w-[20%] self-center ${mobile && show && 'hidden'}`}
+          className={`min-w-[20%] self-center ${isMobile && show && 'hidden'}`}
           title="בית">
           <Image
             src={Logo}
@@ -84,7 +87,7 @@ function Header({
         </button>
         <div
           className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 max-md:mt-3 ${
-            (mobile && show) || !mobile ? 'visible' : 'invisible'
+            (isMobile && show) || !isMobile ? 'visible' : 'invisible'
           }`}>
           {routes.map((route: Route) =>
             route.isChild ? null : (
@@ -97,20 +100,7 @@ function Header({
             )
           )}
         </div>
-        <HeaderContact contact={contact} mobile={mobile} show={show} />
-        <Link
-          href="/"
-          onClick={hideNavBar}
-          className={`absolute bottom-1 right-1 md:self-center ${
-            show && mobile ? 'visible' : 'invisible'
-          }`}
-          title="תפריט">
-          <Image
-            src={Logo}
-            alt="Logo"
-            className="w-full bg-slate-50/70 rounded-sm"
-          />
-        </Link>
+        <HeaderContact contact={contact} isMobile={isMobile} show={show} />
       </nav>
     </header>
   );

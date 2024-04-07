@@ -1,7 +1,7 @@
 import { IonIosSunny, RiMoonFill } from '@/utils/icons';
 import { useTheme } from 'next-themes';
 
-function Theme({ show, mobile }: { show: boolean; mobile: boolean }) {
+function Theme({ show, isMobile }: { show: boolean; isMobile: boolean }) {
 	const { theme, setTheme } = useTheme();
 
 	const handleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -9,7 +9,7 @@ function Theme({ show, mobile }: { show: boolean; mobile: boolean }) {
 	return (
 		<div
 			className={`theme-toggle self-center z-10 ${
-				show || !mobile ? 'visible' : 'invisible'
+				show || !isMobile ? 'visible' : 'invisible'
 			}`}
 		>
 			<input
