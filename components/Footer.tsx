@@ -108,7 +108,7 @@ function Footer({
 
       <div className="text-center p-10">
         <p>
-          &copy; {year} All rights reserved. כל הזכויות שמורות.
+        &copy; כל הזכויות שמורות {year} All rights reserved &copy;
         </p>
         <p>
           Designed and developed by{' '}
