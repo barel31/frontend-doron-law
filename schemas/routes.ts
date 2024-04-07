@@ -23,7 +23,7 @@ export default defineType({
     }),
     defineField({
       name: 'isChild',
-      title: 'האם דף הוא זה תת-דף?',
+      title: 'האם דף זה הוא תת-דף?',
       type: 'boolean',
     }),
     defineField({
