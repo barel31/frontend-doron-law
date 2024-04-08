@@ -58,7 +58,7 @@ function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
       <Header route={route} />
       <ContentBody route={route} contact={contact} slug={slug} />
       {route?.qAndA && <AccordionQA qa={route.qAndA} />}
-      {route.images && <Carousel images={sliders!} />}
+      {sliders && <Carousel images={sliders!} />}
     </div>
   );
 }
