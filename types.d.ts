@@ -12,16 +12,10 @@ interface Route extends SanityData {
   content: Topography[];
   header?: Topography[];
   qAndA?: QAndA[];
-  image?: {
-    name: string;
-    imageUrl: string;
-  };
+  image: SanityImageSource;
   children?: Route[];
   isChild?: boolean;
-  images?: {
-    name: string;
-    imageUrl: string;
-  }[];
+  images?: SanityImageSource[];
 }
 
 interface RouteLinkProps {

@@ -21,7 +21,7 @@ const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
       className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] ${
         (isMobile && show) || !isMobile ? 'visible' : 'invisible'
       }`}>
-      <Link
+      {/* <Link
         href={contact.facebook || ''}
         target="_blank"
         rel="noindex nofollow"
@@ -36,7 +36,7 @@ const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
         title="Linkedin"
         className="hover:text-blue-800">
         <BiLinkedin className="w-[45px] rounded-full" />
-      </Link>
+      </Link> */}
       <a
         href={`tel:${contact.phone}`}
         target="_blank"

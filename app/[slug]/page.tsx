@@ -1,8 +1,6 @@
 import { getContactInfo, getRoute, getRoutes } from '@/client';
 import Content from '@/components/Content';
 
-// todo route [tag]/[slag]/page.tsx
-
 export const revalidate = 3600; // revalidate every hour
 
 export default async function Page({ params }: { params: { slug: string } }) {

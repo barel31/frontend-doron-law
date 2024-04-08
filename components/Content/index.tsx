@@ -3,6 +3,8 @@ import ContactMePage from './ContactMePage';
 import SanityImage from './SanityImage';
 import ContactForm from '../ContactForm';
 import AccordionQA from './Accordion';
+import Carousel from './Carousel';
+import { urlFor } from '@/client';
 
 const BackgroundImage = ({ route }: { route: Route }) =>
   (route?.image && (
@@ -10,7 +12,7 @@ const BackgroundImage = ({ route }: { route: Route }) =>
       className={`w-full text-center -z-10 top-0 absolute overflow-hidden min-h-[900px] background-image background-image-${
         route.slug.current === '/' ? 'home' : route.slug.current
       }`}>
-      <SanityImage url={route.image} name={route.slug.current} />
+      <SanityImage src={route.image} alt={route.slug.current} />
     </div>
   )) ||
   null;
@@ -48,12 +50,15 @@ const ContentBody = ({
 function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
   const slug = route?.slug?.current;
 
+  const sliders = route.images?.map((image) => urlFor(image).dpr(2).url());
+
   return (
     <div className="content m-auto text-center">
       <BackgroundImage route={route} />
       <Header route={route} />
       <ContentBody route={route} contact={contact} slug={slug} />
       {route?.qAndA && <AccordionQA qa={route.qAndA} />}
+      {route.images && <Carousel images={sliders!} />}
     </div>
   );
 }
