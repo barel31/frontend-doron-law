@@ -50,7 +50,7 @@ const ContentBody = ({
 function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
   const slug = route?.slug?.current;
 
-  const sliders = route.images?.map((image) => urlFor(image).dpr(2).url());
+  const sliders = route?.images?.map((image) => urlFor(image).dpr(2).url());
 
   return (
     <div className="content m-auto text-center">
