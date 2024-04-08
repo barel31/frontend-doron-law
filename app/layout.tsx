@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
 
 export const metadata = {
-  title: 'עורך דין וטוען רבני דורון חדד',
+  title: 'עורך דין וטוען רבני - דורון חדד',
   description:
     'עורך דין וטוען רבני דורון חדד מציע שירותי דין ברמת גן והסביבה. צרו קשר עוד היום לייעוץ ראשוני ולקבלת ייעוץ משפטי מקצועי.',
   keywords:

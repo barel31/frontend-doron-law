@@ -28,20 +28,32 @@ function Footer({
               יצירת קשר
             </h4>
             <li className="flex items-center justify-start">
-              <OcticonDeviceMobile className="w-3" />
-              <span className="mr-5">נייד: {contact.mobile}</span>
+              <Link
+                href={`tel:${contact.mobile}`}
+                className="flex items-center justify-start hover:underline">
+                <OcticonDeviceMobile className="w-3 relative right-[1px]" />
+                <span className="mr-6">נייד: {contact.mobile}</span>
+              </Link>
             </li>
             <li className="flex items-center justify-start">
               <IcBaselinePhoneEnabled className="w-4" />
-              <span className="mr-5">טל: {contact.phone}</span>
+              <Link
+                href={`tel:${contact.phone}`}
+                className="flex items-center justify-start hover:underline">
+                <span className="mr-5">טל: {contact.phone}</span>
+              </Link>
             </li>
             <li className="flex items-center justify-start">
               <IcOutlineLocalPrintshop className="w-4" />
               <span className="mr-5">פקס: {contact.fax}</span>
             </li>
             <li className="flex items-center justify-start">
-              <MaterialSymbolsMailOutline className="w-4" />
-              <span className="mr-5">{contact.email}</span>
+              <Link
+                href={`mailto:${contact.email}`}
+                className="flex items-center justify-start hover:underline">
+                <MaterialSymbolsMailOutline className="w-4" />
+                <span className="mr-5">{contact.email}</span>
+              </Link>
             </li>
             <li className="flex items-center justify-start">
               <Fa6SolidAddressCard className="w-4" />
@@ -74,14 +86,14 @@ function Footer({
         </div>
 
         <div className="m-10 flex flex-col items-start md:items-center">
-          <h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
+          <h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start text-center">
             ניווט באתר
           </h4>
           {routes.map((route: Route) => (
             <Link
               key={route.slug.current}
               href={route.slug.current || ''}
-              className="flex items-center justify-start hover:font-bold"
+              className="flex items-center justify-start hover:font-medium text-center"
               title={route.name}>
               {route.name}
             </Link>
@@ -107,9 +119,7 @@ function Footer({
       </div>
 
       <div className="text-center p-10">
-        <p>
-        &copy; כל הזכויות שמורות {year} All rights reserved &copy;
-        </p>
+        <p>&copy; כל הזכויות שמורות {year} All rights reserved &copy;</p>
         <p>
           Designed and developed by{' '}
           <Link

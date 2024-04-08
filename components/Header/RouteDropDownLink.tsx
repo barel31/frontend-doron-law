@@ -31,7 +31,7 @@ const RouteDropdownLink = ({
         {route.name}
         {route.children && (
           <IconChevronDown
-            className="transition size-4 mr-1"
+            className="transition size-4 m-1"
             style={{
               transform: `rotate(${isDropdownOpen ? '0deg' : '180deg'})`,
             }}

@@ -18,7 +18,7 @@ interface HeaderContactProps {
 const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
   return (
     <div
-      className={`header-contacts flex flex-col md:flex-row gap-2 justify-between md:min-w-[20%] ${
+      className={`header-contacts flex flex-col md:flex-row gap-2 justify-around md:min-w-[20%] ${
         (isMobile && show) || !isMobile ? 'visible' : 'invisible'
       }`}>
       {/* <Link

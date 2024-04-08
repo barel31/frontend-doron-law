@@ -27,7 +27,7 @@ const isRouteActive = (params: Params, route: Route, child: boolean) => {
  */
 const generateClassNames = (isActive: boolean, isChild: boolean) => {
   return [
-    'flex text-slate-800 dark:text-slate-200 text-sm font-bold transition-colors p-2 py-10 rounded-md w-max',
+    'flex justify-around align-middle text-slate-800 dark:text-slate-200 text-sm font-bold transition-colors p-2 py-10 rounded-md w-max text-center',
     isChild ? 'm-2 text-center self-center' : '',
     isActive
       ? 'bg-slate-300 dark:bg-slate-500 shadow-md overline scale-105'

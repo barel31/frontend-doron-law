@@ -62,7 +62,7 @@ function Header({
       <ScrollLine />
       <nav
         ref={ref}
-        className="flex justify-between lg:w-4/5 items-center m-auto my-1 md:my-3 h-[2.5rem] transition-[height]">
+        className="flex justify-between mx-2 items-center m-auto my-1 md:my-3 h-[2.5rem] transition-[height]">
         <Link
           href="/"
           className={`min-w-[20%] self-center ${isMobile && show && 'hidden'}`}
@@ -86,7 +86,7 @@ function Header({
           <SolarHamburgerMenuBold className="w-10 m-auto" />
         </button>
         <div
-          className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-evenly md:min-w-[50%] max-md:basis-3/5 max-md:mt-3 ${
+          className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-between md:min-w-[50%] max-md:basis-3/5 max-md:mt-3 ${
             (isMobile && show) || !isMobile ? 'visible' : 'invisible'
           }`}>
           {routes.map((route: Route) =>
