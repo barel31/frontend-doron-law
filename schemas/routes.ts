@@ -29,9 +29,7 @@ export default defineType({
     defineField({
       name: 'children',
       title: 'תתי דפים',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'routes' }] }],
-      hidden: ({ document }) => Boolean(document && document.isChild),
+      type: 'children',
     }),
     defineField({
       name: 'qAndA',
@@ -40,94 +38,27 @@ export default defineType({
     }),
     defineField({
       name: 'image',
-      title: 'תמונה',
+      title: 'תמונה ראשית',
       type: 'image',
       options: {
         hotspot: true,
       },
     }),
     defineField({
+      name: 'images',
+      title: 'תמונות משניות',
+      type: 'secondsImages',
+    }),
+    defineField({
       name: 'header',
       title: 'כותרת',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'רגיל', value: 'normal' },
-            { title: 'בדיקה', value: 'title' },
-            { title: 'כותרת 1', value: 'h1' },
-            { title: 'כותרת 2', value: 'h2' },
-            { title: 'כותרת 3', value: 'h3' },
-            { title: 'כותרת 4', value: 'h4' },
-            { title: 'כותרת 5', value: 'h5' },
-            { title: 'ציטוט', value: 'blockquote' },
-          ],
-          // lists: [{ title: 'Bullet', value: 'bullet' }],
-          // marks: {
-          // 	decorators: [
-          // 		{ title: 'Strong', value: 'strong' },
-          // 		{ title: 'Emphasis', value: 'em' },
-          // 	],
-          // 	annotations: [
-          // 		{
-          // 			title: 'URL',
-          // 			name: 'link',
-          // 			type: 'object',
-          // 			fields: [
-          // 				{
-          // 					title: 'URL',
-          // 					name: 'href',
-          // 					type: 'url',
-          // 				},
-          // 			],
-          // 		},
-          // 	],
-          // },
-        },
-      ],
+      type: 'blockField',
     }),
     defineField({
       name: 'content',
       title: 'תוכן',
-      type: 'array',
+      type: 'blockField',
       validation: (Rule) => Rule.required(),
-      of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'רגיל', value: 'normal' },
-            { title: 'בדיקה', value: 'title' },
-            { title: 'כותרת 1', value: 'h1' },
-            { title: 'כותרת 2', value: 'h2' },
-            { title: 'כותרת 3', value: 'h3' },
-            { title: 'כותרת 4', value: 'h4' },
-            { title: 'כותרת 5', value: 'h5' },
-            { title: 'ציטוט', value: 'blockquote' },
-          ],
-          // lists: [{ title: 'Bullet', value: 'bullet' }],
-          // marks: {
-          // 	decorators: [
-          // 		{ title: 'Strong', value: 'strong' },
-          // 		{ title: 'Emphasis', value: 'em' },
-          // 	],
-          // 	annotations: [
-          // 		{
-          // 			title: 'לינק',
-          // 			name: 'link',
-          // 			type: 'object',
-          // 			fields: [
-          // 				{
-          // 					title: 'URL',
-          // 					name: 'href',
-          // 					type: 'url',
-          // 				},
-          // 			],
-          // 		},
-          // 	],
-          // },
-        },
-      ],
     }),
   ],
   preview: {
