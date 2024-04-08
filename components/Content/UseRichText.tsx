@@ -1,7 +1,8 @@
-'use client';
-
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { urlFor } from '@/client';
+import '@/styles/PortableText.module.css';
 
 const components: PortableTextComponents = {
   marks: {
@@ -37,10 +38,31 @@ const components: PortableTextComponents = {
   list: {
     bullet: ({ children }) => <ul className="md:mt-xl">{children}</ul>,
     number: ({ children }) => <ol className="md:mt-lg">{children}</ol>,
-
     checkmarks: ({ children }) => (
       <ol className="m-auto text-lg">{children}</ol>
     ),
+  },
+  types: {
+    image: ({ value }) => {
+      const url = urlFor(value.asset).dpr(2).url();
+
+      return (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-[300px] h-[500px] inline-image m-1">
+          <Image
+            src={url}
+            alt="דורון חדד"
+            priority
+            width={300}
+            height={500}
+            className={`w-fit h-fit object-left`}
+          />
+        </a>
+      );
+    },
   },
 };
 

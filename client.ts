@@ -1,5 +1,6 @@
 import { createClient } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 export const Client = createClient({
   projectId: 'cprr9tyl',
@@ -23,4 +24,4 @@ export const getContactInfo: Promise<ContactInfo> = Client.fetch(
 
 const builder = imageUrlBuilder(Client);
 
-export const urlFor = (source: Route['image']) => builder.image(source!);
+export const urlFor = (source: SanityImageSource) => builder.image(source!);

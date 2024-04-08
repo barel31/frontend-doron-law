@@ -18,6 +18,10 @@ interface Route extends SanityData {
   };
   children?: Route[];
   isChild?: boolean;
+  images?: {
+    name: string;
+    imageUrl: string;
+  }[];
 }
 
 interface RouteLinkProps {
@@ -74,4 +78,17 @@ interface MailResponse {
   success: boolean;
   info?: SMTPTransport.SentMessageInfo;
   err?: Error;
+}
+
+interface ImageNode {
+  asset: {
+    metadata: {
+      dimensions: {
+        width: number;
+        height: number;
+      };
+    };
+    url: string;
+  };
+  alt?: string;
 }
