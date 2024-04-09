@@ -9,7 +9,10 @@ import { useState } from 'react';
  */
 const isRouteActive = (params: Params, route: Route, child: boolean) => {
   if (child) {
-    return params.slug === route.slug.current;
+    const active = route.children?.some(
+      (route) => params.slug === route.slug.current
+    );
+    if (active) return true;
   }
   return (
     params.slug === route.slug.current ||

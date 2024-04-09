@@ -16,7 +16,7 @@ const RouteLink = ({ route, onNavClick, params }: RouteLinkProps) => {
   const isOpen = isMobile ? isActive || isDropdownOpen : isDropdownOpen;
 
   return (
-    <div className="dropdown relative" {...hoverEvents}>
+    <div className="relative" {...hoverEvents}>
       <RouteDropdownLink
         route={route}
         onNavClick={onNavClick}
