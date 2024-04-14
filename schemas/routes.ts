@@ -60,6 +60,11 @@ export default defineType({
       type: 'blockField',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'keywords',
+      title: 'מילות מפתח',
+      type: 'string',
+    }),
   ],
   preview: {
     select: {
