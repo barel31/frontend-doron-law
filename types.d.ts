@@ -16,6 +16,7 @@ interface Route extends SanityData {
   children?: Route[];
   isChild?: boolean;
   images?: SanityImageSource[];
+  keywords?: string;
 }
 
 interface RouteLinkProps {

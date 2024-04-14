@@ -1,16 +1,20 @@
-import './globals.css';
+import '@/styles/globals.css';
 
 import { getContactInfo, getRoutes } from '@/client';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
+import { type Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'עורך דין וטוען רבני - דורון חדד',
   description:
     'עורך דין וטוען רבני דורון חדד מציע שירותי דין ברמת גן והסביבה. צרו קשר עוד היום לייעוץ ראשוני ולקבלת ייעוץ משפטי מקצועי.',
   keywords:
     'עורך דין, דורון חדד, עורך דין רבני, עורך דין מקרקעין, עורך דין משפחה, עורך דין אזרחי, עורך דין הוצאה לפועל, עורך דין ירושה, עורך דין יחסי ציבור, עורך דין יחסי ציבור רמת גן, עורך דין רמת גן, עורך דין תל אביב, עורך דין גבעתיים, עורך דין רמת השרון, עורך דין רעננה, עורך דין כפר סבא, עורך דין ראשון לציון, עורך דין פתח תקווה, עורך דין ראש העין, עורך דין נתניה, עורך דין חדרה, עורך דין קריית אונו, עורך דין רמלה, עורך דין רחובות, עורך דין יבנה, עורך דין נס ציונה, עורך דין רא',
+  other: {
+    'google-site-verification': 'oLou05k7JXCvfbsQl-8YhBq73nsGZwf6lViRe6E4lwI',
+  },
 };
 
 export default async function RootLayout({

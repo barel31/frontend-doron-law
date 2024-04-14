@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
-import Logo from '@/public/assets/logo.webp';
+import Logo from '@/public/logo.webp';
 import { SolarHamburgerMenuBold } from '@/utils/icons';
 
 import HeaderContact from './HeaderContact';
