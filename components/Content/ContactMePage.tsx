@@ -56,7 +56,7 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
         <h1 className="text-2xl/relaxed text-slate-800 dark:text-slate-300">
           מפה
         </h1>
-        <div>
+        <div className="h-full w-full">
           <GoogleMapsEmbed address={contact?.address} />
         </div>
       </div>

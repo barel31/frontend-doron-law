@@ -104,16 +104,8 @@ function Footer({
           <h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
             מפה
           </h4>
-          <div>
-            <GoogleMapsEmbed
-              address={contact?.address}
-              // width={350}
-              // height={250}
-              // mobileDynamicRatio={0.5}
-              // tabletDynamicRatio={0.4}
-              // dynamicRatio={0.7}
-              // even
-            />
+          <div className='h-full w-full'>
+            <GoogleMapsEmbed address={contact?.address} />
           </div>
         </div>
       </div>
