@@ -2,12 +2,12 @@ interface SanityData {
   _createdAt: string;
   _rev: string;
   _type: string;
-  name: string;
   _id: string;
   _updatedAt: string;
 }
 
 interface Route extends SanityData {
+  name: string;
   slug: { current: string; _type: string };
   content: Topography[];
   header?: Topography[];
@@ -30,6 +30,7 @@ interface RouteLinkComponentProps extends RouteLinkProps {
 }
 
 interface ContactInfo extends SanityData {
+  name: string;
   nameEnglish: string;
   email: string;
   phone: string;
