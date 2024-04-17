@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
 import { type Metadata } from 'next';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'עורך דין וטוען רבני - דורון חדד',
@@ -36,6 +37,20 @@ export default async function RootLayout({
 
   return (
     <html lang="he" dir="rtl" suppressHydrationWarning>
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-02L1FPV645"></Script>
+        <Script id="google-analytics">
+          {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-02L1FPV645');
+  `}
+        </Script>
+      </head>
       <body className="bg-slate-50 dark:bg-slate-800">
         <ThemeProvider>
           <Header routes={routes} contact={contactInfo} />
