@@ -30,17 +30,23 @@ function Header({
   const toggleNavBar = () => setShow((prevShow) => !prevShow);
   const hideNavBar = () => setShow(false);
   const getLogoWidth = () =>
-    isTop ? (isMobile ? '185' : '220') : isMobile ? '120' : '150';
+    isTop ? (isMobile ? '185' : '220') : isMobile ? '120' : '160';
+
+  const isDropdownOpen = routes.some(
+    (route) => route.isChild && route.slug.current === params.slug
+  );
 
   const adjustStyles = useCallback(() => {
     if (show && isMobile) {
       document.body.style.overflow = 'hidden';
-      ref.current!.style.height = `${ref.current!.scrollHeight + 100}px`;
+      const padding =
+        ref.current!.scrollHeight + (isDropdownOpen ? 0 : 120) + 'px';
+      ref.current!.style.height = padding;
     } else {
       document.body.style.overflow = 'visible';
       ref.current!.style.height = isTop ? '4rem' : '2.5rem';
     }
-  }, [isMobile, show, isTop, ref]);
+  }, [isMobile, show, isTop, ref, isDropdownOpen]);
 
   const clickListener = useCallback(
     (e: MouseEvent) => {
@@ -62,10 +68,10 @@ function Header({
       <ScrollLine />
       <nav
         ref={ref}
-        className="flex justify-between mx-2 items-center m-auto my-1 md:my-3 h-[2.5rem] transition-[height]">
+        className="mx-auto max-2xl:pl-2 max-md:m-3 flex justify-between items-center m-auto my-1 md:my-3 min-h-[2.5rem] h-fit transition-[height] max-w-[2000px]">
         <Link
           href="/"
-          className={`min-w-[20%] self-center ${isMobile && show && 'hidden'}`}
+          className={`min-w-[15%] self-center ${isMobile && show && 'hidden'}`}
           title="בית">
           <Image
             src={Logo}
@@ -86,7 +92,7 @@ function Header({
           <SolarHamburgerMenuBold className="w-10 m-auto" />
         </button>
         <div
-          className={`navbar-links flex flex-col md:flex-row max-md:self-start justify-between md:min-w-[50%] max-md:basis-3/5 max-md:mt-3 ${
+          className={`navbar-links self-center mx-2 flex flex-col md:flex-row max-md:self-start justify-between md:min-w-[70%] max-md:basis-2/5 max-md:mt-3 ${
             (isMobile && show) || !isMobile ? 'visible' : 'invisible'
           }`}>
           {routes.map((route: Route) =>

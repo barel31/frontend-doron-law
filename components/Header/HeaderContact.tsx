@@ -1,7 +1,7 @@
-import React from 'react';
-import { BiLinkedin, ElPhoneAlt, BiFacebook } from '@/utils/icons';
-import Link from 'next/link';
+import { ElPhoneAlt } from '@/utils/icons';
 import Theme from './Theme';
+// import { BiLinkedin, ElPhoneAlt, BiFacebook } from '@/utils/icons';
+// import Link from 'next/link';
 
 interface Contact {
   facebook: string;
@@ -18,7 +18,7 @@ interface HeaderContactProps {
 const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
   return (
     <div
-      className={`header-contacts flex flex-col md:flex-row gap-2 justify-around md:min-w-[20%] ${
+      className={`header-contacts flex flex-col md:flex-row gap-2 justify-around ${
         (isMobile && show) || !isMobile ? 'visible' : 'invisible'
       }`}>
       {/* <Link
@@ -41,10 +41,14 @@ const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
         href={`tel:${contact.phone}`}
         target="_blank"
         rel="noindex nofollow"
-        className="flex flex-row items-center justify-around whitespace-nowrap hover:text-white dark:hover:text-zinc-900"
+        className={`flex flex-row items-center justify-around whitespace-nowrap hover:text-white dark:hover:text-zinc-900 ${
+          (isMobile && show) || !isMobile ? 'visible' : 'invisible'
+        }`}
         title="טלפון">
         <ElPhoneAlt className="w-[45px]" />
-        <span className="font-bold m-1 max-lg:hidden">{contact.phone}</span>
+        <span className="font-bold m-1 max-2xl:hidden max-sm:visible">
+          {contact.phone}
+        </span>
       </a>
       <Theme show={show} isMobile={isMobile} />
     </div>

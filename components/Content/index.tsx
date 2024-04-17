@@ -32,7 +32,7 @@ const ContentBody = ({
   contact?: ContactInfo;
   slug: string;
 }) => (
-  <div className="m-auto bg-slate-50 dark:bg-slate-700 md:mt-32 pb-20">
+  <div className="m-auto bg-slate-50 dark:bg-slate-700">
     {slug === '/' ? (
       <div className="w-full">
         <ContactForm contact={contact!} />
@@ -41,7 +41,7 @@ const ContentBody = ({
       slug === 'contact-me' && <ContactMePage contact={contact!} />
     )}
 
-    <div className="text-right m-5 md:m-36 text-slate-900 dark:text-slate-300 normal-line-height">
+    <div className="text-right p-5 mt-20 md:m-36 min-h-[60vh] text-slate-900 dark:text-slate-300 normal-line-height">
       <UsePortableText value={route?.content} />
     </div>
   </div>

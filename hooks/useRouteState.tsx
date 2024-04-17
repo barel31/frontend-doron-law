@@ -30,11 +30,11 @@ const isRouteActive = (params: Params, route: Route, child: boolean) => {
  */
 const generateClassNames = (isActive: boolean, isChild: boolean) => {
   return [
-    'flex justify-around align-middle text-slate-800 dark:text-slate-200 text-sm font-bold transition-colors p-2 py-10 rounded-md w-max text-center',
-    isChild ? 'm-2 text-center self-center' : '',
+    'flex justify-around align-middle text-slate-600 dark:text-slate-200 text-sm font-bold transition-colors p-2 py-10 rounded-md w-max text-center max-md:m-2',
+    isChild ? 'text-center self-center m-1 p-1' : '',
     isActive
-      ? 'bg-slate-300 dark:bg-slate-500 shadow-md overline scale-105'
-      : 'hover:overline hover:scale-105',
+      ? 'bg-slate-400 dark:bg-slate-500 shadow-md'
+      : 'hover:scale-105 hover:bg-slate-300 dark:hover:bg-slate-600',
   ];
 };
 
