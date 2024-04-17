@@ -9,7 +9,6 @@ export default defineField({
       type: 'block',
       styles: [
         { title: 'רגיל', value: 'normal' },
-        { title: 'בדיקה', value: 'title' },
         { title: 'כותרת 1', value: 'h1' },
         { title: 'כותרת 2', value: 'h2' },
         { title: 'כותרת 3', value: 'h3' },

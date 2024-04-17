@@ -70,23 +70,7 @@ export default defineType({
 		defineField({
 			name: 'bio',
 			title: 'ביוגרפיה',
-			type: 'array',
-			of: [
-				{
-					title: 'Block',
-					type: 'block',
-					styles: [
-						{ title: 'רגיל', value: 'normal' },
-						{ title: 'בדיקה', value: 'title' },
-						{ title: 'כותרת 1', value: 'h1' },
-						{ title: 'כותרת 2', value: 'h2' },
-						{ title: 'כותרת 3', value: 'h3' },
-						{ title: 'כותרת 4', value: 'h4' },
-						{ title: 'כותרת 5', value: 'h5' },
-						{ title: 'ציטוט', value: 'blockquote' },
-					],
-				},
-			],
+			type: 'blockField',
 		}),
 	],
 });
