@@ -10,24 +10,21 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = params;
 
-  const route = await getRoute(slug);
-
-  const previousTitle = (await parent).title || '';
-  const previousDescription = (await parent).description || '';
-
+  const [route, data] = await Promise.all([getRoute(slug), parent]);
+  
+  const previousTitle = data.title?.absolute;
+  const previousDescription = data.description;
+  
   return {
-    title: previousTitle ? `${route.name} - ${previousTitle}` : route.name,
-    //! disable ts in next line because we know that content is always an array
-    // @ts-ignore
-    description: route.content[0]?.children[0].text || previousDescription,
+    title: previousTitle ? `${route.name} | ${previousTitle}` : route.name,
+    description: `${route.content[0].children[0].text} | ${previousDescription}`,
   };
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
-  const route = await getRoute(slug);
-  const contact = await getContactInfo;
+  const [route, contact] = await Promise.all([getRoute(slug), getContactInfo]);
 
   return (
     <div

@@ -50,7 +50,7 @@ interface ContactInfo extends SanityData {
 }
 
 interface Topography {
-  children: Array<Object>;
+  children: Array<{ text: string }>;
   _type: string;
   style: string;
   _key: string;

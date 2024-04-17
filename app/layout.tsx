@@ -24,8 +24,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   Modal: React.ReactNode;
 }) {
-  const routes = await getRoutes;
-  const contactInfo = await getContactInfo;
+  const [contactInfo, routes] = await Promise.all([getContactInfo, getRoutes]);
 
   if (routes[0].name !== 'בית') {
     // todo: let sanity handle order

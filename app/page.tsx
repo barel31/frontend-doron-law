@@ -2,12 +2,11 @@ import { getContactInfo, getRoute } from '@/client';
 import Content from '@/components/Content';
 
 export default async function Home() {
-	const contact = await getContactInfo;
-	const route = await getRoute('/');
+  const [contact, route] = await Promise.all([getContactInfo, getRoute('/')]);
 
-	return (
-		<div className="page-content page-content-home text-slate-950 text-center">
-			<Content route={route} contact={contact} />
-		</div>
-	);
+  return (
+    <div className="page-content page-content-home text-slate-950 text-center">
+      <Content route={route} contact={contact} />
+    </div>
+  );
 }
