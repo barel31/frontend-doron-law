@@ -5,14 +5,14 @@ export default function GoogleAnalytics() {
     <>
       <Script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-02L1FPV645"></Script>
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}></Script>
       <Script id="google-analytics">
         {`
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
-gtag('config', 'G-02L1FPV645');
+gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
 `}
       </Script>
     </>
