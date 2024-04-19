@@ -1,20 +1,9 @@
-'use client';
-
-import { useRef } from 'react';
-
-interface GoogleMapsEmbedProps {
-  address: string;
-}
-
-export default function GoogleMapsEmbed({ address }: GoogleMapsEmbedProps) {
-  const ref = useRef<HTMLIFrameElement>(null);
-
+export default function GoogleMapsEmbed({ address }: { address: string }) {
   return (
     <iframe
-      ref={ref}
       className="m-auto w-full h-full"
       loading="lazy"
       allowFullScreen
-      src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=AIzaSyCQfqPtZh41AuUmZ1HVGKwXHDaeAevUnK8`}></iframe>
+      src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY}`}></iframe>
   );
 }

@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   return pages.map((route) => ({
-    url: `https://doron-hadad.vercel.app${route}`,
+    url: `https://${process.env.NEXT_PUBLIC_PRODUCTION_URL}/${route}`,
     lastModified: new Date(),
   }));
 }
