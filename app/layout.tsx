@@ -39,7 +39,7 @@ export default async function RootLayout({
     <html lang="he" dir="rtl" suppressHydrationWarning>
       <head>
         <GoogleAnalytics />
-        <link rel="canonical" href={process.env.NEXT_PUBLIC_PRODUCTION_URL} />
+        <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL} />
       </head>
       <body className="bg-slate-50 dark:bg-slate-800">
         <ThemeProvider>

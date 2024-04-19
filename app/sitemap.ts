@@ -3,12 +3,14 @@ import { getRoutes } from '../client';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = await getRoutes;
-  const pages = routes.map((route: Route) =>
-    route.slug.current === '/' ? '/' : `/${route.slug.current}`
-  );
 
-  return pages.map((route) => ({
-    url: `https://${process.env.NEXT_PUBLIC_PRODUCTION_URL}/${route}`,
+  return routes.map((route) => ({
+    url:
+      process.env.NEXT_PUBLIC_BASE_URL +
+      (route.slug.current === '/' ? '' : '/' + route.slug.current),
     lastModified: new Date(),
+    changeFrequency: 'daily',
+    priority: route.slug.current === '/' ? 1 : 0.7,
+    // images: route.image ? [{ url: route.image.url }] : [], //? Currently not supported by Next.js
   }));
 }
