@@ -20,9 +20,10 @@ module.exports = {
   darkMode: 'class',
   safelist: [
     'hover:shadow-sm',
+    'scale-105',
     'hover:scale-105',
-    'hover:bg-slate-300',
-    'dark:hover:bg-slate-600',
-    'max-md:m-2',
+    'hover:bg-slate-400',
+    'dark:hover:bg-slate-500',
+    'max-md:m-2', 'p-4', 'xl:p-4', 'p-1'
   ],
 };

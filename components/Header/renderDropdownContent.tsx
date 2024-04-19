@@ -10,7 +10,7 @@ const renderDropdownContent = (
   return (
     isDropdownOpen &&
     route.children && (
-      <div className="dropdown-content absolute mt-0 bg-gray-100 dark:bg-gray-700 flex flex-col rounded-md w-full text-center p-2">
+      <div className="dropdown-content absolute mt-0 bg-gray-100 dark:bg-gray-700 flex flex-col rounded-md w-max text-center p-2">
         {route.children.map((childRoute: Route) => (
           <RouteDropdownLink
             route={childRoute}

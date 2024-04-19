@@ -18,7 +18,7 @@ const BackgroundImage = ({ route }: { route: Route }) =>
   null;
 
 const Header = ({ route }: { route: Route }) => (
-  <div className="text-slate-800 backdrop-brightness-150 dark:backdrop-saturate-0 dark:backdrop-brightness-50 dark:text-slate-300 content-header normal-line-height text-center font-sans max-w-full my-20 mx-2 md:mt-28">
+  <div className="content-header mx-auto text-center p-5 mt-32 mb-12 m-5 w-fit rounded-lg text-slate-900 dark:text-slate-200 bg-slate-300 dark:bg-slate-800 bg-opacity-70 dark:bg-opacity-70 backdrop-brightness-110 dark:backdrop-brightness-50 dark:backdrop-saturate-0 normal-line-height font-sans">
     {route?.header && <UsePortableText value={route.header!} />}
   </div>
 );
@@ -32,7 +32,7 @@ const ContentBody = ({
   contact?: ContactInfo;
   slug: string;
 }) => (
-  <div className="m-auto bg-slate-50 dark:bg-slate-700">
+  <div className="content-body m-auto bg-slate-50 dark:bg-slate-700">
     {slug === '/' ? (
       <div className="w-full">
         <ContactForm contact={contact!} />
@@ -41,7 +41,10 @@ const ContentBody = ({
       slug === 'contact-me' && <ContactMePage contact={contact!} />
     )}
 
-    <div className="text-right p-5 mt-20 md:m-36 min-h-[60vh] text-slate-900 dark:text-slate-300 normal-line-height">
+    <div
+      className={`content-body-text text-right mx-6 py-6 xl:m-36 min-h-[60vh] text-slate-900 dark:text-slate-300 normal-line-height ${
+        route.slug.current === '/' ? 'mt-12' : 'xl:pt-16'
+      }`}>
       <UsePortableText value={route?.content} />
     </div>
   </div>

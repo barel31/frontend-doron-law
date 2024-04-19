@@ -40,7 +40,7 @@ function Header({
     if (show && isMobile) {
       document.body.style.overflow = 'hidden';
       const padding =
-        ref.current!.scrollHeight + (isDropdownOpen ? 0 : 120) + 'px';
+        ref.current!.scrollHeight + (isDropdownOpen ? 0 : 150) + 'px';
       ref.current!.style.height = padding;
     } else {
       document.body.style.overflow = 'visible';

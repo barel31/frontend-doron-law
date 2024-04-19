@@ -9,7 +9,7 @@ import {
 
 function ContactMePage({ contact }: { contact: ContactInfo }) {
   return (
-    <div className="m-auto flex flex-col lg:flex-row justify-between gap-5 xl:w-3/4 lg:m-5 xl:m-auto relative top-20">
+    <div className="m-auto flex flex-col lg:flex-row justify-between gap-5 xl:w-3/4 lg:m-5 xl:m-auto relative top-20 pb-24">
       <div className="lg:w-1/3">
         <h1 className="text-2xl/relaxed text-slate-800 dark:text-slate-300">
           תופס יצירת קשר
@@ -53,10 +53,10 @@ function ContactMePage({ contact }: { contact: ContactInfo }) {
         </div>
       </div>
       <div>
-        <h1 className="text-2xl/relaxed text-slate-800 dark:text-slate-300">
+        <h1 className="text-2xl/relaxed text-slate-800 dark:text-slate-300 max-h-[400px]">
           מפה
         </h1>
-        <div className="h-full w-full">
+        <div className="h-[400px] w-full">
           <GoogleMapsEmbed address={contact?.address} />
         </div>
       </div>
