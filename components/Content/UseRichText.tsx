@@ -26,6 +26,12 @@ const components: PortableTextComponents = {
     },
   },
   block: {
+    normal: ({ children }: any) => {
+      if (children.length === 1 && children[0] === '') {
+        return <br />
+      }
+      return <p>{children}</p>
+    },
     h1: ({ children }) => <h1 className="text-4xl md:text-7xl">{children}</h1>,
     h2: ({ children }) => <h2 className="text-3xl md:text-6xl">{children}</h2>,
     h3: ({ children }) => <h3 className="text-2xl md:text-5xl">{children}</h3>,
