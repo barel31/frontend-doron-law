@@ -28,18 +28,15 @@ export default async function RootLayout({
   const [contactInfo, routes] = await Promise.all([getContactInfo, getRoutes]);
 
   if (routes[0].name !== 'בית') {
-    // todo: let sanity handle order
-    const homeIndex = routes.findIndex((route) => route.name === 'בית');
-    const tmp = routes[0];
-    routes[0] = routes[homeIndex];
-    routes[homeIndex] = tmp;
-  }
+  const homeIndex = routes.findIndex((route) => route.name === 'בית');
+  [routes[0], routes[homeIndex]] = [routes[homeIndex], routes[0]]; // Swap the first route with the home route
+}
 
   return (
     <html lang="he" dir="rtl" suppressHydrationWarning>
       <head>
         <GoogleAnalytics />
-        <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL} />
+        <link rel="canonical" href={process.env.NEXT_PUBLIC_PRODUCTION_URL} />
       </head>
       <body className="bg-slate-50 dark:bg-slate-800">
         <ThemeProvider>

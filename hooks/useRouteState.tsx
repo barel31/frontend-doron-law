@@ -2,9 +2,10 @@ import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { useState } from 'react';
 
 /**
- * Checks if the current route is active based on the provided parameters and route.
+ * Checks if a route is active based on the current route parameters.
  * @param params - The parameters of the current route.
- * @param route - The route object to compare against.z
+ * @param route - The route object to compare against.
+ * @param child - A boolean indicating whether the route is a child route.
  * @returns A boolean indicating whether the route is active.
  */
 const isRouteActive = (params: Params, route: Route, child: boolean) => {
@@ -30,8 +31,8 @@ const isRouteActive = (params: Params, route: Route, child: boolean) => {
  */
 const generateClassNames = (isActive: boolean, isChild: boolean) => {
   return [
-    'flex justify-around align-middle text-slate-500 dark:text-slate-100 text-sm font-bold transition-colors p-1 py-2 xl:p-4 max-md:m-2 rounded-md w-max text-center',
-    isChild ? 'text-center self-center m-1 p-1' : '',
+    'flex justify-around align-middle text-slate-500 dark:text-slate-100 text-sm font-bold transition-colors px-1 py-2 xl:p-4 max-md:m-2 rounded-md w-max text-center',
+    isChild ? 'text-center self-center m-1 p-1 w-full' : '',
     isActive
       ? 'bg-slate-400 dark:bg-slate-500 shadow-md scale-105'
       : 'hover:scale-105 hover:bg-slate-400 dark:hover:bg-slate-500',

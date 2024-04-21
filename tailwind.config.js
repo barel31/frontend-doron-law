@@ -24,6 +24,6 @@ module.exports = {
     'hover:scale-105',
     'hover:bg-slate-400',
     'dark:hover:bg-slate-500',
-    'max-md:m-2', 'p-4', 'xl:p-4', 'p-1'
+    'max-md:m-2', 'p-4', 'xl:p-4', 'p-1', 'shadow-md'
   ],
 };

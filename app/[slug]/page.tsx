@@ -14,10 +14,12 @@ export async function generateMetadata(
   
   const previousTitle = data.title?.absolute;
   const previousDescription = data.description;
+  const previousKeywords = data.keywords;
   
   return {
     title: previousTitle ? `${route.name} | ${previousTitle}` : route.name,
     description: `${route.content[0].children[0].text} | ${previousDescription}`,
+    keywords: `${route.keywords}, ${previousKeywords}`,
   };
 }
 
