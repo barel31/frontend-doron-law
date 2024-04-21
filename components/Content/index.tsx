@@ -3,7 +3,7 @@ import ContactMePage from './ContactMePage';
 import SanityImage from './SanityImage';
 import ContactForm from '../ContactForm';
 import AccordionQA from './Accordion';
-import Carousel from './Carousel';
+import Carousel from '../Carousel';
 import { urlFor } from '@/client';
 
 const BackgroundImage = ({ route }: { route: Route }) =>

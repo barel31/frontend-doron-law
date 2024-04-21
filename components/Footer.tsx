@@ -29,6 +29,7 @@ function Footer({
             </h4>
             <li className="flex items-center justify-start">
               <Link
+                title="נייד"
                 href={`tel:${contact.mobile}`}
                 className="flex items-center justify-start hover:underline">
                 <OcticonDeviceMobile className="w-3 relative right-[1px]" />
@@ -38,6 +39,7 @@ function Footer({
             <li className="flex items-center justify-start">
               <IcBaselinePhoneEnabled className="w-4" />
               <Link
+                title="טלפון"
                 href={`tel:${contact.phone}`}
                 className="flex items-center justify-start hover:underline">
                 <span className="mr-5">טל: {contact.phone}</span>
@@ -49,6 +51,7 @@ function Footer({
             </li>
             <li className="flex items-center justify-start">
               <Link
+                title="דואר אלקטרוני"
                 href={`mailto:${contact.email}`}
                 className="flex items-center justify-start hover:underline">
                 <MaterialSymbolsMailOutline className="w-4" />
@@ -104,7 +107,7 @@ function Footer({
           <h4 className="underline underline-offset-8 m-4 decoration-lime-500 justify-start">
             מפה
           </h4>
-          <div className='h-full w-full'>
+          <div className="h-full w-full">
             <GoogleMapsEmbed address={contact?.address} />
           </div>
         </div>

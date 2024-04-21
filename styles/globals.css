@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-	--foreground-rgb: 0, 0, 0;
-	--background-start-rgb: 214, 219, 220;
-	--background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--foreground-rgb: 255, 255, 255;
-		--background-start-rgb: 0, 0, 0;
-		--background-end-rgb: 0, 0, 0;
-	}
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 /* .page-content {
@@ -32,32 +32,47 @@
 } */
 
 .normal-line-height > * {
-	line-height: 1.6 !important;
+  line-height: 1.6 !important;
 }
 
 dialog::backdrop {
-	backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 * {
-	transition-property: color, background-color, border-color,
-		text-decoration-color, fill, stroke;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 100ms;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 100ms;
 }
 
 p {
-	margin: 1em auto;
+  margin: 1em auto;
 }
 
-ul > li, ol > li {
-	margin-right: 1em;
+ul > li,
+ol > li {
+  margin-right: 1em;
 }
 
 ul > li {
-	list-style-type: disc;
+  list-style-type: disc;
 }
 
 ol > li {
-	list-style-type: decimal;
+  list-style-type: decimal;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--background-start-rgb), 1) 0%,
+    rgba(var(--background-end-rgb), 1) 100%
+  );
+  transform-origin: 0%;
 }

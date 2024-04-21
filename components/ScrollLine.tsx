@@ -1,23 +1,16 @@
 'use client';
 
-import useScrollPercent from '@/hooks/useScrollPercent';
-import React, { useEffect, useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 function ScrollLine() {
-  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
-  const scroll = useScrollPercent();
-
-  useEffect(() => {
-    ref.current!.style.width = scroll + 'vw';
-  }, [scroll]);
-
-  return (
-    <div
-      className="bg-slate-400 dark:bg-slate-800 fixed top-0 h-1 transition-all duration-0 z-20"
-      ref={ref}
-    />
-  );
+  return <motion.div className="progress-bar" style={{ scaleX }} />;
 }
 
 export default ScrollLine;
