@@ -11,6 +11,14 @@ export default async function generateMetadata(
   const previousDescription = data.description;
   const previousKeywords = data.keywords;
 
+  if (!route) {
+    return {
+      title: previousTitle ? `עמוד לא נמצא | ${previousTitle}` : 'עמוד לא נמצא',
+      description: `העמוד שחיפשת לא נמצא | ${previousDescription}`,
+      keywords: `page, not, found, page not found, ,עמוד לא נמצא, ${previousKeywords}`,
+    };
+  }
+
   return {
     title: previousTitle ? `${route.name} | ${previousTitle}` : route.name,
     description: `${route.content[0].children[0].text} | ${previousDescription}`,

@@ -14,6 +14,7 @@ function Theme({ show, isMobile, className }: Props) {
         show || !isMobile ? 'visible' : 'invisible'
       } ${className}`}>
       <input
+        title="החלף ערכת צבעים"
         type="checkbox"
         className="absolute opacity-0"
         id="checkbox"

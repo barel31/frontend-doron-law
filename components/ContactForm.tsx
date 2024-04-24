@@ -57,6 +57,7 @@ function ContactForm({
           message ? 'w-full' : 'md:flex-row max-md:w-full'
         } gap-2 items-baseline p-2`}>
         <input
+          autoComplete="name"
           type="text"
           placeholder="* שם:"
           name="name"
@@ -64,6 +65,7 @@ function ContactForm({
           required
         />
         <input
+          autoComplete="tel"
           type="text"
           placeholder="* טלפון:"
           name="tel"
@@ -71,6 +73,7 @@ function ContactForm({
           required
         />
         <input
+          autoComplete="email"
           type="email"
           placeholder="* אימייל:"
           name="email"

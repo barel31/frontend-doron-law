@@ -5,6 +5,7 @@ import ContactForm from '../ContactForm';
 import AccordionQA from './Accordion';
 import Carousel from '../Carousel';
 import { urlFor } from '@/client';
+import { notFound } from 'next/navigation';
 
 const BackgroundImage = ({ route }: { route: Route }) =>
   (route?.image && (
@@ -51,6 +52,8 @@ const ContentBody = ({
 );
 
 function Content({ route, contact }: { route: Route; contact?: ContactInfo }) {
+  if (!route) return notFound();
+
   const slug = route?.slug?.current;
 
   const sliders = route?.images?.map((image) => urlFor(image).dpr(2).url());

@@ -1,6 +1,7 @@
 export default function GoogleMapsEmbed({ address }: { address: string }) {
   return (
     <iframe
+      title="Google Maps - Doron Hadad Law Office"
       className="m-auto w-full h-full"
       loading="lazy"
       allowFullScreen

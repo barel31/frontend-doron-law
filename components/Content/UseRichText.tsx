@@ -2,7 +2,6 @@ import { PortableText, PortableTextComponents } from '@portabletext/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/client';
-import '@/styles/PortableText.module.css';
 
 const components: PortableTextComponents = {
   marks: {
@@ -28,9 +27,9 @@ const components: PortableTextComponents = {
   block: {
     normal: ({ children }: any) => {
       if (children.length === 1 && children[0] === '') {
-        return <br />
+        return <br />;
       }
-      return <p>{children}</p>
+      return <p>{children}</p>;
     },
     h1: ({ children }) => <h1 className="text-4xl md:text-7xl">{children}</h1>,
     h2: ({ children }) => <h2 className="text-3xl md:text-6xl">{children}</h2>,
@@ -57,14 +56,14 @@ const components: PortableTextComponents = {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[300px] h-[500px] inline-image m-1">
+          className="w-[300px] h-[500px] m-1 inline-block align-middle">
           <Image
             src={url}
-            alt="דורון חדד"
+            alt="דורון חדד" 
             priority
             width={300}
             height={500}
-            className={`w-fit h-fit object-left`}
+            className={`w-fit h-fit object-left text-transparent`}
           />
         </a>
       );
