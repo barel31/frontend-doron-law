@@ -1,27 +1,13 @@
 import { getContactInfo, getRoute, getRoutes } from '@/client';
 import Content from '@/components/Content';
 import { type ResolvingMetadata, type Metadata } from 'next';
-
+import metadataGenerator from '@/service/metadataGenerator';
 export const revalidate = 3600; // revalidate every hour
 
-export async function generateMetadata(
+export const generateMetadata = async (
   { params }: { params: { slug: string } },
   parent: ResolvingMetadata
-): Promise<Metadata> {
-  const { slug } = params;
-
-  const [route, data] = await Promise.all([getRoute(slug), parent]);
-  
-  const previousTitle = data.title?.absolute;
-  const previousDescription = data.description;
-  const previousKeywords = data.keywords;
-  
-  return {
-    title: previousTitle ? `${route.name} | ${previousTitle}` : route.name,
-    description: `${route.content[0].children[0].text} | ${previousDescription}`,
-    keywords: `${route.keywords}, ${previousKeywords}`,
-  };
-}
+): Promise<Metadata> => metadataGenerator(params.slug, parent);
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
