@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
       'עו"ד וטוען רבני דורון חדד מציע שירותי דין ברמת גן והסביבה. צרו קשר עוד היום לייעוץ ראשוני ולקבלת ייעוץ משפטי מקצועי.',
     icons: [
       {
-        src: '/favicon.ico',
+        src: 'favicon.ico',
         sizes: '64x64',
         type: 'image/x-icon',
       },

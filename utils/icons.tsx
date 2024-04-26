@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-export const runtime = 'edge';
+// export const runtime = 'edge'; // check if work
 
 export function ElPhoneAlt(props: SVGProps<SVGSVGElement>) {
   return (
