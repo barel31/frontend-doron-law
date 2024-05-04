@@ -14,7 +14,7 @@ export function ElPhoneAlt(props: SVGProps<SVGSVGElement>) {
 
 export function UiwFacebook(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" {...props}>
+    <svg viewBox="0 0 20 20" {...props}>
       <path
         fill="currentColor"
         fillRule="evenodd"
@@ -25,7 +25,7 @@ export function UiwFacebook(props: SVGProps<SVGSVGElement>) {
 
 export function BiFacebook(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" {...props}>
+    <svg viewBox="0 0 16 16" {...props}>
       <path
         fill="currentColor"
         d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131c.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
@@ -35,7 +35,7 @@ export function BiFacebook(props: SVGProps<SVGSVGElement>) {
 
 export function BiLinkedin(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" {...props}>
+    <svg viewBox="0 0 16 16" {...props}>
       <path
         fill="currentColor"
         d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248c-.015-.709-.52-1.248-1.342-1.248c-.822 0-1.359.54-1.359 1.248c0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586c.173-.431.568-.878 1.232-.878c.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252c-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
@@ -45,7 +45,7 @@ export function BiLinkedin(props: SVGProps<SVGSVGElement>) {
 
 export function SolarHamburgerMenuBold(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <svg viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
         fillRule="evenodd"
@@ -57,7 +57,7 @@ export function SolarHamburgerMenuBold(props: SVGProps<SVGSVGElement>) {
 
 export function RiMoonFill(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <svg viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
         d="M11.38 2.019a7.5 7.5 0 1 0 10.6 10.6A9.996 9.996 0 0 1 12.001 22C6.477 22 2 17.523 2 12c0-5.315 4.146-9.66 9.38-9.98Z"></path>
@@ -67,7 +67,7 @@ export function RiMoonFill(props: SVGProps<SVGSVGElement>) {
 
 export function IonIosSunny(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" {...props}>
+    <svg viewBox="0 0 512 512" {...props}>
       <path
         d="M256 387c-8.5 0-15.4 6.9-15.4 15.4v46.2c0 8.5 6.9 15.4 15.4 15.4s15.4-6.9 15.4-15.4v-46.2c0-8.5-6.9-15.4-15.4-15.4z"
         fill="currentColor"></path>
@@ -101,17 +101,14 @@ export function IonIosSunny(props: SVGProps<SVGSVGElement>) {
 
 export function OcticonDeviceMobile(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 16" {...props}>
-      <path
-        fillRule="evenodd"
-        d="M9 0H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h8c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM5 15.3c-.72 0-1.3-.58-1.3-1.3c0-.72.58-1.3 1.3-1.3c.72 0 1.3.58 1.3 1.3c0 .72-.58 1.3-1.3 1.3zM9 12H1V2h8v10z"
-        fill="currentColor"></path>
+    <svg viewBox="0 0 10 16" {...props}>
+      <path d="M9 0H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h8c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM5 15.3c-.72 0-1.3-.58-1.3-1.3c0-.72.58-1.3 1.3-1.3c.72 0 1.3.58 1.3 1.3c0 .72-.58 1.3-1.3 1.3zM9 12H1V2h8v10z"></path>
     </svg>
   );
 }
 export function IcBaselinePhoneEnabled(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <svg viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
         d="m17.38 10.79l-2.2-2.2c-.28-.28-.36-.67-.25-1.02c.37-1.12.57-2.32.57-3.57c0-.55.45-1 1-1H20c.55 0 1 .45 1 1c0 9.39-7.61 17-17 17c-.55 0-1-.45-1-1v-3.49c0-.55.45-1 1-1c1.24 0 2.45-.2 3.57-.57c.35-.12.75-.03 1.02.24l2.2 2.2c2.83-1.45 5.15-3.76 6.59-6.59z"></path>
@@ -120,7 +117,7 @@ export function IcBaselinePhoneEnabled(props: SVGProps<SVGSVGElement>) {
 }
 export function IcOutlineLocalPrintshop(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <svg viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
         d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v4h-2z"></path>
@@ -130,7 +127,7 @@ export function IcOutlineLocalPrintshop(props: SVGProps<SVGSVGElement>) {
 }
 export function MaterialSymbolsMailOutline(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <svg viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
         d="M4 20q-.825 0-1.413-.588T2 18V6q0-.825.588-1.413T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.588 1.413T20 20H4Zm8-7L4 8v10h16V8l-8 5Zm0-2l8-5H4l8 5ZM4 8V6v12V8Z"></path>
@@ -139,7 +136,7 @@ export function MaterialSymbolsMailOutline(props: SVGProps<SVGSVGElement>) {
 }
 export function Fa6SolidAddressCard(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" {...props}>
+    <svg viewBox="0 0 576 512" {...props}>
       <path
         fill="currentColor"
         d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0a64 64 0 1 1-128 0zm256-32h128c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64h128c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64h128c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z"></path>
@@ -148,15 +145,8 @@ export function Fa6SolidAddressCard(props: SVGProps<SVGSVGElement>) {
 }
 export function Logo(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 257.000000 99.000000"
-      preserveAspectRatio="xMidYMid meet"
-      {...props}>
-      <g
-        transform="translate(0.000000,99.000000) scale(0.100000,-0.100000)"
-        fill="#000000"
-        stroke="none">
+    <svg xmlns="http://www.w3.org/2000/svg" {...props}>
+      <g>
         <path
           d="M392 960 c-34 -14 -48 -52 -32 -90 7 -16 16 -30 21 -30 5 0 9 -18 9
 -40 l0 -39 -57 -4 -58 -3 63 -2 62 -2 0 50 c0 28 -4 50 -8 50 -17 0 -33 50
@@ -351,7 +341,7 @@ c-3 -255 -4 -265 -25 -287 l-22 -23 -28 27 -28 26 -3 261 -2 261 -3 -265z"
 
 export function IconParkSolidCorrect(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" {...props}>
+    <svg viewBox="0 0 48 48" {...props}>
       <mask id="ipSCorrect0">
         <path
           fill="#fff"
@@ -373,7 +363,7 @@ export function IconParkSolidCorrect(props: SVGProps<SVGSVGElement>) {
 
 export function IconErrorPajamas(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" {...props}>
+    <svg viewBox="0 0 16 16" {...props}>
       <path
         fill="currentColor"
         fillRule="evenodd"
@@ -386,37 +376,24 @@ export function IconErrorPajamas(props: SVGProps<SVGSVGElement>) {
 
 export function IconChevronDown(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
-      {...props}
-      fill="currentColor">
+    <svg viewBox="0 0 512 512" {...props}>
       <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
     </svg>
   );
 }
 
-// export function IconChevronUp(props: SVGProps<SVGSVGElement>) {
-//   return (
-//     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" {...props}>
-//       <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
-//     </svg>
-//   );
-// }
+export function IconChevronUp(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 512 512" {...props}>
+      <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+    </svg>
+  );
+}
 
 export function IconLeftArrow(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      fill="#000000"
-      height="800px"
-      width="800px"
-      version="1.1"
-      id="Layer_1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 330 330"
-      {...props}>
+    <svg viewBox="0 0 330 330" {...props}>
       <path
-        id="XMLID_6_"
         d="M165,0C74.019,0,0,74.019,0,165s74.019,165,165,165s165-74.019,165-165S255.981,0,165,0z M205.606,234.394
 	c5.858,5.857,5.858,15.355,0,21.213C202.678,258.535,198.839,260,195,260s-7.678-1.464-10.606-4.394l-80-79.998
 	c-2.813-2.813-4.394-6.628-4.394-10.606c0-3.978,1.58-7.794,4.394-10.607l80-80.002c5.857-5.858,15.355-5.858,21.213,0
@@ -428,17 +405,8 @@ export function IconLeftArrow(props: SVGProps<SVGSVGElement>) {
 
 export function IconRightArrow(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      fill="#000000"
-      height="800px"
-      width="800px"
-      version="1.1"
-      id="Layer_1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 330 330"
-      {...props}>
+    <svg viewBox="0 0 330 330" {...props}>
       <path
-        id="XMLID_2_"
         d="M165,0C74.019,0,0,74.019,0,165s74.019,165,165,165s165-74.019,165-165S255.981,0,165,0z M225.606,175.605
 	l-80,80.002C142.678,258.535,138.839,260,135,260s-7.678-1.464-10.606-4.394c-5.858-5.857-5.858-15.355,0-21.213l69.393-69.396
 	l-69.393-69.392c-5.858-5.857-5.858-15.355,0-21.213c5.857-5.858,15.355-5.858,21.213,0l80,79.998
