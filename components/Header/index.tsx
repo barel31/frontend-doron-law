@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -14,26 +14,27 @@ import ScrollLine from '../ScrollLine';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 import useWindowWidth from '@/hooks/useWindowWidth';
 
-function Header({
-  routes,
-  contact,
-}: {
+type HeaderProps = {
   routes: Route[];
   contact: ContactInfo;
-}) {
+};
+
+function Header({ routes, contact }: HeaderProps) {
   const [show, setShow] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const isTop = useIsScrollTop();
   const isMobile = useWindowWidth(768) <= 768;
   const params = useParams();
 
-  const toggleNavBar = () => setShow((prevShow) => !prevShow);
+  const toggleNavBar = () => setShow(prevShow => !prevShow);
   const hideNavBar = () => setShow(false);
   const getLogoWidth = () =>
     isTop ? (isMobile ? '185' : '220') : isMobile ? '120' : '160';
 
-  const isDropdownOpen = routes.some(
-    (route) => route.isChild && route.slug.current === params.slug
+  const isDropdownOpen = useMemo(
+    () =>
+      routes.some(route => route.isChild && route.slug.current === params.slug),
+    [routes, params]
   );
 
   const adjustStyles = useCallback(() => {

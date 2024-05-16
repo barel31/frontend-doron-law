@@ -1,6 +1,8 @@
 # Doron Hadad Law Firm Website
 
-This is a front-end website built using Next.js. It provides useful content related to laws. 
+This is a front-end website built using Next.js.
+The website is for a law firm and includes information about the firm, different services, and contact information.
+The owner can edit the website using Sanity Studio, as well as add new pages.
 
 ## Technologies Used
 - Next.js
