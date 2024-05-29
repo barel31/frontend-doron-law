@@ -1,5 +1,5 @@
 import ModalUi from '@/components/Modal';
-import { IconParkSolidCorrect } from '@/utils/icons';
+import { IconParkSolidCorrect } from '@/lib/icons';
 
 function Modal() {
   return (

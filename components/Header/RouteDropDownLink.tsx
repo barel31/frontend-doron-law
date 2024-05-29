@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { IconChevronDown } from '@/utils/icons';
+import { IconChevronDown } from '@/lib/icons';
 import useRouteState from '@/hooks/useRouteState';
 
 const RouteDropdownLink = ({

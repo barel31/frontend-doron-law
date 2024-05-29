@@ -1,7 +1,7 @@
 'use client';
 
 import ModalUi from '@/components/Modal';
-import { IconErrorPajamas } from '@/utils/icons';
+import { IconErrorPajamas } from '@/lib/icons';
 
 function Modal() {
   return (

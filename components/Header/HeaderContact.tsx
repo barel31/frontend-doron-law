@@ -1,4 +1,4 @@
-import { ElPhoneAlt } from '@/utils/icons';
+import { ElPhoneAlt } from '@/lib/icons';
 import Theme from './Theme';
 // import { BiLinkedin, ElPhoneAlt, BiFacebook } from '@/utils/icons';
 // import Link from 'next/link';

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
-import { IconLeftArrow, IconRightArrow } from '@/utils/icons';
+import { IconLeftArrow, IconRightArrow } from '@/lib/icons';
 import Link from 'next/link';
 
 const variants = {

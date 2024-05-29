@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 import Logo from '@/public/logo.webp';
-import { SolarHamburgerMenuBold } from '@/utils/icons';
+import { SolarHamburgerMenuBold } from '@/lib/icons';
 
 import HeaderContact from './HeaderContact';
 import RouteLink from './RouteLink';

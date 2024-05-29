@@ -1,4 +1,4 @@
-import { IonIosSunny, RiMoonFill } from '@/utils/icons';
+import { IonIosSunny, RiMoonFill } from '@/lib/icons';
 import { useTheme } from 'next-themes';
 
 type Props = { show: boolean; isMobile: boolean; className?: string };

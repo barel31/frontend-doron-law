@@ -5,7 +5,7 @@ import {
   IcBaselinePhoneEnabled,
   MaterialSymbolsMailOutline,
   OcticonDeviceMobile,
-} from '@/utils/icons';
+} from '@/lib/icons';
 
 function ContactMePage({ contact }: { contact: ContactInfo }) {
   return (

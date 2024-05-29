@@ -15,7 +15,6 @@ export default async function generateMetadata(
     return {
       title: previousTitle ? `עמוד לא נמצא | ${previousTitle}` : 'עמוד לא נמצא',
       description: `העמוד שחיפשת לא נמצא | ${previousDescription}`,
-      keywords: `page, not, found, page not found, ,עמוד לא נמצא, ${previousKeywords}`,
     };
   }
 

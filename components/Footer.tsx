@@ -6,7 +6,7 @@ import {
   MaterialSymbolsMailOutline,
   OcticonDeviceMobile,
   UiwFacebook,
-} from '@/utils/icons';
+} from '@/lib/icons';
 import Link from 'next/link';
 import GoogleMapsEmbed from './GoogleMapsEmbed';
 

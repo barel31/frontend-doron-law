@@ -1,12 +1,16 @@
 import '@/styles/globals.css';
 
+import { type Metadata } from 'next';
 import { getContactInfo, getRoutes } from '@/client';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
-import { type Metadata } from 'next';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Accessibility from '@/components/Accessibility';
+import { Rubik } from 'next/font/google';
+import { cn } from '@/lib/utils';
+
+const rubik = Rubik({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'עו"ד וטוען רבני - דורון חדד',
@@ -39,7 +43,7 @@ export default async function RootLayout({
         <GoogleAnalytics />
         <link rel="canonical" href={process.env.NEXT_PUBLIC_PRODUCTION_URL} />
       </head>
-      <body className="bg-slate-50 dark:bg-slate-800">
+      <body className={cn('bg-slate-50 dark:bg-slate-800', rubik.className)}>
         <ThemeProvider>
           <Header routes={routes} contact={contactInfo} />
 
