@@ -13,6 +13,7 @@ import RouteLink from './RouteLink';
 import ScrollLine from '../ScrollLine';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 import useWindowWidth from '@/hooks/useWindowWidth';
+import { cn } from '@/lib/utils';
 
 type HeaderProps = {
   routes: Route[];
@@ -72,7 +73,10 @@ function Header({ routes, contact }: HeaderProps) {
         className="mx-auto max-2xl:pl-2 max-md:m-3 flex justify-between items-center m-auto my-1 md:my-3 min-h-[2.5rem] h-fit transition-[height] max-w-[2000px]">
         <Link
           href="/"
-          className={`min-w-[15%] self-center ${isMobile && show && 'hidden'}`}
+          className={cn(
+            'min-w-[15%] self-center',
+            isMobile && show && 'hidden'
+          )}
           title="בית">
           <Image
             src={Logo}
@@ -80,22 +84,26 @@ function Header({ routes, contact }: HeaderProps) {
             priority
             width={getLogoWidth()}
             height={getLogoWidth()}
-            className={`self-start bg-slate-50/70 rounded-sm transition-all w-[${getLogoWidth()}px] h-auto`}
+            className={cn(
+              'self-start bg-slate-50/70 rounded-sm transition-all h-auto',
+              `w-[${getLogoWidth()}px]`
+            )}
           />
         </Link>
         <button
-          className={`self-start md:hidden order-1 transition-all ${
-            isTop && 'mt-3'
-          }`}
+          className={cn('self-start md:hidden order-1 transition-all', {
+            'mt-3': isTop,
+          })}
           onClick={toggleNavBar}
           title="Navigation"
           type="button">
           <SolarHamburgerMenuBold className="w-10 m-auto" />
         </button>
         <div
-          className={`navbar-links self-center mx-2 flex flex-col md:flex-row max-md:self-start justify-between md:min-w-[70%] max-md:basis-2/5 max-md:mt-3 ${
-            (isMobile && show) || !isMobile ? 'visible' : 'invisible'
-          }`}>
+          className={cn(
+            'navbar-links self-center mx-2 flex flex-col md:flex-row max-md:self-start justify-between md:min-w-[70%] max-md:basis-2/5 max-md:mt-3',
+            { visible: (isMobile && show) || !isMobile }
+          )}>
           {routes.map((route: Route) =>
             route.isChild ? null : (
               <RouteLink

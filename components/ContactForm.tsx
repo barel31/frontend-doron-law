@@ -1,6 +1,7 @@
 'use client';
 
 import { ContactFormAction } from '@/app/actions';
+import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -35,9 +36,12 @@ function ContactForm({
 
   return (
     <div
-      className={`m-auto flex flex-col ${
-        !message && 'bg-slate-400 dark:bg-slate-dark:600 lg:flex-row'
-      }  placeholder:text-slate-950text-lg 5ustify-around w-full h-full`}>
+      className={cn(
+        'm-auto flex flex-col placeholder:text-slate-950text-lg 5ustify-around w-full h-full',
+        {
+          'bg-slate-400 dark:bg-slate-dark:600 lg:flex-row': !message,
+        }
+      )}>
       {!message && (
         <a
           href={`tel:${contact?.mobile}`}
@@ -53,9 +57,10 @@ function ContactForm({
 
       <form
         action={HandleForm}
-        className={`m-auto flex flex-col ${
-          message ? 'w-full' : 'md:flex-row max-md:w-full'
-        } gap-2 items-baseline p-2`}>
+        className={cn('m-auto flex flex-col gap-2 items-baseline p-2', {
+          'w-full': message,
+          'md:flex-row max-md:w-full': !message,
+        })}>
         <input
           autoComplete="name"
           type="text"
@@ -90,9 +95,10 @@ function ContactForm({
         <button
           disabled={disableBtn}
           type="submit"
-          className={`focus:outline-none text-white bg-green-700 hover:bg-green-800 disabled:bg-green-200 hover:disabled:bg-green-200 disabled:cursor-not-allowed focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-8 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 ${
-            message ? 'w-full' : 'max-md:w-full'
-          }`}>
+          className={cn(
+            'focus:outline-none text-white bg-green-700 hover:bg-green-800 disabled:bg-green-200 hover:disabled:bg-green-200 disabled:cursor-not-allowed focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-8 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800',
+            { 'w-full': message, 'max-md:w-full': !message }
+          )}>
           שלח
         </button>
       </form>

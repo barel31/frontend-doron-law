@@ -1,5 +1,6 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import { useState } from 'react';
 
 function AccordionItem({ qa }: { qa: QAndA }) {
@@ -19,9 +20,10 @@ function AccordionItem({ qa }: { qa: QAndA }) {
   return (
     <div>
       <button
-        className={`dark:text-slate-300 p-5 w-full transition-all duration-[400ms] dark:bg-slate-600 hover:bg-slate-500 ${
-          open ? 'bg-slate-400 dark:!bg-slate-500' : 'bg-slate-300'
-        }`}
+        className={cn(
+          'dark:text-slate-300 p-5 w-full transition-all duration-[400ms] dark:bg-slate-600 hover:bg-slate-500',
+          { 'bg-slate-400 dark:!bg-slate-500': open, 'bg-slate-300': !open }
+        )}
         onClick={handleClick}
         type="button"
         title={qa.question}>

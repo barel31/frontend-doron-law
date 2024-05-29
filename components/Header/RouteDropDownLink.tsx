@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { IconChevronDown } from '@/lib/icons';
 import useRouteState from '@/hooks/useRouteState';
+import { cn } from '@/lib/utils';
 
 const RouteDropdownLink = ({
   route,
@@ -31,9 +32,12 @@ const RouteDropdownLink = ({
         {route.name}
         {route.children && (
           <IconChevronDown
-            className={`transition size-4 flex align-middle relative top-[0.1rem] right-[0.2rem] transform ${
-              isDropdownOpen ? 'rotate-0' : 'rotate-180'
-            }`}
+            className={cn(
+              'transition size-4 flex align-middle relative top-[0.1rem] right-[0.2rem] transform',
+              {
+                'rotate-180': !isDropdownOpen,
+              }
+            )}
           />
         )}
       </Link>

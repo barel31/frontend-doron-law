@@ -1,4 +1,5 @@
 import { urlFor } from '@/client';
+import { cn } from '@/lib/utils';
 import { type SanityImageSource } from '@sanity/image-url/lib/types/types';
 import Image from 'next/image';
 
@@ -22,9 +23,7 @@ function SanityImage({
       width={width}
       height={height}
       priority
-      className={`w-full h-[90vh] background-image object-cover ${
-        className || ''
-      }`}
+      className={cn('w-full h-[90vh] background-image object-cover', className)}
     />
   );
 }

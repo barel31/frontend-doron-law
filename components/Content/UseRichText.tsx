@@ -59,11 +59,11 @@ const components: PortableTextComponents = {
           className="w-[300px] h-[500px] m-1 inline-block align-middle">
           <Image
             src={url}
-            alt="דורון חדד" 
+            alt="דורון חדד"
             priority
             width={300}
             height={500}
-            className={`w-fit h-fit object-left text-transparent`}
+            className="w-fit h-fit object-left text-transparent"
           />
         </a>
       );

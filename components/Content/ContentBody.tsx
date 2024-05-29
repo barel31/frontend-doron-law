@@ -1,6 +1,7 @@
 import UsePortableText from './UseRichText';
 import ContactForm from '../ContactForm';
 import ContactMePage from './ContactMePage';
+import { cn } from '@/lib/utils';
 
 const ContentBody = ({
   route,
@@ -21,9 +22,13 @@ const ContentBody = ({
     )}
 
     <div
-      className={`content-body-text text-right mx-6 py-6 xl:m-36 min-h-[60vh] text-slate-900 dark:text-slate-300 normal-line-height ${
-        route.slug.current === '/' ? 'mt-12' : 'xl:pt-16'
-      }`}>
+      className={cn(
+        'content-body-text text-right mx-6 py-6 xl:m-36 min-h-[60vh] text-slate-900 dark:text-slate-300 normal-line-height',
+        {
+          'mt-12': route.slug.current === '/',
+          'xl:pt-16': route.slug.current === '/',
+        }
+      )}>
       <UsePortableText value={route?.content} />
     </div>
   </div>
