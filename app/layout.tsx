@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
 import { type Metadata } from 'next';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import Accessibility from '@/components/Accessibility';
 
 export const metadata: Metadata = {
   title: 'עו"ד וטוען רבני - דורון חדד',
@@ -28,9 +29,9 @@ export default async function RootLayout({
   const [contactInfo, routes] = await Promise.all([getContactInfo, getRoutes]);
 
   if (routes[0].name !== 'בית') {
-  const homeIndex = routes.findIndex((route) => route.name === 'בית');
-  [routes[0], routes[homeIndex]] = [routes[homeIndex], routes[0]]; // Swap the first route with the home route
-}
+    const homeIndex = routes.findIndex(route => route.name === 'בית');
+    [routes[0], routes[homeIndex]] = [routes[homeIndex], routes[0]]; // Swap the first route with the home route
+  }
 
   return (
     <html lang="he" dir="rtl" suppressHydrationWarning>
@@ -49,6 +50,8 @@ export default async function RootLayout({
 
           <Footer routes={routes} contact={contactInfo} />
         </ThemeProvider>
+
+        <Accessibility />
       </body>
     </html>
   );
