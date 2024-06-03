@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import { useState } from 'react';
 
@@ -11,7 +12,7 @@ import { useState } from 'react';
 const isRouteActive = (params: Params, route: Route, child: boolean) => {
   if (child) {
     const active = route.children?.some(
-      (route) => params.slug === route.slug.current
+      route => params.slug === route.slug.current
     );
     if (active) return true;
   }
@@ -19,7 +20,7 @@ const isRouteActive = (params: Params, route: Route, child: boolean) => {
     params.slug === route.slug.current ||
     (!params.slug && route.slug.current === '/') ||
     (route.children &&
-      route.children.some((child) => params.slug === child.slug.current))
+      route.children.some(child => params.slug === child.slug.current))
   );
 };
 
@@ -30,13 +31,14 @@ const isRouteActive = (params: Params, route: Route, child: boolean) => {
  * @returns An array of class names for the route.
  */
 const generateClassNames = (isActive: boolean, isChild: boolean) => {
-  return [
-    'flex justify-around align-middle text-slate-500 dark:text-slate-100 text-sm font-bold transition-colors px-1 py-2 xl:p-4 max-md:m-2 rounded-md w-max text-center',
-    isChild ? 'text-center self-center m-1 p-1 w-full' : '',
-    isActive
-      ? 'bg-slate-400 dark:bg-slate-500 shadow-md scale-105'
-      : 'hover:scale-105 hover:bg-slate-400 dark:hover:bg-slate-500',
-  ];
+  return cn(
+    'flex justify-around align-middle text-slate-500 dark:text-slate-100 text-sm font-bold transition-colors px-1 p-2 xl:p-4 max-md:m-2 rounded-md w-max text-center',
+    {
+      'text-center self-center m-1 p-1 w-full': isChild,
+      'bg-slate-400 dark:bg-slate-500 shadow-md scale-105': isActive,
+      'hover:scale-105 hover:bg-slate-400 dark:hover:bg-slate-500': !isActive,
+    }
+  );
 };
 
 /**

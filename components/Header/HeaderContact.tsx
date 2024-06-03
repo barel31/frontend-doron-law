@@ -1,7 +1,6 @@
 import { ElPhoneAlt } from '@/lib/icons';
 import Theme from './Theme';
-// import { BiLinkedin, ElPhoneAlt, BiFacebook } from '@/utils/icons';
-// import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 interface Contact {
   facebook: string;
@@ -18,16 +17,20 @@ interface HeaderContactProps {
 const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
   return (
     <div
-      className={`header-contacts flex flex-col md:flex-row gap-2 justify-around ${
-        (isMobile && show) || !isMobile ? 'visible' : 'invisible'
-      }`}>
+      className={cn(
+        'header-contacts flex flex-col md:flex-row gap-2 justify-around',
+        {
+          invisible: !((isMobile && show) || !isMobile),
+        }
+      )}>
       <a
         href={`tel:${contact.phone}`}
         target="_blank"
         rel="noindex nofollow"
-        className={`flex flex-row items-center justify-around whitespace-nowrap hover:text-white dark:hover:text-zinc-900 ${
-          (isMobile && show) || !isMobile ? 'visible' : 'invisible'
-        }`}
+        className={cn(
+          'flex flex-row items-center justify-around whitespace-nowrap hover:text-white dark:hover:text-zinc-900',
+          { visible: (isMobile && show) || !isMobile }
+        )}
         title="טלפון">
         <ElPhoneAlt className="w-[45px]" />
         <span className="font-bold m-1 max-2xl:hidden max-sm:visible">

@@ -1,4 +1,5 @@
 import { IonIosSunny, RiMoonFill } from '@/lib/icons';
+import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 
 type Props = { show: boolean; isMobile: boolean; className?: string };
@@ -10,9 +11,9 @@ function Theme({ show, isMobile, className }: Props) {
 
   return (
     <div
-      className={`theme-toggle self-center z-10 ${
-        show || !isMobile ? 'visible' : 'invisible'
-      } ${className}`}>
+      className={cn('theme-toggle self-center z-10', className, {
+        visible: show || !isMobile,
+      })}>
       <input
         title="החלף ערכת צבעים"
         type="checkbox"
