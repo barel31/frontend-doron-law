@@ -2,7 +2,7 @@ import '@/styles/globals.css';
 
 import { type Metadata } from 'next';
 import { getContactInfo, getRoutes } from '@/client';
-import Header from '@/components/Header';
+import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
@@ -45,7 +45,7 @@ export default async function RootLayout({
       </head>
       <body className={cn('bg-slate-50 dark:bg-slate-800', rubik.className)}>
         <ThemeProvider>
-          <Header routes={routes} contact={contactInfo} />
+          <Navbar routes={routes} contact={contactInfo} />
 
           <main>
             {children}

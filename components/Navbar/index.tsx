@@ -8,19 +8,19 @@ import { useParams } from 'next/navigation';
 import Logo from '@/public/logo.webp';
 import { SolarHamburgerMenuBold } from '@/lib/icons';
 
-import HeaderContact from './HeaderContact';
+import NavbarContact from './NavbarContact';
 import RouteLink from './RouteLink';
 import ScrollLine from '../ScrollLine';
 import useIsScrollTop from '@/hooks/useIsScrollTop';
 import useWindowWidth from '@/hooks/useWindowWidth';
 import { cn } from '@/lib/utils';
 
-type HeaderProps = {
+type NavbarProps = {
   routes: Route[];
   contact: ContactInfo;
 };
 
-function Header({ routes, contact }: HeaderProps) {
+function Navbar({ routes, contact }: NavbarProps) {
   const [show, setShow] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const isTop = useIsScrollTop();
@@ -29,8 +29,11 @@ function Header({ routes, contact }: HeaderProps) {
 
   const toggleNavBar = () => setShow(prevShow => !prevShow);
   const hideNavBar = () => setShow(false);
-  const getLogoWidth = () =>
-    isTop ? (isMobile ? '185' : '220') : isMobile ? '120' : '160';
+
+  const logoWidth = useMemo(
+    () => (isTop ? (isMobile ? '185' : '220') : isMobile ? '120' : '160'),
+    [isTop, isMobile]
+  );
 
   const isDropdownOpen = useMemo(
     () =>
@@ -81,11 +84,11 @@ function Header({ routes, contact }: HeaderProps) {
             src={Logo}
             alt="Logo"
             priority
-            width={getLogoWidth()}
-            height={getLogoWidth()}
+            width={logoWidth}
+            height={logoWidth}
             className={cn(
               'self-start bg-slate-50/70 rounded-sm transition-all h-auto',
-              { width: getLogoWidth() }
+              { width: logoWidth }
             )}
           />
         </Link>
@@ -100,7 +103,7 @@ function Header({ routes, contact }: HeaderProps) {
         </button>
         <div
           className={cn(
-            'navbar-links self-center mx-2 flex flex-col md:flex-row max-md:self-start justify-between md:min-w-[70%] max-md:basis-2/5 max-md:mt-3 invisible',
+            'navbar-links self-center flex flex-col md:flex-row max-md:self-start justify-between md:min-w-[70%] max-md:basis-2/5 max-md:mt-3 invisible',
             { visible: (isMobile && show) || !isMobile }
           )}>
           {routes.map((route: Route) =>
@@ -114,10 +117,10 @@ function Header({ routes, contact }: HeaderProps) {
             )
           )}
         </div>
-        <HeaderContact contact={contact} isMobile={isMobile} show={show} />
+        <NavbarContact contact={contact} isMobile={isMobile} show={show} />
       </nav>
     </header>
   );
 }
 
-export default Header;
+export default Navbar;

@@ -1,7 +1,7 @@
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import RouteDropdownLink from './RouteDropDownLink';
 
-const renderDropdownContent = (
+const RenderDropdownContent = (
   route: Route,
   onNavClick: () => void,
   params: Params,
@@ -10,7 +10,7 @@ const renderDropdownContent = (
   return (
     isDropdownOpen &&
     route.children && (
-      <div className="dropdown-content absolute shadow-lg mt-0 bg-gray-100 dark:bg-gray-700 flex flex-col rounded-md w-max text-center p-2">
+      <div className="dropdown-content absolute shadow-lg mt-0 bg-gray-100 dark:bg-gray-700 flex flex-col justify-center rounded-md w-max p-2 m-1 gap-2">
         {route.children.map((childRoute: Route) => (
           <RouteDropdownLink
             route={childRoute}
@@ -26,4 +26,4 @@ const renderDropdownContent = (
   );
 };
 
-export default renderDropdownContent;
+export default RenderDropdownContent;

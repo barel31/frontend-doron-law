@@ -2,7 +2,7 @@ import useHover from '@/hooks/useHover';
 import useRouteState from '@/hooks/useRouteState';
 import useWindowWidth from '@/hooks/useWindowWidth';
 import RouteDropdownLink from './RouteDropDownLink';
-import renderDropdownContent from './renderDropdownContent';
+import RenderDropdownContent from './RenderDropdownContent';
 
 const RouteLink = ({ route, onNavClick, params }: RouteLinkProps) => {
   const [isDropdownOpen, hoverEvents]: [
@@ -23,7 +23,7 @@ const RouteLink = ({ route, onNavClick, params }: RouteLinkProps) => {
         params={params}
         isDropdownOpen={isOpen}
       />
-      {renderDropdownContent(route, onNavClick, params, isOpen)}
+      {RenderDropdownContent(route, onNavClick, params, isOpen)}
     </div>
   );
 };

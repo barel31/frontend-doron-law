@@ -23,25 +23,23 @@ const RouteDropdownLink = ({
   };
 
   return (
-    <div>
-      <Link
-        className={classes}
-        href={route.children ? '#' : '/' + route.slug.current}
-        onClick={handleClick}
-        title={route.name}>
-        {route.name}
-        {route.children && (
-          <IconChevronDown
-            className={cn(
-              'transition size-4 flex align-middle relative top-[0.1rem] right-[0.2rem] transform',
-              {
-                'rotate-180': !isDropdownOpen,
-              }
-            )}
-          />
-        )}
-      </Link>
-    </div>
+    <Link
+      className={classes}
+      href={route.children ? '#' : '/' + route.slug.current}
+      onClick={handleClick}
+      title={route.name}>
+      {route.name}
+      {route.children && (
+        <IconChevronDown
+          className={cn(
+            'transition size-4 flex align-middle relative top-[0.1rem] right-[0.2rem] transform',
+            {
+              'rotate-180': !isDropdownOpen,
+            }
+          )}
+        />
+      )}
+    </Link>
   );
 };
 

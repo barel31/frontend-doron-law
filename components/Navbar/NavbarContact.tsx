@@ -8,17 +8,17 @@ interface Contact {
   phone: string;
 }
 
-interface HeaderContactProps {
+interface NavbarContactProps {
   contact: Contact;
   isMobile: boolean;
   show: boolean;
 }
 
-const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
+const NavbarContact = ({ contact, isMobile, show }: NavbarContactProps) => {
   return (
     <div
       className={cn(
-        'header-contacts flex flex-col md:flex-row gap-2 justify-around',
+        'navbar-contacts flex flex-col md:flex-row gap-2 justify-around',
         {
           invisible: !((isMobile && show) || !isMobile),
         }
@@ -42,4 +42,4 @@ const HeaderContact = ({ contact, isMobile, show }: HeaderContactProps) => {
   );
 };
 
-export default HeaderContact;
+export default NavbarContact;
