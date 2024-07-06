@@ -23,6 +23,7 @@ interface RouteLinkProps {
   route: Route;
   onNavClick: () => void;
   params: Params;
+  isMobile?: boolean;
 }
 
 interface RouteLinkComponentProps extends RouteLinkProps {

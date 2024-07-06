@@ -24,7 +24,7 @@ function Navbar({ routes, contact }: NavbarProps) {
   const [show, setShow] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const isTop = useIsScrollTop();
-  const isMobile = useWindowWidth(768) <= 768;
+  const isMobile = useWindowWidth(980) <= 980;
   const params = useParams();
 
   const toggleNavBar = () => setShow(prevShow => !prevShow);
@@ -73,7 +73,7 @@ function Navbar({ routes, contact }: NavbarProps) {
       <ScrollLine />
       <nav
         ref={ref}
-        className="mx-auto max-2xl:pl-2 max-md:m-3 flex justify-between items-center m-auto my-1 md:my-3 min-h-[2.5rem] h-fit transition-[height] max-w-[2000px]">
+        className="mx-auto max-2xl:pl-2 max-navbar:m-3 flex justify-between items-center m-auto my-1 navbar:my-3 min-h-[2.5rem] h-fit transition-[height] max-w-[2000px]">
         <Link
           href="/"
           className={cn('min-w-[15%] self-center', {
@@ -93,7 +93,7 @@ function Navbar({ routes, contact }: NavbarProps) {
           />
         </Link>
         <button
-          className={cn('self-start md:hidden order-1 transition-all', {
+          className={cn('self-start navbar:hidden order-1 transition-all', {
             'mt-3': isTop,
           })}
           onClick={toggleNavBar}
@@ -103,7 +103,7 @@ function Navbar({ routes, contact }: NavbarProps) {
         </button>
         <div
           className={cn(
-            'navbar-links self-center flex flex-col md:flex-row max-md:self-start justify-between md:min-w-[70%] max-md:basis-2/5 max-md:mt-3 invisible',
+            'navbar-links self-center flex flex-col navbar:flex-row max-navbar:self-start justify-between navbar:min-w-[70%] max-navbar:basis-2/5 max-navbar:mt-3 invisible',
             { visible: (isMobile && show) || !isMobile }
           )}>
           {routes.map((route: Route) =>
@@ -113,6 +113,7 @@ function Navbar({ routes, contact }: NavbarProps) {
                 onNavClick={hideNavBar}
                 params={params}
                 key={route._id}
+                isMobile={isMobile}
               />
             )
           )}

@@ -4,14 +4,13 @@ import useWindowWidth from '@/hooks/useWindowWidth';
 import RouteDropdownLink from './RouteDropDownLink';
 import RenderDropdownContent from './RenderDropdownContent';
 
-const RouteLink = ({ route, onNavClick, params }: RouteLinkProps) => {
+const RouteLink = ({ route, onNavClick, params, isMobile }: RouteLinkProps) => {
   const [isDropdownOpen, hoverEvents]: [
     boolean,
     { onMouseEnter: () => void; onMouseLeave: () => void }
   ] = useHover();
 
   const { isActive } = useRouteState(params, route);
-  const isMobile = useWindowWidth(768) <= 768;
 
   const isOpen = isMobile ? isActive || isDropdownOpen : isDropdownOpen;
 
