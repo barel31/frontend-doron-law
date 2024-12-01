@@ -1,4 +1,4 @@
-import { getRoute } from '@/client';
+import { getRoute } from '@/lib/client';
 import { type ResolvingMetadata, type Metadata } from 'next';
 
 export default async function generateMetadata(

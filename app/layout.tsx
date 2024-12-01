@@ -1,7 +1,8 @@
 import '@/styles/globals.css';
 
+
 import { type Metadata } from 'next';
-import { getContactInfo, getRoutes } from '@/client';
+import { getContactInfo, getRoutes } from '@/lib/client';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';

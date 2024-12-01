@@ -1,4 +1,4 @@
-import { getContactInfo, getRoute } from '@/client';
+import { getContactInfo, getRoute } from '@/lib/client';
 import Content from '@/components/Content';
 import { type Metadata, type ResolvingMetadata } from 'next';
 import metadataGenerator from '@/service/metadataGenerator';
@@ -9,11 +9,15 @@ export const generateMetadata = async (
 ): Promise<Metadata> => metadataGenerator('/', parent);
 
 export default async function Home() {
-  const [contact, route] = await Promise.all([getContactInfo, getRoute('/')]);
+  const [contact, route, recommendations] = await Promise.all([
+    getContactInfo,
+    getRoute('/'),
+    getRoute('recommendations'),
+  ]);
 
   return (
     <div className="page-content page-content-home text-slate-950 text-center">
-      <Content route={route} contact={contact} />
+      <Content recommendations={recommendations} isHomePage={true} route={route} contact={contact} />
     </div>
   );
 }

@@ -133,7 +133,7 @@ function Footer({
         <MapSection address={contact?.address} />
       </div>
 
-      <div className="text-center p-10">
+      <div className="text-center p-1">
         <p>&copy; כל הזכויות שמורות {year} All rights reserved &copy;</p>
         <p>
           Designed and developed by{' '}

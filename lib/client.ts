@@ -22,6 +22,11 @@ export const getContactInfo: Promise<ContactInfo> = Client.fetch(
   `*[_type == "contactInfo"][0]`
 );
 
+
+export const getRecommendations: Promise<CardProps[]> = Client.fetch(
+  `*[_type == "recommendations"][0].cards`
+);
+
 const builder = imageUrlBuilder(Client);
 
 export const urlFor = (source: SanityImageSource) => builder.image(source!);

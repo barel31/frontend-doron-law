@@ -17,6 +17,7 @@ interface Route extends SanityData {
   isChild?: boolean;
   images?: SanityImageSource[];
   keywords?: string;
+  cards?: CardProps[];
 }
 
 interface RouteLinkProps {
@@ -88,4 +89,11 @@ interface ImageNode {
     url: string;
   };
   alt?: string;
+}
+
+interface CardProps extends SanityData {
+  title: string;
+  content: string;
+  image: SanityImageSource;
+  link: string;
 }

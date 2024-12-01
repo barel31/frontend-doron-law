@@ -1,78 +1,136 @@
-import { PortableText, PortableTextComponents } from '@portabletext/react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { urlFor } from '@/client';
+import { PortableText } from '@portabletext/react';
+import YouTubeBlock from '../Block/YouTubeBlock';
+import ImageBlock from '../Block/ImageBlock';
+import components from './RichTextComponents';
 
-const components: PortableTextComponents = {
-  marks: {
-    em: ({ children }) => (
-      <em className="text-gray-600 font-semibold">{children}</em>
-    ),
-    link: ({ value, children }) => {
-      const target = (value?.href || '').startsWith('http')
-        ? '_blank'
-        : undefined;
+const UseRichText = ({ value }: { value: Topography[] }) => {
+  // Group blocks into media and content, handling lists within the same group
+  const groupElements = (blocks: Topography[]) => {
+    const groupedElements: Array<{
+      type: 'media' | 'content';
+      blocks?: Topography[];
+      block?: Topography[];
+    }> = [];
 
-      return (
-        <Link
-          href={value?.href || ''}
-          target={target}
-          rel={target === '_blank' ? 'noindex nofollow' : ''}
-          title={children as string}>
-          {children}
-        </Link>
-      );
-    },
-  },
-  block: {
-    normal: ({ children }: any) => {
-      if (children.length === 1 && children[0] === '') {
-        return <br />;
+    let currentMediaGroup: Topography[] = [];
+    let currentContentGroup: Topography[] = [];
+    let currentListGroup: Topography[] = [];
+
+    blocks.forEach(block => {
+      const isMediaBlock = block._type === 'youtube' || block._type === 'image';
+      const isListBlock = block._type === 'list';
+      const isListItemBlock = block._type === 'listItem';
+
+      if (isMediaBlock) {
+        // Push the current content group if it exists
+        if (currentContentGroup.length > 0) {
+          groupedElements.push({ type: 'content', block: currentContentGroup });
+          currentContentGroup = []; // Reset the content group
+        }
+        // Push the current media group if it exists and is of a different type
+        if (
+          currentMediaGroup.length > 0 &&
+          currentMediaGroup[0]._type !== block._type
+        ) {
+          groupedElements.push({ type: 'media', blocks: currentMediaGroup });
+          currentMediaGroup = []; // Start a new group
+        }
+        currentMediaGroup.push(block);
+      } else if (isListBlock) {
+        // Push the current content group if it exists
+        if (currentContentGroup.length > 0) {
+          groupedElements.push({ type: 'content', block: currentContentGroup });
+          currentContentGroup = []; // Reset the content group
+        }
+        // Push the current media group if it exists
+        if (currentMediaGroup.length > 0) {
+          groupedElements.push({ type: 'media', blocks: currentMediaGroup });
+          currentMediaGroup = []; // Reset the media group
+        }
+        // Handle list blocks
+        currentListGroup.push(block);
+      } else if (isListItemBlock) {
+        // Add list items to the current list group
+        currentListGroup.push(block);
+      } else {
+        // Push the current list group if it exists
+        if (currentListGroup.length > 0) {
+          groupedElements.push({ type: 'content', block: currentListGroup });
+          currentListGroup = []; // Reset the list group
+        }
+        // Push the current media group if it exists
+        if (currentMediaGroup.length > 0) {
+          groupedElements.push({ type: 'media', blocks: currentMediaGroup });
+          currentMediaGroup = []; // Reset the media group
+        }
+        currentContentGroup.push(block);
       }
-      return <p>{children}</p>;
-    },
-    h1: ({ children }) => <h1 className="text-4xl md:text-7xl">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-3xl md:text-6xl">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-2xl md:text-5xl">{children}</h3>,
-    h4: ({ children }) => <h4 className="text-xl md:text-4xl">{children}</h4>,
-    h5: ({ children }) => <h5 className="text-base md:text-3xl">{children}</h5>,
-    blockquote: ({ children }) => (
-      <blockquote className="border-l-yellow-500">{children}</blockquote>
-    ),
-  },
-  list: {
-    bullet: ({ children }) => <ul className="md:mt-xl">{children}</ul>,
-    number: ({ children }) => <ol className="md:mt-lg">{children}</ol>,
-    checkmarks: ({ children }) => (
-      <ol className="m-auto text-lg">{children}</ol>
-    ),
-  },
-  types: {
-    image: ({ value }) => {
-      const url = urlFor(value.asset).dpr(2).url();
+    });
 
-      return (
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-[300px] h-[500px] m-1 inline-block align-middle">
-          <Image
-            src={url}
-            alt="דורון חדד"
-            priority
-            width={300}
-            height={500}
-            className="w-fit h-fit object-left text-transparent"
-          />
-        </a>
-      );
-    },
-  },
+    // Add any remaining media, content, or list blocks to the grouped elements
+    if (currentMediaGroup.length > 0) {
+      groupedElements.push({ type: 'media', blocks: currentMediaGroup });
+    }
+    if (currentContentGroup.length > 0) {
+      groupedElements.push({ type: 'content', block: currentContentGroup });
+    }
+    if (currentListGroup.length > 0) {
+      groupedElements.push({ type: 'content', block: currentListGroup });
+    }
+
+    return groupedElements;
+  };
+
+  // Render media blocks (either images or videos) in a flex container
+  const renderMediaGroup = (blocks: Topography[], index: number) => (
+    <div key={index} className="flex flex-wrap gap-4 my-4">
+      {blocks.map((block, blockIndex) => {
+        if (block._type === 'youtube') {
+          return (
+            <YouTubeBlock
+              key={blockIndex}
+              value={block}
+              index={blockIndex}
+              isInline={false}
+              renderNode={() => null}
+            />
+          );
+        } else if (block._type === 'image') {
+          return (
+            <ImageBlock
+              key={blockIndex}
+              value={block}
+              index={blockIndex}
+              isInline={false}
+              renderNode={() => null}
+            />
+          );
+        }
+        return null;
+      })}
+    </div>
+  );
+
+  // Render content blocks, including grouped lists
+  const renderContentBlock = (blocks: Topography[], index: number) => (
+    <PortableText key={index} value={blocks} components={components} />
+  );
+
+  // Group the blocks and render them in order
+  const groupedElements = groupElements(value);
+
+  return (
+    <>
+      {groupedElements.map((group, index) => {
+        if (group.type === 'media' && group.blocks) {
+          return renderMediaGroup(group.blocks, index);
+        } else if (group.type === 'content' && group.block) {
+          return renderContentBlock(group.block, index);
+        }
+        return null;
+      })}
+    </>
+  );
 };
-
-function UseRichText({ value }: { value: Topography[] }) {
-  return <PortableText value={value} components={components} />;
-}
 
 export default UseRichText;

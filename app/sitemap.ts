@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getRoutes } from '../client';
+import { getRoutes } from '../lib/client';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = await getRoutes;
