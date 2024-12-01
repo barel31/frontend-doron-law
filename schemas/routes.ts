@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'routes',
@@ -25,6 +25,7 @@ export default defineType({
       name: 'isChild',
       title: 'האם דף זה הוא תת-דף?',
       type: 'boolean',
+      initialValue: false,
     }),
     defineField({
       name: 'children',
@@ -65,6 +66,11 @@ export default defineType({
       title: 'מילות מפתח',
       type: 'string',
     }),
+    defineField({
+      name: 'cards',
+      title: 'כרטיסיות',
+      type: 'cardItem',
+    }),
   ],
   preview: {
     select: {
@@ -72,4 +78,4 @@ export default defineType({
       media: 'image',
     },
   },
-});
+})
