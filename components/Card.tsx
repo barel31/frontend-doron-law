@@ -9,11 +9,11 @@ const Card = ({ title, content, image, link }: CardProps) => {
   const url = image && urlFor(image.asset).dpr(2).url();
 
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col transform transition duration-300 hover:scale-105">
       {image && url ? (
         <Link href={link || ''} target={link ? '_blank' : undefined}>
           <Image
-            className="rounded-t-lg w-full object-cover"
+            className="rounded-t-lg w-full object-cover transition duration-300 ease-in-out hover:brightness-90"
             src={url}
             alt={title}
             width={500}
@@ -23,7 +23,7 @@ const Card = ({ title, content, image, link }: CardProps) => {
       ) : (
         image && (
           <Image
-            className="rounded-t-lg w-full object-cover"
+            className="rounded-t-lg w-full object-cover transition duration-300 ease-in-out hover:brightness-90"
             src={url}
             alt={title}
             width={500}
@@ -31,7 +31,7 @@ const Card = ({ title, content, image, link }: CardProps) => {
           />
         )
       )}
-      <div className="p-6 flex-grow">
+      <div className="p-6 flex-grow animate-fadeIn">
         {link ? (
           <Link href={link} target="_blank">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -52,7 +52,7 @@ const Card = ({ title, content, image, link }: CardProps) => {
           <Link
             href={link}
             target="_blank"
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transform transition duration-300 hover:scale-110">
             קרא עוד
             <svg
               className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
