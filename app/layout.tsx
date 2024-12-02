@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
-import Accessibility from '@/components/Accessibility';
+import Accessibility2 from '@/components/Accessibility2';
 import { Rubik } from 'next/font/google';
 import { cn } from '@/lib/utils';
 
@@ -56,7 +56,7 @@ export default async function RootLayout({
           <Footer routes={routes} contact={contactInfo} />
         </ThemeProvider>
 
-        <Accessibility />
+        <Accessibility2 />
       </body>
     </html>
   );
