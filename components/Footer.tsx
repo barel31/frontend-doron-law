@@ -134,8 +134,8 @@ function Footer({
       </div>
 
       <div className="text-center p-1">
-        <p>&copy; כל הזכויות שמורות {year} All rights reserved &copy;</p>
-        <p>
+        <p className='mb-0'>&copy; כל הזכויות שמורות {year} All rights reserved &copy;</p>
+        <p className='p-0 m-0'>
           Designed and developed by{' '}
           <Link
             className="hover:font-bold"
