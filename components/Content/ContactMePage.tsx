@@ -9,56 +9,71 @@ import {
 
 function ContactMePage({ contact }: { contact: ContactInfo }) {
   return (
-    <div className="m-auto flex flex-col lg:flex-row justify-between gap-5 xl:w-3/4 lg:m-5 xl:m-auto relative top-20 pb-24">
-      <div className="lg:w-1/3">
-        <h1 className="text-2xl/relaxed text-slate-800 dark:text-slate-300">
-          תופס יצירת קשר
+    <div className="container mx-auto px-4 py-20 grid grid-cols-1 lg:grid-cols-3 gap-12 relative top-10">
+      {/* Contact Form Section */}
+      <div className="bg-gradient-to-r from-white/30 to-white/70 dark:from-slate-800/30 dark:to-slate-800/70 backdrop-blur-lg rounded-xl shadow-lg pt-8 hover:shadow-2xl transition-shadow duration-300">
+        <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-6">
+          יצירת קשר
         </h1>
-        <div className="rounded-md">
-          <ContactForm contact={contact!} message={true} />
-        </div>
+        <ContactForm contact={contact!} message={true} homePage={false} />
       </div>
-      <div className="lg:w-1/3">
-        <h1 className="text-2xl/relaxed text-slate-800 dark:text-slate-300">
+
+      {/* Contact Details Section */}
+      <div className="bg-gradient-to-r from-white/30 to-white/70 dark:from-slate-800/30 dark:to-slate-800/70 backdrop-blur-lg rounded-xl shadow-lg pt-8 hover:shadow-2xl transition-shadow duration-300">
+        <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-6">
           פרטי יצירת קשר
         </h1>
-        <div className="bg-slate-300">
-          <div className="grid grid-cols-2 grid-rows-2 gap-[1px]">
-            <div className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-5 flex flex-col items-center justify-center min-w-54 min-h-52">
-              <Fa6SolidAddressCard className="w-12" />
-              <span>{contact?.address}</span>
-            </div>
+        <div className="divide-y divide-slate-200 dark:divide-slate-700 space-y-4">
+          {[
+            {
+              href: null,
+              icon: <Fa6SolidAddressCard className="w-10 h-10" />,
+              text: contact?.address,
+            },
+            {
+              href: `tel:${contact?.mobile}`,
+              icon: <OcticonDeviceMobile className="w-10 h-10" />,
+              text: contact?.mobile,
+              title: 'טלפון נייד',
+            },
+            {
+              href: `mailto:${contact?.email}`,
+              icon: <MaterialSymbolsMailOutline className="w-10 h-10" />,
+              text: contact?.email,
+              title: 'אימייל',
+            },
+            {
+              href: `tel:${contact?.phone}`,
+              icon: <IcBaselinePhoneEnabled className="w-10 h-10" />,
+              text: contact?.phone,
+              title: 'טלפון',
+            },
+          ].map((item, index) => (
             <a
-              href={`tel:${contact?.mobile}`}
-              className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-5 flex flex-col items-center justify-center min-w-54 min-h-52"
-              title="טלפון נייד">
-              <OcticonDeviceMobile className="w-10" />
-              <span>{contact?.mobile}</span>
+              key={index}
+              href={item.href || undefined}
+              title={item.title || undefined}
+              className="flex items-center p-4 gap-4 transition-transform duration-200 transform hover:-translate-y-1 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg group">
+              <div className="w-12 h-12 flex items-center justify-center text-slate-600 dark:text-slate-300 mr-6 group-hover:text-blue-500 transition-colors duration-200">
+                {item.icon}
+              </div>
+              <span className="text-xl text-slate-800 dark:text-slate-100 text-right">
+                {item.text}
+              </span>
             </a>
-            <a
-              href={`mailto:${contact?.email}`}
-              className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-5 flex flex-col items-center justify-center min-w-54 min-h-52"
-              title="אימייל">
-              <MaterialSymbolsMailOutline className="w-12" />
-              <span>{contact?.email}</span>
-            </a>
-            <a
-              href={`tel:${contact?.phone}`}
-              className="bg-slate-50 dark:bg-slate-700 dark:text-slate-50 p-5 lg:p-5 flex flex-col items-center justify-center min-w-54 min-h-52"
-              title="טלפון">
-              <IcBaselinePhoneEnabled className="w-12" />
-              <span>{contact?.phone}</span>
-            </a>
-          </div>
+          ))}
         </div>
       </div>
-      <div>
-        <h1 className="text-2xl/relaxed text-slate-800 dark:text-slate-300 max-h-[400px]">
-          מפה
+
+      {/* Google Maps Section */}
+      <div className="bg-gradient-to-r from-white/30 to-white/70 dark:from-slate-800/30 dark:to-slate-800/70 backdrop-blur-lg rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-6 p-8">
+          מיקום על המפה
         </h1>
-        <div className="h-[400px] w-full">
-          <GoogleMapsEmbed address={contact?.address} />
-        </div>
+        <GoogleMapsEmbed
+          address={contact?.address}
+          classNames="h-[400px] w-full"
+        />
       </div>
     </div>
   );

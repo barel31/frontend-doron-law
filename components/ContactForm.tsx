@@ -8,100 +8,106 @@ import { useState } from 'react';
 function ContactForm({
   contact,
   message = false,
+  homePage = true,
 }: {
   contact: ContactInfo;
   message?: boolean;
+  homePage?: boolean;
 }) {
   const router = useRouter();
-
   const [disableBtn, setDisableBtn] = useState(false);
 
   const HandleForm = async (e: FormData) => {
-    setDisableBtn(() => true);
+    // e.preventDefault();
+    setDisableBtn(true);
 
     const res = await ContactFormAction(e);
 
-    // server-action don't work in including generateStaticParams in page (experimental)
-    // optional chaining required.
     if (res?.success) {
       router.push('thank-you');
     } else {
       console.error('Unable to send Mail.');
       console.log(res.info);
-
       router.push('error');
-      setDisableBtn(() => false);
+      setDisableBtn(false);
     }
   };
 
   return (
     <div
-      className={cn(
-        'm-auto flex flex-col placeholder:text-slate-950text-lg 5ustify-around w-full h-full',
-        {
-          'bg-slate-400 dark:bg-slate-dark:600 lg:flex-row': !message,
-        }
-      )}>
-      {!message && (
-        <a
-          href={`tel:${contact?.mobile}`}
-          className="w-1/2 m-auto text-gray-950 dark:text-lime-400 font-bold text-xl"
-          title="צור קשר">
-          לייעוץ ראשוני התקשרו{' '}
-          <span className="text-cyan-800 dark:text-gray-200 font-bold">
-            {contact?.mobile}
-          </span>{' '}
-          או השאירו פרטים:
-        </a>
-      )}
-
-      <form
-        action={HandleForm}
-        className={cn('m-auto flex flex-col gap-2 items-baseline p-2', {
-          'w-full': message,
-          'md:flex-row max-md:w-full': !message,
-        })}>
-        <input
-          autoComplete="name"
-          type="text"
-          placeholder="* שם:"
-          name="name"
-          className="focus:outline-none bg-slate-400 dark:placeholder:text-white placeholder:text-slate-950 border-2 border-gray-500 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          required
-        />
-        <input
-          autoComplete="tel"
-          type="text"
-          placeholder="* טלפון:"
-          name="tel"
-          className="focus:outline-none bg-slate-400 dark:placeholder:text-white placeholder:text-slate-950 border-2 border-gray-500 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          required
-        />
-        <input
-          autoComplete="email"
-          type="email"
-          placeholder="* אימייל:"
-          name="email"
-          className="focus:outline-none bg-slate-400 dark:placeholder:text-white placeholder:text-slate-950 border-2 border-gray-500 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          required
-        />
-        {message && (
-          <textarea
-            placeholder="הודעה:"
-            name="message"
-            className="focus:outline-none bg-slate-400 dark:placeholder:text-white placeholder:text-slate-950 border-2 border-gray-500 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+      className={cn('w-full flex justify-center', {
+        'bg-gradient-to-br from-slate-600/40 to-slate-700/80 dark:from-slate-800/40 dark:to-slate-800/70 backdrop-blur-md':
+          homePage,
+      })}>
+      <div
+        className={cn(
+          'flex flex-col lg:flex-row gap-2 h-full p-3 w-full max-w-[1500px] items-start justify-between',
+          { 'items-center': !message }
+        )}>
+        {/* Conditional Text Section */}
+        {!message && (
+          <div className="w-full lg:w-1/2">
+            <a
+              href={`tel:${contact?.mobile}`}
+              className="block text-center lg:text-right text-gray-800 dark:text-gray-300 font-semibold text-2xl"
+              title="צור קשר">
+              לייעוץ ראשוני התקשרו{' '}
+              <span className="text-cyan-800 dark:text-cyan-300 font-bold text-nowrap">
+                {contact?.mobile}
+              </span>{' '}
+              או השאירו פרטים:
+            </a>
+          </div>
         )}
-        <button
-          disabled={disableBtn}
-          type="submit"
-          className={cn(
-            'focus:outline-none text-white bg-green-700 hover:bg-green-800 disabled:bg-green-200 hover:disabled:bg-green-200 disabled:cursor-not-allowed focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-8 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800',
-            { 'w-full': message, 'max-md:w-full': !message }
-          )}>
-          שלח
-        </button>
-      </form>
+
+        {/* Form Section */}
+        <form
+          action={HandleForm}
+          className={cn('flex max-md:flex-col gap-2 w-full', {
+            '!flex-col': !homePage,
+          })}>
+          <input
+            autoComplete="name"
+            type="text"
+            placeholder="* שם:"
+            name="name"
+            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 border-2 border-transparent text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
+            required
+          />
+          <input
+            autoComplete="tel"
+            type="text"
+            placeholder="* טלפון:"
+            name="tel"
+            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 border-2 border-transparent text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
+            required
+          />
+          <input
+            autoComplete="email"
+            type="email"
+            placeholder="* אימייל:"
+            name="email"
+            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 border-2 border-transparent text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
+            required
+          />
+          {message && (
+            <textarea
+              placeholder="הודעה:"
+              name="message"
+              className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 border-2 border-transparent text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300 h-32"
+            />
+          )}
+          <button
+            disabled={disableBtn}
+            type="submit"
+            className={cn(
+              'text-white bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 disabled:opacity-50 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-lg px-8 py-3 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed dark:focus:ring-green-800',
+              { 'w-full': message, 'max-md:w-full': !message }
+            )}>
+            {disableBtn ? 'נשלח' : 'שליחה'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

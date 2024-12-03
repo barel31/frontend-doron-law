@@ -37,19 +37,14 @@ const ContentBody = ({
         <ContactMePage contact={contact!} />
       ) : null}
 
-      <div
-        className={cn(
-          'content-body-text text-right mx-4 py-6 xl:mx-36 min-h-[60vh] text-slate-900 dark:text-slate-300 normal-line-height',
-          {
-            'mt-12': route.slug.current === '/',
-            'xl:pt-16': route.slug.current === '/',
-          }
-        )}>
+      <div className="content-body-text text-right mx-4 py-6 xl:mx-36 min-h-[60vh] text-slate-900 dark:text-slate-300 normal-line-height">
         <UsePortableText value={route?.content} />
         {route?.qAndA && <AccordionQA qa={route.qAndA} />}
         {sliders && <Carousel images={sliders!} />}
         {route?.cards && <Cards cards={route.cards} />}
-        {recommendations?.cards && <HomePageRecommendations cards={recommendations.cards} />}
+        {recommendations?.cards && (
+          <HomePageRecommendations cards={recommendations.cards} />
+        )}
       </div>
     </div>
   );
