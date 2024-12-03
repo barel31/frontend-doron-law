@@ -20,7 +20,9 @@ export default async function generateMetadata(
 
   return {
     title: previousTitle ? `${route.name} | ${previousTitle}` : route.name,
-    description: `${route.content[0].children[0].text} | ${previousDescription}`,
+    description: `${
+      route?.content?.[0]?.children?.[0]?.text || 'עו"ד דורון חדד'
+    } | ${previousDescription}`,
     keywords: `${route.keywords}, ${previousKeywords}`,
   };
 }
