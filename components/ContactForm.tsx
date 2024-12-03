@@ -71,7 +71,7 @@ function ContactForm({
             type="text"
             placeholder="* שם:"
             name="name"
-            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 border-2 border-transparent text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
+            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
             required
           />
           <input
@@ -79,7 +79,7 @@ function ContactForm({
             type="text"
             placeholder="* טלפון:"
             name="tel"
-            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 border-2 border-transparent text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
+            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
             required
           />
           <input
@@ -87,14 +87,14 @@ function ContactForm({
             type="email"
             placeholder="* אימייל:"
             name="email"
-            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 border-2 border-transparent text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
+            className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300"
             required
           />
           {message && (
             <textarea
               placeholder="הודעה:"
               name="message"
-              className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 border-2 border-transparent text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300 h-32"
+              className="focus:outline-none bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 placeholder:text-gray-600 dark:placeholder:text-gray-400 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 block w-full p-4 transition-shadow duration-300 h-32"
             />
           )}
           <button
