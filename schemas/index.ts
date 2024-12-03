@@ -1,11 +1,12 @@
 import routes from './routes';
 import contactInfo from './contactInfo';
 import qAndAItem from './qAndAItem';
-import blockField from './blockField';
+import blockField from './portableText';
 import children from './children';
 import secondsImages from './secondsImages';
-import youtube from './YouTube/youTubeType';
+import youtube from './youTube/youTubeType';
 import cardItem from './cardItem';
+import breakTag from './breakTag/breakType';
 
 export const schemaTypes = [
   routes,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   secondsImages,
   youtube,
   cardItem,
+  breakTag,
 ];

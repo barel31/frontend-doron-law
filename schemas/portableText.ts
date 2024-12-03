@@ -2,7 +2,7 @@ import {defineArrayMember, defineField} from 'sanity'
 
 export default defineField({
   name: 'blockField',
-  title: 'כותרת',
+  title: 'block Field',
   type: 'array',
   of: [
     defineArrayMember({
@@ -24,6 +24,9 @@ export default defineField({
     }),
     defineArrayMember({
       type: 'youtube',
+    }),
+    defineArrayMember({
+      type: 'breakTag',
     }),
   ],
 })

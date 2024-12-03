@@ -2,7 +2,7 @@ import type {PreviewProps} from 'sanity'
 import {Flex, Text} from '@sanity/ui'
 import YouTubePlayer from 'react-player/youtube'
 
-export function YouTubePreview(props: PreviewProps) {
+export default function YouTubePreview(props: PreviewProps) {
   const {title: url} = props
 
   return (
