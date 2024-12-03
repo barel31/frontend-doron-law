@@ -88,6 +88,9 @@ const components: PortableTextComponents = {
   types: {
     image: ImageBlock,
     youtube: YouTubeBlock,
+    breakTag: () => {
+      return <hr />;
+    },
   },
 };
 
