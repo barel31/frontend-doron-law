@@ -83,7 +83,7 @@ This project is deployed on **Vercel**. To deploy:
 
 ## Live Website
 
-You can view the live website [here](https://frontend-doron-law-barel31.vercel.app).
+You can view the live website [here](https://doron-hadad.vercel.app).
 
 ## Contributing
 
@@ -99,9 +99,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Links
 
-- **CMS Repository**: [doron-cms](https://github.com/your-username/doron-cms)
-- **Live CMS**: [Sanity Studio](https://your-sanity-studio-url.sanity.studio)
-- **Live Website**: [Doron Hadad Law Firm](https://frontend-doron-law-barel31.vercel.app)
+- **CMS Repository**: [doron-cms](https://github.com/barel31/doron-cms)
+- **Live Website**: [Doron Hadad Law Firm](https://doron-hadad.vercel.app)
 
 ---
 Made with ❤️ for Doron Hadad
