@@ -78,6 +78,12 @@ interface MailResponse {
   err?: Error;
 }
 
+interface WhatsAppResponse {
+  success: boolean;
+  info?: any;
+  err?: Error;
+}
+
 interface ImageNode {
   asset: {
     metadata: {

@@ -3,7 +3,7 @@
 import sendWhatsAppMessage from '@/service/sendWhatsApp';
 // import sendMail from '@/service/sendMail';
 
-export const ContactFormAction = async (e: FormData): Promise<MailResponse> => {
+export const ContactFormAction = async (e: FormData): Promise<WhatsAppResponse> => {
 	const formData: ContactMeData = {
 		name: e.get('name')!.toString(),
 		tel: e.get('tel')!.toString(),

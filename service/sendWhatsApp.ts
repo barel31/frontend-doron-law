@@ -1,11 +1,5 @@
 import axios from 'axios';
 
-interface WhatsAppResponse {
-  success: boolean;
-  info?: any;
-  err?: Error;
-}
-
 // Use your phone number here in the correct international format without the '+' or leading '0'.
 const MY_PHONE_NUMBER = '972504741117'; // This is your phone number in international format
 
