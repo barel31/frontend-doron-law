@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
-  return {
-    name: 'עו"ד וטוען רבני - דורון חדד',
-    short_name: 'דורון חדד',
+  const manifestData: MetadataRoute.Manifest = {
+    name: 'עו"ד דורון חדד - עורך דין וטוען רבני',
+    short_name: 'עו"ד דורון חדד',
     description:
-      'עו"ד וטוען רבני דורון חדד מציע מגוון שירותי משפט באזור רמת גן והסביבה. התמחותו כוללת ייעוץ משפטי ראשוני ומתמשך בתחומים שונים. פנו אליו היום כדי לקבוע פגישת ייעוץ ולהבטיח שתיקחו חלק במסע משפטי מקצועי ומותאם אישית, המוביל לתוצאות מיטביות.',
+      'עורך דין וטוען רבני דורון חדד מתמחה בשירותי משפט ברמת גן ובאזור המרכז. השירותים כוללים ייעוץ משפטי בענייני משפחה, גירושין, דיני עבודה, ונדל"ן. פנו עוד היום לייעוץ מקצועי ומותאם אישית.',
     icons: [
       {
         src: 'favicon.ico',
@@ -14,11 +14,13 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: 'any',
       },
     ],
-    start_url: '.',
+    start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#000000',
     id: '/manifest.webmanifest',
-    orientation: 'any',
+    orientation: 'portrait',
   };
+
+  return manifestData;
 }
