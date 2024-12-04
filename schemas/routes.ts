@@ -22,6 +22,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'keywords',
+      title: 'מילות מפתח',
+      type: 'string',
+    }),
+    defineField({
       name: 'isChild',
       title: 'האם דף זה הוא תת-דף?',
       type: 'boolean',
@@ -33,22 +38,12 @@ export default defineType({
       type: 'children',
     }),
     defineField({
-      name: 'qAndA',
-      title: 'שאלות ותשובות',
-      type: 'qAndAItem',
-    }),
-    defineField({
       name: 'image',
       title: 'תמונה ראשית',
       type: 'image',
       options: {
         hotspot: true,
       },
-    }),
-    defineField({
-      name: 'images',
-      title: 'תמונות משניות',
-      type: 'secondsImages',
     }),
     defineField({
       name: 'header',
@@ -62,9 +57,14 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'keywords',
-      title: 'מילות מפתח',
-      type: 'string',
+      name: 'images',
+      title: '(קרוסלה) תמונות משניות',
+      type: 'secondsImages',
+    }),
+    defineField({
+      name: 'qAndA',
+      title: 'שאלות ותשובות',
+      type: 'qAndAItem',
     }),
     defineField({
       name: 'cards',
