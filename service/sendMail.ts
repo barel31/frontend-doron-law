@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-function createEmailTemplate(data: MailData): string {
+function createEmailTemplate(data: ContactMeData): string {
   return `<div style="background: linear-gradient(0deg, rgba(78, 78, 78, 1) 0%, rgba(32, 32, 32, 1) 100%);
 	text-align:center;color:#cec6c6;font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;"
 	dir="rtl"><h1>${process.env.EMAIL_SUBJECT}</h1><h2>שם: ${
@@ -21,7 +21,7 @@ function createEmailTemplate(data: MailData): string {
   }</div>`;
 }
 
-export default async function sendMail(data: MailData): Promise<MailResponse> {
+export default async function sendMail(data: ContactMeData): Promise<MailResponse> {
   const message: SendMailOptions = {
     from: data.email,
     to: process.env.GMAIL_EMAIL_ADDRESS,

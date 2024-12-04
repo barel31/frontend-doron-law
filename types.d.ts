@@ -65,7 +65,7 @@ interface QAndA {
   _key: string;
 }
 
-interface MailData {
+interface ContactMeData {
   name: string;
   tel: string;
   email: string;

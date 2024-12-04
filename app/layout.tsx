@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 const rubik = Rubik({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'עו"ד וטוען רבני - דורון חדד',
+  title: 'עורך דין וטוען רבני - דורון חדד',
   description:
     'עורך דין וטוען רבני דורון חדד מספק ייעוץ משפטי מקצועי בתחומי מקרקעין, משפחה, אזרחי, הוצאה לפועל, ירושה ועוד. משרדו ממוקם בבני ברק ונותן שירותים ללקוחות באזור.',
   keywords:
