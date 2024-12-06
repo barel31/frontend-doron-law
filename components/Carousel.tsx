@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
 import { IconLeftArrow, IconRightArrow } from '@/lib/icons';
@@ -14,7 +14,7 @@ type CarouselProps = {
 // Animation variants for the carousel images
 const variants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
+    x: direction > 0 ? 300 : -300, // Reduced movement distance
     opacity: 0,
   }),
   center: {
@@ -24,7 +24,7 @@ const variants = {
   },
   exit: (direction: number) => ({
     zIndex: 0,
-    x: direction < 0 ? 1000 : -1000,
+    x: direction < 0 ? 300 : -300, // Reduced movement distance
     opacity: 0,
   }),
 };
@@ -46,9 +46,20 @@ const Carousel = ({ images }: CarouselProps) => {
     setPage([page + newDirection, newDirection]);
   };
 
+  // Preload images to avoid layout breaking during transitions
+  useEffect(() => {
+    const preloadImages = () => {
+      images.forEach((image) => {
+        const img = new Image();
+        img.src = image;
+      });
+    };
+    preloadImages();
+  }, [images]);
+
   return (
     <div className="carousel flex flex-col items-center max-w-md my-24 mx-auto space-y-4">
-      <div className="carousel-content relative flex justify-center items-center w-full overflow-hidden">
+      <div className="carousel-content relative flex justify-center items-center w-full overflow-hidden min-h-[400px]">
         <AnimatePresence initial={false} custom={direction}>
           <Link
             title="לחץ לפתיחת תמונה גדולה"
@@ -66,12 +77,12 @@ const Carousel = ({ images }: CarouselProps) => {
               animate="center"
               exit="exit"
               transition={{
-                x: { type: 'spring', stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
+                x: { type: 'spring', stiffness: 200, damping: 50 }, // Smoother transitions
+                opacity: { duration: 0.4 }, // Slower fade in/out to avoid abrupt changes
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={1}
+              dragElastic={0.8} // Make the dragging feel smoother
               onDragEnd={(_, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
 
@@ -81,7 +92,7 @@ const Carousel = ({ images }: CarouselProps) => {
                   paginate(-1);
                 }
               }}
-              className="w-full object-cover rounded-lg"
+              className="w-full object-cover rounded-lg h-full"
               alt={`Carousel image ${imageIndex + 1}`}
             />
           </Link>
@@ -92,7 +103,6 @@ const Carousel = ({ images }: CarouselProps) => {
   );
 };
 
-// Carousel Controls as a separate component for better separation of concerns
 type CarouselControlsProps = {
   paginate: (newDirection: number) => void;
 };
