@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Use your phone number here in the correct international format without the '+' or leading '0'.
-const MY_PHONE_NUMBER = '972504741117'; // This is your phone number in international format
+const MY_PHONE_NUMBER = '972525444634'; // This is your phone number in international format
 
 // Destructure and validate environment variables
 const { GREEN_API_BASE_URL, GREEN_API_INSTANCE_ID, GREEN_API_API_TOKEN } =
@@ -37,6 +37,7 @@ ${message ? `📝 *הודעה:* ${message}` : ''}
 
   try {
     const response = await axios.post(url, requestBody);
+    
     return { success: true, info: response.data };
   } catch (error: any) {
     console.error('Failed to send WhatsApp message:', error);

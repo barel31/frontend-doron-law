@@ -4,7 +4,7 @@ import '@/styles/globals.css';
 import { type Metadata } from 'next';
 import { getContactInfo, getRoutes } from '@/lib/client';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Footer from '@/components/Footer/Footer';
 import ThemeProvider from '@/components/ThemeProvider';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Accessibility2 from '@/components/Accessibility2';
