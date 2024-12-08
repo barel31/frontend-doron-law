@@ -2,7 +2,7 @@ import UsePortableText from './UseRichText';
 import AccordionQA from './Accordion';
 import ContactMePage from './ContactMePage';
 import ContactForm from '../ContactForm';
-import Carousel from '../Carousel';
+import Carousel from '../Carousel/Carousel';
 import { cn } from '@/lib/utils';
 import { urlFor } from '@/lib/client';
 import Cards from '../Cards';
