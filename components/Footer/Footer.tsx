@@ -28,10 +28,10 @@ function Footer({ routes, contact }: { routes: Route[]; contact: ContactInfo }) 
         <ContactInfoSection contact={contact} />
         <MapSection address={contact.address} />
       </div>
-      <div className="text-center mt-8 text-sm border-t border-gray-400 pt-4">
-        <p>&copy; {currentYear} כל הזכויות שמורות | All rights reserved</p>
-        <p>
-          Designed and developed by{' '}
+      <div className="text-center mt-8 text-sm border-t border-gray-400">
+        <p className='mb-0 pb-0'>כל הזכויות שמורות &copy; {currentYear}</p>
+        <p className='m-0 p-0'>
+          נבנה על ידי{' '}
           <a
             href="https://www.linkedin.com/in/barel-shraga/"
             target="_blank"

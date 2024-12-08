@@ -3,13 +3,20 @@ import Content from '@/components/Content';
 import { type ResolvingMetadata, type Metadata } from 'next';
 import metadataGenerator from '@/service/metadataGenerator';
 
-export const generateMetadata = async (
-  { params }: { params: { slug: string } },
-  parent: ResolvingMetadata
-): Promise<Metadata> => metadataGenerator(params.slug, parent);
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export const generateMetadata = async (
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> => {
+  const { slug } = await params;
+  return metadataGenerator(slug, parent);
+};
+
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
 
   const [route, contact] = await Promise.all([getRoute(slug), getContactInfo]);
 
@@ -25,7 +32,7 @@ export async function generateStaticParams() {
   const routes = await getRoutes;
 
   return routes
-    .filter((route) => route.slug.current !== '/')
+    .filter(route => route.slug.current !== '/')
     .map((route: Route) => ({
       slug: route.slug.current,
     }));

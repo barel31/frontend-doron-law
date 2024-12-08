@@ -4,7 +4,7 @@ import { type Metadata, type ResolvingMetadata } from 'next';
 import metadataGenerator from '@/service/metadataGenerator';
 
 export const generateMetadata = async (
-  { params }: { params: { slug: string } },
+  { params }: { params: Promise<{ slug: string }> },
   parent: ResolvingMetadata
 ): Promise<Metadata> => metadataGenerator('/', parent);
 

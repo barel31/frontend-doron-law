@@ -3,7 +3,7 @@
 import { IconChevronDown, IconChevronUp } from '@/lib/icons'; // Ensure correct import path to your local icons
 import { cn } from '@/lib/utils';
 import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 function AccordionItem({ qa, index }: { qa: QAndA; index: number }) {
   const [open, setOpen] = useState(false);

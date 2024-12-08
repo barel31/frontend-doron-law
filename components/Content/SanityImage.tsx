@@ -9,21 +9,23 @@ function SanityImage({
   height = 2000,
   alt,
   className,
+  priority = false,
 }: {
   src: SanityImageSource;
   alt: string;
   width?: number;
   height?: number;
   className?: string;
+  priority?: boolean;
 }) {
   return (
     <Image
-      src={urlFor(src).dpr(2).quality(100).url()}
+      src={urlFor(src).format('webp').dpr(2).quality(80).url()}
       alt={alt}
-      width={width}
-      height={height}
-      priority
-      className={cn('w-full h-[90vh] background-image object-cover', className)}
+      fill
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      priority={priority}
+      className={cn('w-full h-[70vh] object-cover', className)}
     />
   );
 }

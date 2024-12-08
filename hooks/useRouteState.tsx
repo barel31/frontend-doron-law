@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import { type Params } from 'next/dist/server/request/params';
 import { useState } from 'react';
 
 /**

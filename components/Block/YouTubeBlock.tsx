@@ -1,6 +1,6 @@
 import { type PortableTextTypeComponentProps } from 'next-sanity';
 
-export default ({ value }: PortableTextTypeComponentProps<any>) => {
+function YouTubeBlock({ value }: PortableTextTypeComponentProps<any>) {
   const { url } = value;
   if (!url) return null;
 
@@ -32,4 +32,6 @@ export default ({ value }: PortableTextTypeComponentProps<any>) => {
       />
     </div>
   );
-};
+}
+
+export default YouTubeBlock;

@@ -2,7 +2,7 @@
 
 // import React, { useState, useCallback } from 'react';
 // import Image from 'next/image';
-// import { motion } from 'framer-motion';
+// import { motion } from 'motion/react';
 // import { useSwipeable } from 'react-swipeable';
 // import { IconLeftArrow, IconRightArrow } from '@/utils/icons';
 // import Link from 'next/link';

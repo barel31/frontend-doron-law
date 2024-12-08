@@ -1,12 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { wrap } from 'popmotion';
 import { IconLeftArrow, IconRightArrow } from '@/lib/icons';
 import Link from 'next/link';
 
-// Type for props
 type CarouselProps = {
   images: string[];
 };
@@ -49,7 +48,7 @@ const Carousel = ({ images }: CarouselProps) => {
   // Preload images to avoid layout breaking during transitions
   useEffect(() => {
     const preloadImages = () => {
-      images.forEach((image) => {
+      images.forEach(image => {
         const img = new Image();
         img.src = image;
       });
@@ -66,8 +65,7 @@ const Carousel = ({ images }: CarouselProps) => {
             href={images[imageIndex]}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex justify-center"
-          >
+            className="w-full flex justify-center">
             <motion.img
               key={page}
               src={images[imageIndex]}
@@ -112,15 +110,13 @@ const CarouselControls = ({ paginate }: CarouselControlsProps) => (
     <button
       aria-label="Previous image"
       className="carousel-prev flex justify-center items-center select-none cursor-pointer font-bold text-lg z-10 hover:scale-105 transition-transform duration-300 ease-in-out"
-      onClick={() => paginate(-1)}
-    >
+      onClick={() => paginate(-1)}>
       <IconRightArrow className="w-10 h-10 fill-slate-900 dark:fill-slate-300 dark:bg-slate-800 rounded-full hover:fill-slate-700 dark:hover:fill-slate-500" />
     </button>
     <button
       aria-label="Next image"
       className="carousel-next flex justify-center items-center select-none cursor-pointer font-bold text-lg z-10 hover:scale-105 transition-transform duration-300 ease-in-out"
-      onClick={() => paginate(1)}
-    >
+      onClick={() => paginate(1)}>
       <IconLeftArrow className="w-10 h-10 fill-slate-900 dark:fill-slate-300 dark:bg-slate-800 rounded-full hover:fill-slate-700 dark:hover:fill-slate-500" />
     </button>
   </div>
