@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { wrap } from 'popmotion';
-import { IconLeftArrow, IconRightArrow } from '@/lib/icons';
 import Link from 'next/link';
+import { IconLeftArrow, IconRightArrow } from '@/lib/icons';
 
 type CarouselProps = {
   images: string[];
@@ -13,55 +12,80 @@ type CarouselProps = {
 // Animation variants for the carousel images
 const variants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 300 : -300, // Reduced movement distance
+    x: direction > 0 ? 300 : -300, // New image enters from the right if direction is positive, else from left
     opacity: 0,
   }),
   center: {
     zIndex: 1,
-    x: 0,
+    x: 0, // Center the image
     opacity: 1,
   },
   exit: (direction: number) => ({
     zIndex: 0,
-    x: direction < 0 ? 300 : -300, // Reduced movement distance
+    x: direction > 0 ? -300 : 300, // Current image exits to the left if direction is positive, else to the right
     opacity: 0,
   }),
 };
 
-// Utility function to calculate swipe power
 const swipeConfidenceThreshold = 10000;
-const swipePower = (offset: number, velocity: number) => {
-  return Math.abs(offset) * velocity;
-};
 
-// Carousel Component
 const Carousel = ({ images }: CarouselProps) => {
   const [[page, direction], setPage] = useState<[number, number]>([0, 0]);
+  const [allImagesLoaded, setAllImagesLoaded] = useState<boolean>(false);
+  const [loadedCount, setLoadedCount] = useState<number>(0);
 
-  // Wrapping the page index to stay within bounds
-  const imageIndex = wrap(0, images.length, page);
+  const imageIndex = ((page % images.length) + images.length) % images.length;
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
   };
 
-  // Preload images to avoid layout breaking during transitions
+  // Preload all images and track loading progress
   useEffect(() => {
-    const preloadImages = () => {
-      images.forEach(image => {
-        const img = new Image();
-        img.src = image;
-      });
+    let loadedImages = 0;
+
+    const handleImageLoad = () => {
+      loadedImages++;
+      setLoadedCount(loadedImages);
+      if (loadedImages === images.length) {
+        setAllImagesLoaded(true);
+      }
     };
-    preloadImages();
+
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+      if (img.complete) {
+        handleImageLoad();
+      } else {
+        img.onload = handleImageLoad;
+      }
+    });
   }, [images]);
 
+  if (!allImagesLoaded) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="flex flex-col items-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
+          <p className="mt-4 text-lg font-semibold">
+            Loading Images ({loadedCount}/{images.length})
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="carousel flex flex-col items-center max-w-md my-24 mx-auto space-y-4">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, ease: 'easeInOut' }}
+      className="carousel flex flex-col items-center max-w-md my-24 mx-auto space-y-4">
       <div className="carousel-content relative flex justify-center items-center w-full overflow-hidden min-h-[400px]">
         <AnimatePresence initial={false} custom={direction}>
           <Link
-            title="לחץ לפתיחת תמונה גדולה"
+            title="Open large image"
             href={images[imageIndex]}
             target="_blank"
             rel="noopener noreferrer"
@@ -75,19 +99,18 @@ const Carousel = ({ images }: CarouselProps) => {
               animate="center"
               exit="exit"
               transition={{
-                x: { type: 'spring', stiffness: 200, damping: 50 }, // Smoother transitions
-                opacity: { duration: 0.4 }, // Slower fade in/out to avoid abrupt changes
+                x: { type: 'spring', stiffness: 200, damping: 50 },
+                opacity: { duration: 0.4 },
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.8} // Make the dragging feel smoother
+              dragElastic={0.8}
               onDragEnd={(_, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x);
-
+                const swipe = offset.x * velocity.x;
                 if (swipe < -swipeConfidenceThreshold) {
-                  paginate(1);
+                  paginate(1); // Left swipe (next image)
                 } else if (swipe > swipeConfidenceThreshold) {
-                  paginate(-1);
+                  paginate(-1); // Right swipe (previous image)
                 }
               }}
               className="w-full object-cover rounded-lg h-full"
@@ -97,7 +120,7 @@ const Carousel = ({ images }: CarouselProps) => {
         </AnimatePresence>
       </div>
       <CarouselControls paginate={paginate} />
-    </div>
+    </motion.div>
   );
 };
 
