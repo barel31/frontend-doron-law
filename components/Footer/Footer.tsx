@@ -3,21 +3,6 @@ import ContactInfoSection from './ContactInfoSection';
 import SiteNavigationSection from './SiteNavigationSection';
 import MapSection from './MapSection';
 
-interface ContactInfo {
-  mobile: string;
-  phone: string;
-  fax: string;
-  email: string;
-  address: string;
-  facebook?: string;
-  linkedin?: string;
-}
-
-interface Route {
-  slug: { current: string };
-  name: string;
-}
-
 function Footer({ routes, contact }: { routes: Route[]; contact: ContactInfo }) {
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
