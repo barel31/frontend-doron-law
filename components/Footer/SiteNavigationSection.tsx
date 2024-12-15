@@ -9,34 +9,32 @@ const SiteNavigationSection = ({ routes }: { routes: Route[] }) => (
     </h4>
     <ul className="space-y-4 text-right">
       {routes.map(route => (
-        <DropdownItem key={route._id || route.slug.current} route={route} />
+        <DropdownItem key={route._id} route={route} />
       ))}
     </ul>
   </div>
 );
 
 const DropdownItem = ({ route }: { route: Route }) => {
-  const hasChildren = !!route.children;
+  const { children, slug, name } = route;
+  const hasChildren = children && children.length > 0;
 
   return (
     <li className="flex flex-col items-start">
-      <Link
-        href={hasChildren ? '#' : route.slug.current}
-        className={` ${
-          hasChildren
-            ? 'font-semibold text-gray-600 pointer-events-none'
-            : 'hover:text-lime-600 transition duration-300'
-        }`}
-        onClick={e => {
-          if (hasChildren) e.preventDefault();
-        }}
-        title={route.name}>
-        {`${route.name}${hasChildren ? ':' : ''}`}
-      </Link>
+      {hasChildren ? (
+        <span className="font-semibold text-gray-600">{name}:</span>
+      ) : (
+        <Link
+          href={slug.current}
+          className="hover:text-lime-600 transition duration-300"
+          title={name}>
+          {name}
+        </Link>
+      )}
       {hasChildren && (
         <ul className="ml-12 mt-2 space-y-2">
-          {route?.children?.map(childRoute => (
-            <li key={childRoute._id || childRoute.slug.current}>
+          {children.map(childRoute => (
+            <li key={childRoute._id}>
               <Link
                 href={childRoute.slug.current}
                 className="hover:text-lime-600 transition duration-300"
