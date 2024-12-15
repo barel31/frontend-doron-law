@@ -19,6 +19,10 @@ const DropdownItem = ({ route }: { route: Route }) => {
   const { children, slug, name } = route;
   const hasChildren = children && children.length > 0;
 
+  if (route.isChild) {
+    return null;
+  }
+
   return (
     <li className="flex flex-col items-start">
       {hasChildren ? (
